@@ -16,13 +16,13 @@
 
 <body>
   <header>
+    <div>
+      <a class="navbar-brand" href="#">
+        <img src="static/media/gym-logger-logo.jpg"/>
+    </a>
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-body-white">
         <div class="container-fluid">
-          <div>
-            <a class="navbar-brand" href="#">
-              <img src="static/media/gym-logger-logo.jpg"/>
-          </a>
-          </div>
           <button
             data-mdb-collapse-init
             class="navbar-toggler"
@@ -38,7 +38,8 @@
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="{{ url_for('home')}}">Home</a>
               <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('categories')}}">Types of Exercise</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('exercises')}}">Example Exercises</a>
               <a class="nav-link disabled"
                 >Disabled</a
               >

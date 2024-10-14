@@ -1,0 +1,8 @@
+.btn-info {
+    background-color: #28b0b8;
+}
+
+.btn-info:hover {
+    background-color: #28b0b8;
+    border:2px solid #ED6B47;
+}

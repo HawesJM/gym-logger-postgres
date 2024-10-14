@@ -4,7 +4,6 @@ class Category(db.Model):
     # schema for the Category model
     id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(25), unique=True, nullable=False)
-    tasks = db.relationship("Task", backref="category", cascade="all, delete", lazy=True)
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
@@ -12,10 +11,12 @@ class Category(db.Model):
 
 class Exercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    exercise_name = db.Column(db.String(50), unique=True, nullable=False)
+    exercise_title = db.Column(db.String(50), unique=True, nullable=False)
+    exercise_category = db.Column(db.String(50), nullable=False)
+    
 
     def __repr__(self):
-        return self.exercise_name 
+        return self.exercise_title 
 
 
 class Workout(db.Model):
