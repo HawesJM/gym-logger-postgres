@@ -6,3 +6,15 @@
     background-color: #28b0b8;
     border:2px solid #ED6B47;
 }
+
+.row {
+    --mdb-gutter-x: 0;
+}
+
+div {
+    overflow: hidden;
+  }
+
+.input-field{
+    box-sizing:border-box;
+} 

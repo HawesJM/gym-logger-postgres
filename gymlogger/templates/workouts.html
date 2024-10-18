@@ -2,17 +2,17 @@
 {% block content %}
 <div class="row">
     <h4 class="text-center">
-        Exercises
+        Workouts
     </h4>
 </div>
 
 <div class="row">
-    {% for exercise in exercises %}
+    {% for workout in workouts %}
     <div class="col-4">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{ exercise.exercise_title }}</h5>
-          <h6 class="card-title">{{ exercise.exercise_category }}</h6>
+          <h5 class="card-title">{{ workout.workout_title }}</h5>
+          <h6 class="card-title">{{ workout.workout_date }}</h6>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
           <a href="#" class="btn btn-success" data-mdb-ripple-init>Edit</a>
           <a href="#" class="btn btn-danger" data-mdb-ripple-init>Delete</a>
@@ -22,8 +22,8 @@
     {% endfor %}
 </div>
     <div class="mx-auto text-center">
-        <a href="{{ url_for('add_exercise') }}" class="btn btn-info">
-            Add Exercise <i class="fas fa-plus-square right"></i>
+        <a href="{{ url_for('add_workout') }}" class="btn btn-info">
+            Add Workout <i class="fas fa-plus-square right"></i>
         </a>
     </div>
 
