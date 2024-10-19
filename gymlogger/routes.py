@@ -44,8 +44,8 @@ def workouts():
     workouts = list(Workout.query.order_by(Workout.workout_title).all())
     return render_template("workouts.html", workouts=workouts)
 
-@app.route("/add_workout", methods=["GET", "POST"])
-def add_workout():
+@app.route("/record_workout", methods=["GET", "POST"])
+def record_workout():
     if request.method == "POST":
         workout = Workout(
             workout_title = request.form.get("workout_title"),
@@ -71,4 +71,4 @@ def add_workout():
         db.session.add(workout)
         db.session.commit()
         return redirect(url_for("workouts"))
-    return render_template("add_workout.html")
+    return render_template("record_workout.html")
