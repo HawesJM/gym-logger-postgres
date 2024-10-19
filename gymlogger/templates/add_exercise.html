@@ -2,13 +2,14 @@
 {% block content %}
 <div class="card text-center">
     <form class="col s12" method="POST" action="{{ url_for('add_exercise') }}">
-        <!-- category name -->
+        <!-- exercise name -->
         <div class="row">
             <div class="input-field col-6">
                 <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                 <input id="exercise_title" name="exercise_title" minlength="3" maxlength="25" type="text" class="validate" required>
                 <label for="exercise_title">Exercise Title</label>
             </div>
+        <!-- exercise category -->
             <div class="input-field col-6">
                 <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                 <input id="exercise_category" name="exercise_category" minlength="3" maxlength="25" type="text" class="validate" required>

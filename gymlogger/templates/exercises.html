@@ -14,7 +14,7 @@
           <h5 class="card-title">{{ exercise.exercise_title }}</h5>
           <h6 class="card-title">{{ exercise.exercise_category }}</h6>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-success" data-mdb-ripple-init>Edit</a>
+          <a href="{{ url_for('edit_exercise', exercise_id=exercise.id) }}" class="btn btn-success" data-mdb-ripple-init>Edit</a>
           <a href="#" class="btn btn-danger" data-mdb-ripple-init>Delete</a>
         </div>
       </div>

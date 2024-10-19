@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <h4 class="text-center">
+        Gyms
+    </h4>
+</div>
+<div class="card text-center">
+    <form class="col s12" method="POST" action="{{ url_for('edit_location', location_id=location.id) }}">
+        <!-- location name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <input id="location_name" name="location_name" value="{{location.location_name}}" minlength="3" maxlength="25" type="text" class="validate" required>
+                <label for="location_name">Location Name</label>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                    Edit Location  <i class="fas fa-edit right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

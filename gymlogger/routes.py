@@ -22,6 +22,15 @@ def add_category():
         return redirect(url_for("categories"))
     return render_template("add_category.html")
 
+@app.route("/edit_category/<int:category_id>", methods=["GET", "POST"])
+def edit_category(category_id):
+    category = Category.query.get_or_404(category_id)
+    if request.method == "POST":
+        category.category_name = request.form.get("category_name")
+        db.session.commit()
+        return redirect(url_for("categories"))
+    return render_template("edit_category.html", category=category)
+
 @app.route("/exercises")
 def exercises():
     exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
@@ -38,6 +47,16 @@ def add_exercise():
         db.session.commit()
         return redirect(url_for("exercises"))
     return render_template("add_exercise.html")
+
+@app.route("/edit_exercise/<int:exercise_id>", methods=["GET", "POST"])
+def edit_exercise(exercise_id):
+    exercise = Exercise.query.get_or_404(exercise_id)
+    if request.method == "POST":
+        exercise.exercise_title = request.form.get("exercise_title")
+        exercise.exercise_category = request.form.get("exercise_category")
+        db.session.commit()
+        return redirect(url_for("exercises"))
+    return render_template("edit_exercise.html", exercise=exercise)
 
 @app.route("/workouts")
 def workouts():
@@ -72,3 +91,31 @@ def record_workout():
         db.session.commit()
         return redirect(url_for("workouts"))
     return render_template("record_workout.html")
+
+@app.route("/edit_workout/<int:workout_id>", methods=["GET", "POST"])
+def edit_workout(workout_id):
+    workout = Workout.query.get_or_404(workout_id)
+    if request.method == "POST":
+        workout.workout_title = request.form.get("workout_title")
+        workout.workout_date_time= request.form.get("workout_date_time")
+        db.session.commit()
+        return redirect(url_for("workouts"))
+    return render_template("edit_workout.html", workout=workout)
+
+@app.route("/add_location", methods=["GET", "POST"])
+def add_location():
+    if request.method == "POST":
+        location = Location(location_name=request.form.get("location_name"))
+        db.session.add(location)
+        db.session.commit()
+        return redirect(url_for("locations"))
+    return render_template("add_location.html")
+
+@app.route("/edit_location/<int:location_id>", methods=["GET", "POST"])
+def edit_location(location_id):
+    location = Location.query.get_or_404(location_id)
+    if request.method == "POST":
+        location.location_name = request.form.get("location_name")
+        db.session.commit()
+        return redirect(url_for("locations"))
+    return render_template("edit_location.html", location=location)

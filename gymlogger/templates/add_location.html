@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card text-center">
+    <form class="col s12" method="POST" action="{{ url_for('add_location') }}">
+        <!-- location name -->
+        <div class="row">
+            <div class="input-field col-6">
+                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <input id="location_name" name="location_name" minlength="3" maxlength="25" type="text" class="validate" required>
+                <label for="location_name">Gym Location</label>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                    Add  <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -13,6 +13,7 @@ class Exercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     exercise_title = db.Column(db.String(50), unique=True, nullable=False)
     exercise_category = db.Column(db.String(50), nullable=False)
+    is_assisted = db.Column(db.Boolean, default=True)
     
 
     def __repr__(self):
@@ -108,6 +109,7 @@ class Workout(db.Model):
     exercise_ten_total_two = db.Column(db.Integer)
     exercise_ten_total_three = db.Column(db.Integer)
     additional_information = db.Column(db.String(100))
+    is_public = db.Column(db.Boolean, default=True)
 
     def __repr__(self):
         return self

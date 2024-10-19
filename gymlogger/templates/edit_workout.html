@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <h4 class="text-center">
+        Exercises
+    </h4>
+</div>
+<div class="card text-center">
+    <form class="col s12" method="POST" action="{{ url_for('edit_workout', workout_id=workout.id) }}">
+        <!-- workout name -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <input id="workout_title" name="workout_title" value="{{workout.workout_title}}" minlength="3" maxlength="25" type="text" class="validate" required>
+                <label for="workout_title">Workout Name</label>
+            </div>
+        </div>
+        <!-- workout date -->
+        <div class="row">
+            <div class="input-field col s12">
+                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                <input id="workout_date_time" name="workout_date_time" value="{{workout.workoute_date_time}}" minlength="3" maxlength="25" type="text" class="validate" required>
+                <label for="workout_date_time">Workout Date</label>
+            </div>
+        </div>
+        <!-- submit button -->
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                    Edit Exercise  <i class="fas fa-edit right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
