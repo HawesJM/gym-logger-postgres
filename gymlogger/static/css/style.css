@@ -45,3 +45,12 @@ div {
   .step.finish {
     background-color: #04AA6D;
   }
+
+  #modifier-row {
+    overflow: hidden;
+  }
+
+  label {
+    font-size: 14px;
+    font-family: Roboto;
+  }

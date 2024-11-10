@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="card text-center">
-    <form class="col s12" method="POST" action="{{ url_for('record_workout') }}">
+    <form id="workout-form" class="col-12" method="POST" action="{{ url_for('record_workout') }}">
         <!-- category name -->
 
         <div class="tab" id="workout-basic">
@@ -35,48 +35,46 @@
                     <h2>Exercise One</h2>
                 </div>
                 <div class="input-field col-2">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                     <input id="exercise_one_name" name="exercise_one_name" minlength="3" maxlength="50" type="text"
                         class="validate" required>
                     <label for="exercise_one_name">Exercise</label>
                 </div>
                 <div class="input-field col-2">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                     <input id="exercise_one_category" name="exercise_one_category" minlength="3" maxlength="25"
                         type="text" class="validate" required>
                     <label for="exercise_one_category">Category</label>
                 </div>
                 <div class="input-field col-2">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                     <input id="exercise_one_modifier_one" name="exercise_one_modifier_one" minlength="3" maxlength="25"
                         type="text" class="validate" required>
-                    <label for="exercise_one_modifier_one">Modifier One</label>
+                    <label for="exercise_one_modifier_one">Modifier 1</label>
                 </div>
                 <div class="input-field col-2">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                     <input id="exercise_one_modifier_two" name="exercise_one_modifier_two" minlength="3" maxlength="25"
                         type="text" class="validate" required>
-                    <label for="exercise_one_modifier_two">Modifier Two</label>
+                    <label for="exercise_one_modifier_two">Modifier 2</label>
                 </div>
                 <div class="input-field col-2">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
                     <input id="exercise_one_modifier_three" name="exercise_one_modifier_three" minlength="3"
                         maxlength="25" type="text" class="validate" required>
-                    <label for="exercise_one_modifier_three">Modifier Three</label>
+                    <label for="exercise_one_modifier_three">Modifier 3</label>
                 </div>
                 <div class="input-field col-2">
-                    <div class="row">
-                        <div class="col-3">
+                    <div class="row" id="modifier-row">
+                        <div class="col-4">
                             <input id="exercise_one_total_one" name="exercise_one_total_one" maxlength="3" type="number"
-                                class="validate" required>
+                                class="validate" required value="0">
+                                <label for="exercise_one_modifier_one">Total 1</label>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <input id="exercise_one_total_two" name="exercise_one_total_two" maxlength="3" type="number"
-                                class="validate" required>
+                                class="validate" required value="0">
+                                <label for="exercise_one_modifier_one">Total 2</label>
                         </div>
-                        <div class="col-3">
+                        <div class="col-4">
                             <input id="exercise_one_total_three" name="exercise_one_total_three" maxlength="3"
-                                type="number" class="validate" required>
+                                type="number" class="validate" required value="0">
+                                <label for="exercise_one_modifier_one">Total 3</label>
                         </div>
                     </div>
                 </div>
@@ -122,15 +120,15 @@
                     <div class="row">
                         <div class="col-3">
                             <input id="exercise_two_total_one" name="exercise_two_total_one" maxlength="3" type="number"
-                                class="validate">
+                                class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_two_total_two" name="exercise_two_total_two" maxlength="3" type="number"
-                                class="validate">
+                                class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_two_total_three" name="exercise_two_total_three" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                     </div>
                 </div>
@@ -176,15 +174,15 @@
                     <div class="row">
                         <div class="col-3">
                             <input id="exercise_three_total_one" name="exercise_three_total_one" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_three_total_two" name="exercise_three_total_two" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_three_total_three" name="exercise_three_total_three" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                     </div>
                 </div>
@@ -229,15 +227,15 @@
                     <div class="row">
                         <div class="col-3">
                             <input id="exercise_four_total_one" name="exercise_four_total_one" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_four_total_two" name="exercise_four_total_two" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_four_total_three" name="exercise_four_total_three" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                     </div>
                 </div>
@@ -285,15 +283,15 @@
                     <div class="row">
                         <div class="col-3">
                             <input id="exercise_five_total_one" name="exercise_five_total_one" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_five_total_two" name="exercise_five_total_two" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_five_total_three" name="exercise_five_total_three" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                     </div>
                 </div>
@@ -340,15 +338,15 @@
                     <div class="row">
                         <div class="col-3">
                             <input id="exercise_six_total_one" name="exercise_six_total_one" maxlength="3" type="number"
-                                class="validate">
+                                class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_six_total_two" name="exercise_six_total_two" maxlength="3" type="number"
-                                class="validate">
+                                class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_six_total_three" name="exercise_six_total_three" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                     </div>
                 </div>
@@ -394,15 +392,15 @@
                     <div class="row">
                         <div class="col-3">
                             <input id="exercise_seven_total_one" name="exercise_seven_total_one" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_seven_total_two" name="exercise_seven_total_two" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_seven_total_three" name="exercise_seven_total_three" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                     </div>
                 </div>
@@ -448,15 +446,15 @@
                     <div class="row">
                         <div class="col-3">
                             <input id="exercise_eight_total_one" name="exercise_eight_total_one" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_eight_total_two" name="exercise_eight_total_two" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_eight_total_three" name="exercise_eight_total_three" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                     </div>
                 </div>
@@ -503,15 +501,15 @@
                     <div class="row">
                         <div class="col-3">
                             <input id="exercise_nine_total_one" name="exercise_nine_total_one" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_nine_total_two" name="exercise_nine_total_two" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_nine_total_three" name="exercise_nine_total_three" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                     </div>
                 </div>
@@ -555,15 +553,15 @@
                     <div class="row">
                         <div class="col-3">
                             <input id="exercise_ten_total_one" name="exercise_ten_total_one" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_ten_total_two" name="exercise_ten_total_two" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                         <div class="col-3">
                             <input id="exercise_ten_total_three" name="exercise_ten_total_three" maxlength="3"
-                                type="number" class="validate">
+                                type="number" class="validate" value="0">
                         </div>
                     </div>
                 </div>
