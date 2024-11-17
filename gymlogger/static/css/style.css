@@ -18,6 +18,24 @@
     transform:scale(1.2,1.2);
 }
 
+.btn-success {
+  background-color: #ED6B47;
+  box-shadow: 0 5px 10px -5px #28b0b8 !important;
+}
+
+.btn-success:hover {
+  background-color: #ED6B47;
+  box-shadow: 0 5px 10px -5px #28b0b8 !important;
+  transform:scale(1.1,1.1);
+}
+
+.btn-success:active {
+  background-color: #ED6B47;
+  box-shadow: 0 5px 10px -5px #28b0b8 !important;
+}
+
+
+
 .row {
     --mdb-gutter-x: 0;
 }
@@ -40,6 +58,10 @@ input {
 
 h2 {
   font-size: 22px;
+}
+
+h5 {
+  font-size: 18px;
 }
 
 #workout-basic {

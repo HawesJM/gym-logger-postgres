@@ -157,11 +157,21 @@ def record_workout():
             exercise_ten_total_one = int(request.form.get("exercise_ten_total_one")),
             exercise_ten_total_two = int(request.form.get("exercise_ten_total_two")),
             exercise_ten_total_three = int(request.form.get("exercise_ten_total_three")),
+            additional_information = request.form.get("additional_information"),
         )
         db.session.add(workout)
         db.session.commit()
         return redirect(url_for("workouts"))
     return render_template("record_workout.html")
+
+@app.route("/workout_details/<workout_id>")
+def workout_details(workout_id):
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
+    workout = Workout.query.get_or_404(workout_id)
+
+    return render_template(
+        "workout_details.html", workout=workout, workouts=workouts, categories=categories, exercises=exercises)
 
 @app.route("/edit_workout/<int:workout_id>", methods=["GET", "POST"])
 def edit_workout(workout_id):

@@ -396,7 +396,7 @@
                     <h2>Exercise Seven</h2>
                 </div>
                 <div class="row mx-auto">
-                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                    <button class="btn" type="button" data-mdb-collapse-init data-mdb-ripple-init
                         data-mdb-target="#exercise-seven-container" aria-expanded="false"
                         aria-controls="exercise-seven-container">
                         <i class="fa-solid fa-3x fa-caret-down"></i>
@@ -632,7 +632,15 @@
             </div>
             </div>
         </div>
-
+        <!-- additional information -->
+         <div class="row">
+            <h2>Additional Information</h2>
+            <div class="input-field col-12">
+                <input id="exercise_additional_information" name="additional_information" minlength="3" maxlength="100" type="text"
+                    class="validate">
+                <label for="exercise_additional_information">Additional Information</label>
+            </div>
+         </div>
         <!-- form progress -->
 
         <div class="row">
@@ -653,7 +661,7 @@
         <!-- submit button -->
         <div class="row">
             <div class="col s12 center-align">
-                <button type="button" class="btn btn-large btn-info" data-mdb-ripple-init id="record-button">
+                <button type="submit" class="btn btn-large btn-info" data-mdb-ripple-init id="record-button">
                     Record Workout <i class="fas fa-plus-square right"></i>
                 </button>
             </div>
