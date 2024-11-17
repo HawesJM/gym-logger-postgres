@@ -1,6 +1,8 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
+document.getElementById("record-button").style.display="none"
+
 function showTab(n) {
   if (document.getElementById("workout-form")) {
       // This function will display the specified tab of the form ...
@@ -13,9 +15,7 @@ function showTab(n) {
         document.getElementById("prevBtn").style.display = "inline";
       }
       if (n == (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "Submit";
-      } else {
-        document.getElementById("nextBtn").innerHTML = "Next";
+        document.getElementById("nextBtn").style.display = "none";
       }
       // ... and run a function that displays the correct step indicator:
       fixStepIndicator(n)
@@ -64,4 +64,12 @@ function fixStepIndicator(n) {
   }
   //... and adds the "active" class to the current step:
   x[n].className += " active";
+}
+
+
+
+document.getElementById('nextBtn').addEventListener("click",showSubmit);
+
+function showSubmit() {
+  document.getElementById("record-button").style.display = "inline";
 }

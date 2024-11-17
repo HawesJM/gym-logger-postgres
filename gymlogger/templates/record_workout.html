@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card text-center">
+<div class="card text-center" id="workout-form-card">
     <form id="workout-form" class="col-12" method="POST" action="{{ url_for('record_workout') }}">
         <!-- category name -->
 
         <div class="tab" id="workout-basic">
             <div class="input-field col-12">
-                <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-                <label for="workout_title">Workout Title</label>
+                <i class="fa-solid fa-dumbbell"></i>
+                <label for="workout_title"><h2>Workout Title</h2></label>
                 <br>
                 <input id="workout_title" name="workout_title" minlength="3" maxlength="25" type="text" class="validate"
                     required>
@@ -15,12 +15,13 @@
             </div>
             <div class="row">
                 <div class="input-field col-6">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-                    <input id="workout_date_time" name="workout_date_time" type="datetime-local" class="validate" required>
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input id="workout_date_time" name="workout_date_time" type="datetime-local" class="validate"
+                        required>
                     <label for="workout_date_time">Workout Date</label>
                 </div>
                 <div class="input-field col-6">
-                    <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
+                    <i class="fa-solid fa-location-crosshairs"></i>
                     <input id="workout_location" name="workout_location" minlength="3" maxlength="50" type="text"
                         class="validate" required>
                     <label for="workout_location">Workout Location</label>
@@ -29,23 +30,11 @@
         </div>
 
         <div class="tab" id="exercise-page-one">
-        <!-- exercise one -->
+            <!-- exercise one -->
             <div class="row">
                 <div class="row mx-auto">
                     <h2>Exercise One</h2>
                 </div>
-                <div class="row mx-auto">
-                    <button class="btn btn-sm" 
-                    type="button"
-                    data-mdb-collapse-init
-                    data-mdb-ripple-init
-                    data-mdb-target="#exercise-one-container"
-                    aria-expanded="false"
-                    aria-controls="exercise-one-container">
-                        <i class="fa-solid fa-4x fa-caret-down"></i>
-                    </button>
-                </div>
-                <div class="row" id="exercise-one-container">
                 <div class="input-field col-2">
                     <input id="exercise_one_name" name="exercise_one_name" minlength="3" maxlength="50" type="text"
                         class="validate" required>
@@ -76,21 +65,20 @@
                         <div class="col-3">
                             <input id="exercise_one_total_one" name="exercise_one_total_one" maxlength="3" type="number"
                                 class="validate" required value="0">
-                                <label for="exercise_one_modifier_one">Total 1</label>
+                            <label for="exercise_one_modifier_one">Total 1</label>
                         </div>
                         <div class="col-3">
                             <input id="exercise_one_total_two" name="exercise_one_total_two" maxlength="3" type="number"
                                 class="validate" required value="0">
-                                <label for="exercise_one_modifier_one">Total 2</label>
+                            <label for="exercise_one_modifier_one">Total 2</label>
                         </div>
                         <div class="col-3">
                             <input id="exercise_one_total_three" name="exercise_one_total_three" maxlength="3"
                                 type="number" class="validate" required value="0">
-                                <label for="exercise_one_modifier_one">Total 3</label>
+                            <label for="exercise_one_modifier_one">Total 3</label>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
 
             <!-- exercise two -->
@@ -99,47 +87,56 @@
                 <div class="row mx-auto">
                     <h2>Exercise Two</h2>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_two_name" name="exercise_two_name" minlength="3" maxlength="50" type="text"
-                        class="validate">
-                    <label for="exercise_two_name">Exercise</label>
+                <div class="row mx-auto">
+                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                        data-mdb-target="#exercise-two-container" aria-expanded="false"
+                        aria-controls="exercise-two-container">
+                        <i class="fa-solid fa-3x fa-caret-down"></i>
+                    </button>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_two_category" name="exercise_two_category" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_two_category">Category</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_two_modifier_one" name="exercise_two_modifier_one" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_two_modifier_one">Modifier 1</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_two_modifier_two" name="exercise_two_modifier_two" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_two_modifier_two">Modifier 2</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_two_modifier_three" name="exercise_two_modifier_three" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_two_modifier_three">Modifier 3</label>
-                </div>
-                <div class="input-field col-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <input id="exercise_two_total_one" name="exercise_two_total_one" maxlength="3" type="number"
-                                class="validate" value="0">
+                <div class="row collapse" id="exercise-two-container">
+                    <div class="input-field col-2">
+                        <input id="exercise_two_name" name="exercise_two_name" minlength="3" maxlength="50" type="text"
+                            class="validate">
+                        <label for="exercise_two_name">Exercise</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_two_category" name="exercise_two_category" minlength="3" maxlength="25"
+                            type="text" class="validate">
+                        <label for="exercise_two_category">Category</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_two_modifier_one" name="exercise_two_modifier_one" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_two_modifier_one">Modifier 1</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_two_modifier_two" name="exercise_two_modifier_two" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_two_modifier_two">Modifier 2</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_two_modifier_three" name="exercise_two_modifier_three" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_two_modifier_three">Modifier 3</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <input id="exercise_two_total_one" name="exercise_two_total_one" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 1</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_two_total_two" name="exercise_two_total_two" maxlength="3" type="number"
-                                class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_two_total_two" name="exercise_two_total_two" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 2</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_two_total_three" name="exercise_two_total_three" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_two_total_three" name="exercise_two_total_three" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 3</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -151,98 +148,116 @@
                 <div class="row mx-auto">
                     <h2>Exercise Three</h2>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_three_name" name="exercise_three_name" minlength="3" maxlength="50" type="text"
-                        class="validate">
-                    <label for="exercise_three_name">Exercise</label>
+                <div class="row mx-auto">
+                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                        data-mdb-target="#exercise-three-container" aria-expanded="false"
+                        aria-controls="exercise-three-container">
+                        <i class="fa-solid fa-3x fa-caret-down"></i>
+                    </button>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_three_category" name="exercise_three_category" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_three_category">Category</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_three_modifier_one" name="exercise_three_modifier_one" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_three_modifier_one">Modifier 1</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_three_modifier_two" name="exercise_three_modifier_two" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_three_modifier_two">Modifier 2</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_three_modifier_three" name="exercise_three_modifier_three" minlength="3"
-                        maxlength="25" type="text" class="validate" >
-                    <label for="exercise_three_modifier_three">Modifier 3</label>
-                </div>
-                <div class="input-field col-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <input id="exercise_three_total_one" name="exercise_three_total_one" maxlength="3"
-                                type="number" class="validate" value="0">
+                <div class="row collapse" id="exercise-three-container">
+                    <div class="input-field col-2">
+                        <input id="exercise_three_name" name="exercise_three_name" minlength="3" maxlength="50"
+                            type="text" class="validate">
+                        <label for="exercise_three_name">Exercise</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_three_category" name="exercise_three_category" minlength="3" maxlength="25"
+                            type="text" class="validate">
+                        <label for="exercise_three_category">Category</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_three_modifier_one" name="exercise_three_modifier_one" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_three_modifier_one">Modifier 1</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_three_modifier_two" name="exercise_three_modifier_two" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_three_modifier_two">Modifier 2</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_three_modifier_three" name="exercise_three_modifier_three" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_three_modifier_three">Modifier 3</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <input id="exercise_three_total_one" name="exercise_three_total_one" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 1</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_three_total_two" name="exercise_three_total_two" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_three_total_two" name="exercise_three_total_two" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 2</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_three_total_three" name="exercise_three_total_three" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_three_total_three" name="exercise_three_total_three" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 3</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
+
             <!-- exercise four -->
             <div class="row">
                 <div class="row mx-auto">
                     <h2>Exercise Four</h2>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_four_name" name="exercise_four_name" minlength="3" maxlength="50" type="text"
-                        class="validate">
-                    <label for="exercise_four_name">Exercise</label>
+                <div class="row mx-auto">
+                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                        data-mdb-target="#exercise-four-container" aria-expanded="false"
+                        aria-controls="exercise-four-container">
+                        <i class="fa-solid fa-3x fa-caret-down"></i>
+                    </button>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_four_category" name="exercise_four_category" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_four_category">Category</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_four_modifier_one" name="exercise_four_modifier_one" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_four_modifier_one">Modifier 1</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_four_modifier_two" name="exercise_four_modifier_two" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_four_modifier_two">Modifier 2</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_four_modifier_three" name="exercise_four_modifier_three" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_four_modifier_three">Modifier 3</label>
-                </div>
-                <div class="input-field col-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <input id="exercise_four_total_one" name="exercise_four_total_one" maxlength="3"
-                                type="number" class="validate" value="0">
+                <div class="row collapse" id="exercise-four-container">
+                    <div class="input-field col-2">
+                        <input id="exercise_four_name" name="exercise_four_name" minlength="3" maxlength="50"
+                            type="text" class="validate">
+                        <label for="exercise_four_name">Exercise</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_four_category" name="exercise_four_category" minlength="3" maxlength="25"
+                            type="text" class="validate">
+                        <label for="exercise_four_category">Category</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_four_modifier_one" name="exercise_four_modifier_one" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_four_modifier_one">Modifier 1</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_four_modifier_two" name="exercise_four_modifier_two" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_four_modifier_two">Modifier 2</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_four_modifier_three" name="exercise_four_modifier_three" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_four_modifier_three">Modifier 3</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <input id="exercise_four_total_one" name="exercise_four_total_one" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 1</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_four_total_two" name="exercise_four_total_two" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_four_total_two" name="exercise_four_total_two" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 2</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_four_total_three" name="exercise_four_total_three" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_four_total_three" name="exercise_four_total_three" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 3</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -256,48 +271,57 @@
                 <div class="row mx-auto">
                     <h2>Exercise Five</h2>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_five_name" name="exercise_five_name" minlength="3" maxlength="50" type="text"
-                        class="validate">
-                    <label for="exercise_five_name">Exercise</label>
+                <div class="row mx-auto">
+                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                        data-mdb-target="#exercise-five-container" aria-expanded="false"
+                        aria-controls="exercise-five-container">
+                        <i class="fa-solid fa-3x fa-caret-down"></i>
+                    </button>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_five_category" name="exercise_five_category" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_five_category">Category</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_five_modifier_one" name="exercise_five_modifier_one" minlength="3"
-                        maxlength="25" type="text" class="validate" >
-                    <label for="exercise_five_modifier_one">Modifier 1</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_five_modifier_two" name="exercise_five_modifier_two" minlength="3"
-                        maxlength="25" type="text" class="validate" >
-                    <label for="exercise_five_modifier_two">Modifier 2</label>
-                </div>
-                <div class="input-field col-2">
+                <div class="row collapse" id="exercise-five-container">
+                    <div class="input-field col-2">
+                        <input id="exercise_five_name" name="exercise_five_name" minlength="3" maxlength="50"
+                            type="text" class="validate">
+                        <label for="exercise_five_name">Exercise</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_five_category" name="exercise_five_category" minlength="3" maxlength="25"
+                            type="text" class="validate">
+                        <label for="exercise_five_category">Category</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_five_modifier_one" name="exercise_five_modifier_one" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_five_modifier_one">Modifier 1</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_five_modifier_two" name="exercise_five_modifier_two" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_five_modifier_two">Modifier 2</label>
+                    </div>
+                    <div class="input-field col-2">
 
-                    <input id="exercise_five_modifier_three" name="exercise_five_modifier_three" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_five_modifier_three">Modifier 3</label>
-                </div>
-                <div class="input-field col-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <input id="exercise_five_total_one" name="exercise_five_total_one" maxlength="3"
-                                type="number" class="validate" value="0">
+                        <input id="exercise_five_modifier_three" name="exercise_five_modifier_three" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_five_modifier_three">Modifier 3</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <input id="exercise_five_total_one" name="exercise_five_total_one" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 1</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_five_total_two" name="exercise_five_total_two" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_five_total_two" name="exercise_five_total_two" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 2</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_five_total_three" name="exercise_five_total_three" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_five_total_three" name="exercise_five_total_three" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 3</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -310,47 +334,56 @@
                 <div class="row mx-auto">
                     <h2>Exercise Six</h2>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_six_name" name="exercise_six_name" minlength="3" maxlength="50" type="text"
-                        class="validate">
-                    <label for="exercise_six_name">Exercise</label>
+                <div class="row mx-auto">
+                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                        data-mdb-target="#exercise-six-container" aria-expanded="false"
+                        aria-controls="exercise-six-container">
+                        <i class="fa-solid fa-3x fa-caret-down"></i>
+                    </button>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_six_category" name="exercise_six_category" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_six_category">Category</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_six_modifier_one" name="exercise_six_modifier_one" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_six_modifier_one">Modifier 1</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_six_modifier_two" name="exercise_six_modifier_two" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_six_modifier_two">Modifier 2</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_six_modifier_three" name="exercise_six_modifier_three" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_six_modifier_three">Modifier 3</label>
-                </div>
-                <div class="input-field col-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <input id="exercise_six_total_one" name="exercise_six_total_one" maxlength="3" type="number"
-                                class="validate" value="0">
+                <div class="row collapse" id="exercise-six-container">
+                    <div class="input-field col-2">
+                        <input id="exercise_six_name" name="exercise_six_name" minlength="3" maxlength="50" type="text"
+                            class="validate">
+                        <label for="exercise_six_name">Exercise</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_six_category" name="exercise_six_category" minlength="3" maxlength="25"
+                            type="text" class="validate">
+                        <label for="exercise_six_category">Category</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_six_modifier_one" name="exercise_six_modifier_one" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_six_modifier_one">Modifier 1</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_six_modifier_two" name="exercise_six_modifier_two" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_six_modifier_two">Modifier 2</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_six_modifier_three" name="exercise_six_modifier_three" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_six_modifier_three">Modifier 3</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <input id="exercise_six_total_one" name="exercise_six_total_one" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 1</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_six_total_two" name="exercise_six_total_two" maxlength="3" type="number"
-                                class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_six_total_two" name="exercise_six_total_two" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 2</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_six_total_three" name="exercise_six_total_three" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_six_total_three" name="exercise_six_total_three" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 3</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -362,47 +395,56 @@
                 <div class="row mx-auto">
                     <h2>Exercise Seven</h2>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_seven_name" name="exercise_seven_name" minlength="3" maxlength="50" type="text"
-                        class="validate">
-                    <label for="exercise_seven_name">Exercise</label>
+                <div class="row mx-auto">
+                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                        data-mdb-target="#exercise-seven-container" aria-expanded="false"
+                        aria-controls="exercise-seven-container">
+                        <i class="fa-solid fa-3x fa-caret-down"></i>
+                    </button>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_seven_category" name="exercise_seven_category" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_seven_category">Category</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_seven_modifier_one" name="exercise_seven_modifier_one" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_seven_modifier_one">Modifier 1</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_seven_modifier_two" name="exercise_seven_modifier_two" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_seven_modifier_two">Modifier 2</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_seven_modifier_three" name="exercise_seven_modifier_three" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_seven_modifier_three">Modifier 3</label>
-                </div>
-                <div class="input-field col-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <input id="exercise_seven_total_one" name="exercise_seven_total_one" maxlength="3"
-                                type="number" class="validate" value="0">
+                <div class="row collapse" id="exercise-seven-container">
+                    <div class="input-field col-2">
+                        <input id="exercise_seven_name" name="exercise_seven_name" minlength="3" maxlength="50"
+                            type="text" class="validate">
+                        <label for="exercise_seven_name">Exercise</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_seven_category" name="exercise_seven_category" minlength="3" maxlength="25"
+                            type="text" class="validate">
+                        <label for="exercise_seven_category">Category</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_seven_modifier_one" name="exercise_seven_modifier_one" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_seven_modifier_one">Modifier 1</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_seven_modifier_two" name="exercise_seven_modifier_two" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_seven_modifier_two">Modifier 2</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_seven_modifier_three" name="exercise_seven_modifier_three" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_seven_modifier_three">Modifier 3</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <input id="exercise_seven_total_one" name="exercise_seven_total_one" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 1</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_seven_total_two" name="exercise_seven_total_two" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_seven_total_two" name="exercise_seven_total_two" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 2</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_seven_total_three" name="exercise_seven_total_three" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_seven_total_three" name="exercise_seven_total_three" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 3</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -414,47 +456,56 @@
                 <div class="row mx-auto">
                     <h2>Exercise Eight</h2>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_eight_name" name="exercise_eight_name" minlength="3" maxlength="50" type="text"
-                        class="validate">
-                    <label for="exercise_eight_name">Exercise</label>
+                <div class="row mx-auto">
+                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                        data-mdb-target="#exercise-eight-container" aria-expanded="false"
+                        aria-controls="exercise-eight-container">
+                        <i class="fa-solid fa-3x fa-caret-down"></i>
+                    </button>
                 </div>
-                <div class="input-field col-2">
-                    <input id="exercise_eight_category" name="exercise_eight_category" minlength="3" maxlength="25"
-                        type="text" class="validate">
-                    <label for="exercise_eight_category">Category</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_eight_modifier_one" name="exercise_eight_modifier_one" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_eight_modifier_one">Modifier 1</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_eight_modifier_two" name="exercise_eight_modifier_two" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_eight_modifier_two">Modifier 2</label>
-                </div>
-                <div class="input-field col-2">
-                    <input id="exercise_eight_modifier_three" name="exercise_eight_modifier_three" minlength="3"
-                        maxlength="25" type="text" class="validate">
-                    <label for="exercise_eight_modifier_three">Modifier 3</label>
-                </div>
-                <div class="input-field col-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <input id="exercise_eight_total_one" name="exercise_eight_total_one" maxlength="3"
-                                type="number" class="validate" value="0">
+                <div class="row collapse" id="exercise-eight-container">
+                    <div class="input-field col-2">
+                        <input id="exercise_eight_name" name="exercise_eight_name" minlength="3" maxlength="50"
+                            type="text" class="validate">
+                        <label for="exercise_eight_name">Exercise</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_eight_category" name="exercise_eight_category" minlength="3" maxlength="25"
+                            type="text" class="validate">
+                        <label for="exercise_eight_category">Category</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_eight_modifier_one" name="exercise_eight_modifier_one" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_eight_modifier_one">Modifier 1</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_eight_modifier_two" name="exercise_eight_modifier_two" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_eight_modifier_two">Modifier 2</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <input id="exercise_eight_modifier_three" name="exercise_eight_modifier_three" minlength="3"
+                            maxlength="25" type="text" class="validate">
+                        <label for="exercise_eight_modifier_three">Modifier 3</label>
+                    </div>
+                    <div class="input-field col-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <input id="exercise_eight_total_one" name="exercise_eight_total_one" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 1</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_eight_total_two" name="exercise_eight_total_two" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_eight_total_two" name="exercise_eight_total_two" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 2</label>
-                        </div>
-                        <div class="col-3">
-                            <input id="exercise_eight_total_three" name="exercise_eight_total_three" maxlength="3"
-                                type="number" class="validate" value="0">
+                            </div>
+                            <div class="col-3">
+                                <input id="exercise_eight_total_three" name="exercise_eight_total_three" maxlength="3"
+                                    type="number" class="validate" value="0">
                                 <label for="exercise_one_modifier_one">Total 3</label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -467,6 +518,14 @@
                 <div class="row mx-auto">
                     <h2>Exercise Nine</h2>
                 </div>
+                <div class="row mx-auto">
+                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                        data-mdb-target="#exercise-nine-container" aria-expanded="false"
+                        aria-controls="exercise-nine-container">
+                        <i class="fa-solid fa-3x fa-caret-down"></i>
+                    </button>
+                </div>
+                <div class="row collapse" id="exercise-nine-container">
                 <div class="input-field col-2">
                     <input id="exercise_nine_name" name="exercise_nine_name" minlength="3" maxlength="50" type="text"
                         class="validate">
@@ -497,19 +556,20 @@
                         <div class="col-3">
                             <input id="exercise_nine_total_one" name="exercise_nine_total_one" maxlength="3"
                                 type="number" class="validate" value="0">
-                                <label for="exercise_one_modifier_one">Total 1</label>
+                            <label for="exercise_one_modifier_one">Total 1</label>
                         </div>
                         <div class="col-3">
                             <input id="exercise_nine_total_two" name="exercise_nine_total_two" maxlength="3"
                                 type="number" class="validate" value="0">
-                                <label for="exercise_one_modifier_one">Total 2</label>
+                            <label for="exercise_one_modifier_one">Total 2</label>
                         </div>
                         <div class="col-3">
                             <input id="exercise_nine_total_three" name="exercise_nine_total_three" maxlength="3"
                                 type="number" class="validate" value="0">
-                                <label for="exercise_one_modifier_one">Total 3</label>
+                            <label for="exercise_one_modifier_one">Total 3</label>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
             <!-- exercise ten -->
@@ -517,6 +577,14 @@
                 <div class="row mx-auto">
                     <h2>Exercise Ten</h2>
                 </div>
+                <div class="row mx-auto">
+                    <button class="btn btn-sm" type="button" data-mdb-collapse-init data-mdb-ripple-init
+                        data-mdb-target="#exercise-ten-container" aria-expanded="false"
+                        aria-controls="exercise-ten-container">
+                        <i class="fa-solid fa-3x fa-caret-down"></i>
+                    </button>
+                </div>
+                <div class="row collapse" id="exercise-ten-container">
                 <div class="input-field col-2">
                     <input id="exercise_ten_name" name="exercise_ten_name" minlength="3" maxlength="50" type="text"
                         class="validate">
@@ -528,13 +596,13 @@
                     <label for="exercise_ten_category">Category</label>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_ten_modifier_one" name="exercise_ten_modifier_one" minlength="3"
-                        maxlength="25" type="text" class="validate">
+                    <input id="exercise_ten_modifier_one" name="exercise_ten_modifier_one" minlength="3" maxlength="25"
+                        type="text" class="validate">
                     <label for="exercise_ten_modifier_one">Modifier 1</label>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_ten_modifier_two" name="exercise_ten_modifier_two" minlength="3"
-                        maxlength="25" type="text" class="validate">
+                    <input id="exercise_ten_modifier_two" name="exercise_ten_modifier_two" minlength="3" maxlength="25"
+                        type="text" class="validate">
                     <label for="exercise_ten_modifier_two">Modifier 2</label>
                 </div>
                 <div class="input-field col-2">
@@ -545,22 +613,23 @@
                 <div class="input-field col-2">
                     <div class="row">
                         <div class="col-3">
-                            <input id="exercise_ten_total_one" name="exercise_ten_total_one" maxlength="3"
-                                type="number" class="validate" value="0">
-                                <label for="exercise_one_modifier_one">Total 1</label>
+                            <input id="exercise_ten_total_one" name="exercise_ten_total_one" maxlength="3" type="number"
+                                class="validate" value="0">
+                            <label for="exercise_one_modifier_one">Total 1</label>
                         </div>
                         <div class="col-3">
-                            <input id="exercise_ten_total_two" name="exercise_ten_total_two" maxlength="3"
-                                type="number" class="validate" value="0">
-                                <label for="exercise_one_modifier_one">Total 2</label>
+                            <input id="exercise_ten_total_two" name="exercise_ten_total_two" maxlength="3" type="number"
+                                class="validate" value="0">
+                            <label for="exercise_one_modifier_one">Total 2</label>
                         </div>
                         <div class="col-3">
                             <input id="exercise_ten_total_three" name="exercise_ten_total_three" maxlength="3"
                                 type="number" class="validate" value="0">
-                                <label for="exercise_one_modifier_one">Total 3</label>
+                            <label for="exercise_one_modifier_one">Total 3</label>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
 
@@ -568,13 +637,13 @@
 
         <div class="row">
             <div>
-                <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                <button type="button" class="tab-button" id="prevBtn" onclick="nextPrev(-1)"><i class="fa-solid fa-2x fa-arrow-left"></i></button>
+                <button type="button" class="tab-button" id="nextBtn" onclick="nextPrev(1)"><i class="fa-solid fa-2x fa-arrow-right"></i></button>
             </div>
         </div>
 
         <!-- Circles which indicates the steps of the form: -->
-        <div style="text-align:center;margin-top:40px;">
+        <div style="text-align:center;margin-top:5px;">
             <span class="step"></span>
             <span class="step"></span>
             <span class="step"></span>
@@ -584,12 +653,12 @@
         <!-- submit button -->
         <div class="row">
             <div class="col s12 center-align">
-                <button type="submit" class="btn-large light-blue darken-1">
-                    Add <i class="fas fa-plus-square right"></i>
+                <button type="button" class="btn btn-large btn-info" data-mdb-ripple-init id="record-button">
+                    Record Workout <i class="fas fa-plus-square right"></i>
                 </button>
             </div>
         </div>
-        </form>
-        </div>
+    </form>
+</div>
 
 {% endblock %}

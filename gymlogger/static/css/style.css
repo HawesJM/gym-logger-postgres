@@ -1,10 +1,21 @@
+.navbar {
+  border:2px solid #ED6B47;
+}
+
+.border-bottom {
+  border-top:2px solid #ED6B47;
+}
+
 .btn-info {
-    background-color: #28b0b8;
+    background-color: #28b0b8 !important;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .btn-info:hover {
     background-color: #28b0b8;
-    border:2px solid #ED6B47;
+    box-shadow: 0 5px 10px -5px #ED6B47 !important;
+    transform:scale(1.2,1.2);
 }
 
 .row {
@@ -15,6 +26,10 @@ div {
     overflow: hidden;
   }
 
+#workout-form-card {
+  border:5px solid #28b0b8;
+}
+
 .input-field{
     box-sizing:border-box;
 }
@@ -23,6 +38,13 @@ input {
   max-width: 100%;
 }
 
+h2 {
+  font-size: 22px;
+}
+
+#workout-basic {
+  padding-top: 10px;
+}
 
 /* Hide all steps by default: */
 .tab {
@@ -48,10 +70,24 @@ input {
   
   /* Mark the steps that are finished and valid: */
   .step.finish {
-    background-color: #04AA6D;
+    background-color: #28b0b8;
   }
 
   label {
     font-size: 14px;
     font-family: Roboto;
   }
+
+--mdb-btn-hover-bg, --mdb-btn-bg {
+  background-color: #28b0b8;
+}
+
+.tab-button {
+  border: none;
+  background-color: #fff;
+  border-radius: 10%;
+}
+
+.tab-button:hover {
+  background-color: #ED6B47;
+}
