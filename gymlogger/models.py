@@ -23,6 +23,10 @@ class Location(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     location_name = db.Column(db.String(50), unique=True, nullable=False)
 
+class Modifier(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    modifier_name = db.Column(db.String(50), unique=True, nullable=False)
+
 class Workout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     workout_title = db.Column(db.String(100), nullable=False)
