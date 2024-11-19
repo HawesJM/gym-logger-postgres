@@ -34,7 +34,11 @@
   box-shadow: 0 5px 10px -5px #28b0b8 !important;
 }
 
-
+input {
+  line-height: initial !important;
+  font-size: initial !important;
+  text-align: center;
+}
 
 .row {
     --mdb-gutter-x: 0;

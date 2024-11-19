@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <h4 class="text-center">
+        Gyms
+    </h4>
+</div>
+
+<div class="row">
+    {% for modifier in modifiers %}
+    <div class="col-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ modifier.modifier_name }}</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="" class="btn btn-success" data-mdb-ripple-init>Edit</a>
+          <a href="#" class="btn btn-danger" data-mdb-ripple-init>Delete</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div>
+    <div class="mx-auto text-center">
+        <a href="" class="btn btn-info">
+            Add Exercise <i class="fas fa-plus-square right"></i>
+        </a>
+    </div>
+
+{% endblock %}

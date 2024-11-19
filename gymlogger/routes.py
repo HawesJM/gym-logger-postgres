@@ -1,6 +1,6 @@
 from flask import render_template, request, redirect, url_for
 from gymlogger import app, db
-from gymlogger.models import Exercise, Workout, Category
+from gymlogger.models import Exercise, Workout, Category, Modifier
 
 @app.route("/")
 def home():
@@ -65,6 +65,23 @@ def edit_exercise(exercise_id):
         return redirect(url_for("exercises"))
     return render_template("edit_exercise.html", exercise=exercise)
 
+@app.route("/modifiers")
+def modifiers():
+    modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
+    return render_template("modifiers.html", modifiers=modifiers)
+
+@app.route("/add_modifier", methods=["GET", "POST"])
+def add_modifier():
+    if request.method == "POST":
+        modifier = Modifier(
+            modifier_name = request.form.get("modifier_name"),
+        )
+        db.session.add(modifier)
+        db.session.commit()
+        return redirect(url_for("modifiers"))
+    return render_template("add_modifier.html")
+
+
 @app.route("/workouts")
 def workouts():
     workouts = list(Workout.query.order_by(Workout.workout_title).all())
@@ -72,6 +89,9 @@ def workouts():
 
 @app.route("/record_workout", methods=["GET", "POST"])
 def record_workout():
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
+    modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
     if request.method == "POST":
         workout = Workout(
             workout_title = request.form.get("workout_title"),
@@ -162,7 +182,7 @@ def record_workout():
         db.session.add(workout)
         db.session.commit()
         return redirect(url_for("workouts"))
-    return render_template("record_workout.html")
+    return render_template("record_workout.html", categories=categories, exercises=exercises, modifiers=modifiers)
 
 @app.route("/workout_details/<workout_id>")
 def workout_details(workout_id):

@@ -31,34 +31,54 @@
 
         <div class="tab" id="exercise-page-one">
             <!-- exercise one -->
-            <div class="row">
-                <div class="row mx-auto">
+            <div class="row mx-auto">
+                <div class="row">
                     <h2>Exercise One</h2>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_one_name" name="exercise_one_name" minlength="3" maxlength="50" type="text"
+                    <select id="exercise_one_name" name="exercise_one_name" minlength="3" maxlength="50" type="text"
                         class="validate" required>
-                    <label for="exercise_one_name">Exercise</label>
+                        <option disabled selected value> -- Select Exercise -- </option>
+                        {% for exercise in exercises %}
+                            <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_one_category" name="exercise_one_category" minlength="3" maxlength="25"
+                    <select id="exercise_one_category" name="exercise_one_category" minlength="3" maxlength="25"
                         type="text" class="validate" required>
-                    <label for="exercise_one_category">Category</label>
+                    <option disabled selected value> --Exercise Category -- </option>
+                    {% for category in categories %}
+                            <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_one_modifier_one" name="exercise_one_modifier_one" minlength="3" maxlength="25"
+                    <select id="exercise_one_modifier_one" name="exercise_one_modifier_one" minlength="3" maxlength="25"
                         type="text" class="validate" required>
-                    <label for="exercise_one_modifier_one">Modifier 1</label>
+                    <option disabled selected value> --Modifier 1 -- </option>
+                    {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_one_modifier_two" name="exercise_one_modifier_two" minlength="3" maxlength="25"
+                    <select id="exercise_one_modifier_two" name="exercise_one_modifier_two" minlength="3" maxlength="25"
                         type="text" class="validate" required>
-                    <label for="exercise_one_modifier_two">Modifier 2</label>
+                    <option disabled selected value> --Modifier 2 -- </option>
+                    {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_one_modifier_three" name="exercise_one_modifier_three" minlength="3"
-                        maxlength="25" type="text" class="validate" required>
-                    <label for="exercise_one_modifier_three">Modifier 3</label>
+                    <select id="exercise_one_modifier_three" name="exercise_one_modifier_three" minlength="3" maxlength="25"
+                    type="text" class="validate" required>
+                <option disabled selected value> --Modifier 3 -- </option>
+                {% for modifier in modifiers %}
+                        <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                    {% endfor %}
+                </select>
                 </div>
                 <div class="input-field col-2">
                     <div class="row">
@@ -96,29 +116,50 @@
                 </div>
                 <div class="row collapse" id="exercise-two-container">
                     <div class="input-field col-2">
-                        <input id="exercise_two_name" name="exercise_two_name" minlength="3" maxlength="50" type="text"
+                        <select id="exercise_two_name" name="exercise_two_name" minlength="3" maxlength="50" type="text"
                             class="validate">
-                        <label for="exercise_two_name">Exercise</label>
+                            <option disabled selected value> -- Select Exercise -- </option>
+                            {% for exercise in exercises %}
+                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_two_category" name="exercise_two_category" minlength="3" maxlength="25"
+                        <select id="exercise_two_category" name="exercise_two_category" minlength="3" maxlength="25"
                             type="text" class="validate">
-                        <label for="exercise_two_category">Category</label>
+                            <option disabled selected value> -- Select Category -- </option>
+                        {% for category in categories %}
+                            <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                        {% endfor %}
+                    </select>
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_two_modifier_one" name="exercise_two_modifier_one" minlength="3"
+                        <select id="exercise_two_modifier_one" name="exercise_two_modifier_one" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_two_modifier_one">Modifier 1</label>
+                        <option disabled selected value> --Modifier 1 -- </option>
+                        {% for modifier in modifiers %}
+                        <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                        {% endfor %}
+                    </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_two_modifier_two" name="exercise_two_modifier_two" minlength="3"
+                        <select id="exercise_two_modifier_two" name="exercise_two_modifier_two" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_two_modifier_two">Modifier 2</label>
+                            <option disabled selected value> --Modifier 2 -- </option>
+                            {% for modifier in modifiers %}
+                                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                                {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_two_modifier_three" name="exercise_two_modifier_three" minlength="3"
+                        <select id="exercise_two_modifier_three" name="exercise_two_modifier_three" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_two_modifier_three">Modifier 3</label>
+                            <option disabled selected value> --Modifier 3 -- </option>
+                            {% for modifier in modifiers %}
+                                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                                {% endfor %}
+                                </select>
                     </div>
                     <div class="input-field col-2">
                         <div class="row">
@@ -157,29 +198,49 @@
                 </div>
                 <div class="row collapse" id="exercise-three-container">
                     <div class="input-field col-2">
-                        <input id="exercise_three_name" name="exercise_three_name" minlength="3" maxlength="50"
+                        <select id="exercise_three_name" name="exercise_three_name" minlength="3" maxlength="50"
                             type="text" class="validate">
-                        <label for="exercise_three_name">Exercise</label>
+                            <option disabled selected value> -- Select Exercise -- </option>
+                            {% for exercise in exercises %}
+                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_three_category" name="exercise_three_category" minlength="3" maxlength="25"
+                        <select id="exercise_three_category" name="exercise_three_category" minlength="3" maxlength="25"
                             type="text" class="validate">
-                        <label for="exercise_three_category">Category</label>
+                            <option disabled selected value> -- Select Category -- </option>
+                            {% for category in categories %}
+                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_three_modifier_one" name="exercise_three_modifier_one" minlength="3"
+                        <select id="exercise_three_modifier_one" name="exercise_three_modifier_one" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_three_modifier_one">Modifier 1</label>
+                            <option disabled selected value> --Modifier 1 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_three_modifier_two" name="exercise_three_modifier_two" minlength="3"
+                        <select id="exercise_three_modifier_two" name="exercise_three_modifier_two" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_three_modifier_two">Modifier 2</label>
+                            <option disabled selected value> -- Modifier 2 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_three_modifier_three" name="exercise_three_modifier_three" minlength="3"
+                        <select id="exercise_three_modifier_three" name="exercise_three_modifier_three" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_three_modifier_three">Modifier 3</label>
+                            <option disabled selected value> -- Modifier 3 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
                         <div class="row">
@@ -217,29 +278,49 @@
                 </div>
                 <div class="row collapse" id="exercise-four-container">
                     <div class="input-field col-2">
-                        <input id="exercise_four_name" name="exercise_four_name" minlength="3" maxlength="50"
+                        <select id="exercise_four_name" name="exercise_four_name" minlength="3" maxlength="50"
                             type="text" class="validate">
-                        <label for="exercise_four_name">Exercise</label>
+                            <option disabled selected value> -- Select Exercise -- </option>
+                            {% for exercise in exercises %}
+                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_four_category" name="exercise_four_category" minlength="3" maxlength="25"
+                        <select id="exercise_four_category" name="exercise_four_category" minlength="3" maxlength="25"
                             type="text" class="validate">
-                        <label for="exercise_four_category">Category</label>
+                            <option disabled selected value> -- Select Category -- </option>
+                        {% for category in categories %}
+                            <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                        {% endfor %}
+                    </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_four_modifier_one" name="exercise_four_modifier_one" minlength="3"
+                        <select id="exercise_four_modifier_one" name="exercise_four_modifier_one" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_four_modifier_one">Modifier 1</label>
+                            <option disabled selected value> --Modifier 1 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_four_modifier_two" name="exercise_four_modifier_two" minlength="3"
+                        <select id="exercise_four_modifier_two" name="exercise_four_modifier_two" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_four_modifier_two">Modifier 2</label>
+                            <option disabled selected value> --Modifier 2 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_four_modifier_three" name="exercise_four_modifier_three" minlength="3"
+                        <select id="exercise_four_modifier_three" name="exercise_four_modifier_three" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_four_modifier_three">Modifier 3</label>
+                            <option disabled selected value> --Modifier 3 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
                         <div class="row">
@@ -280,30 +361,49 @@
                 </div>
                 <div class="row collapse" id="exercise-five-container">
                     <div class="input-field col-2">
-                        <input id="exercise_five_name" name="exercise_five_name" minlength="3" maxlength="50"
+                        <select id="exercise_five_name" name="exercise_five_name" minlength="3" maxlength="50"
                             type="text" class="validate">
-                        <label for="exercise_five_name">Exercise</label>
+                            <option disabled selected value> -- Select Exercise -- </option>
+                            {% for exercise in exercises %}
+                            <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                        {% endfor %}
+                    </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_five_category" name="exercise_five_category" minlength="3" maxlength="25"
+                        <select id="exercise_five_category" name="exercise_five_category" minlength="3" maxlength="25"
                             type="text" class="validate">
-                        <label for="exercise_five_category">Category</label>
+                            <option disabled selected value> -- Select Category -- </option>
+                            {% for category in categories %}
+                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_five_modifier_one" name="exercise_five_modifier_one" minlength="3"
+                        <select id="exercise_five_modifier_one" name="exercise_five_modifier_one" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_five_modifier_one">Modifier 1</label>
+                            <option disabled selected value> -- Modifier 1 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_five_modifier_two" name="exercise_five_modifier_two" minlength="3"
+                        <select id="exercise_five_modifier_two" name="exercise_five_modifier_two" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_five_modifier_two">Modifier 2</label>
+                            <option disabled selected value> -- Modifier 2 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-
-                        <input id="exercise_five_modifier_three" name="exercise_five_modifier_three" minlength="3"
+                        <select id="exercise_five_modifier_three" name="exercise_five_modifier_three" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_five_modifier_three">Modifier 3</label>
+                            <option disabled selected value> -- Modifier 3 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
                         <div class="row">
@@ -343,29 +443,49 @@
                 </div>
                 <div class="row collapse" id="exercise-six-container">
                     <div class="input-field col-2">
-                        <input id="exercise_six_name" name="exercise_six_name" minlength="3" maxlength="50" type="text"
+                        <select id="exercise_six_name" name="exercise_six_name" minlength="3" maxlength="50" type="text"
                             class="validate">
-                        <label for="exercise_six_name">Exercise</label>
+                            <option disabled selected value> -- Select Exercise -- </option>
+                            {% for exercise in exercises %}
+                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_six_category" name="exercise_six_category" minlength="3" maxlength="25"
+                        <select id="exercise_six_category" name="exercise_six_category" minlength="3" maxlength="25"
                             type="text" class="validate">
-                        <label for="exercise_six_category">Category</label>
+                            <option disabled selected value> -- Select Category -- </option>
+                            {% for category in categories %}
+                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_six_modifier_one" name="exercise_six_modifier_one" minlength="3"
+                        <select id="exercise_six_modifier_one" name="exercise_six_modifier_one" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_six_modifier_one">Modifier 1</label>
+                            <option disabled selected value> -- Modifier 1 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_six_modifier_two" name="exercise_six_modifier_two" minlength="3"
+                        <select id="exercise_six_modifier_two" name="exercise_six_modifier_two" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_six_modifier_two">Modifier 2</label>
+                            <option disabled selected value> -- Modifier 2 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_six_modifier_three" name="exercise_six_modifier_three" minlength="3"
+                        <select id="exercise_six_modifier_three" name="exercise_six_modifier_three" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_six_modifier_three">Modifier 3</label>
+                            <option disabled selected value> --Modifier 3 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
                         <div class="row">
@@ -404,29 +524,49 @@
                 </div>
                 <div class="row collapse" id="exercise-seven-container">
                     <div class="input-field col-2">
-                        <input id="exercise_seven_name" name="exercise_seven_name" minlength="3" maxlength="50"
+                        <select id="exercise_seven_name" name="exercise_seven_name" minlength="3" maxlength="50"
                             type="text" class="validate">
-                        <label for="exercise_seven_name">Exercise</label>
+                            <option disabled selected value> -- Select Exercise -- </option>
+                            {% for exercise in exercises %}
+                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_seven_category" name="exercise_seven_category" minlength="3" maxlength="25"
+                        <select id="exercise_seven_category" name="exercise_seven_category" minlength="3" maxlength="25"
                             type="text" class="validate">
-                        <label for="exercise_seven_category">Category</label>
+                            <option disabled selected value> -- Select Category -- </option>
+                            {% for category in categories %}
+                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_seven_modifier_one" name="exercise_seven_modifier_one" minlength="3"
+                        <select id="exercise_seven_modifier_one" name="exercise_seven_modifier_one" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_seven_modifier_one">Modifier 1</label>
+                            <option disabled selected value> -- Modifier 1 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_seven_modifier_two" name="exercise_seven_modifier_two" minlength="3"
+                        <select id="exercise_seven_modifier_two" name="exercise_seven_modifier_two" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_seven_modifier_two">Modifier 2</label>
+                            <option disabled selected value> -- Modifier 2 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_seven_modifier_three" name="exercise_seven_modifier_three" minlength="3"
+                        <select id="exercise_seven_modifier_three" name="exercise_seven_modifier_three" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_seven_modifier_three">Modifier 3</label>
+                            <option disabled selected value> -- Modifier 3 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
                         <div class="row">
@@ -465,29 +605,49 @@
                 </div>
                 <div class="row collapse" id="exercise-eight-container">
                     <div class="input-field col-2">
-                        <input id="exercise_eight_name" name="exercise_eight_name" minlength="3" maxlength="50"
+                        <select id="exercise_eight_name" name="exercise_eight_name" minlength="3" maxlength="50"
                             type="text" class="validate">
-                        <label for="exercise_eight_name">Exercise</label>
+                            <option disabled selected value> -- Select Exercise -- </option>
+                            {% for exercise in exercises %}
+                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_eight_category" name="exercise_eight_category" minlength="3" maxlength="25"
+                        <select id="exercise_eight_category" name="exercise_eight_category" minlength="3" maxlength="25"
                             type="text" class="validate">
-                        <label for="exercise_eight_category">Category</label>
+                            <option disabled selected value> -- Select Category -- </option>
+                            {% for category in categories %}
+                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_eight_modifier_one" name="exercise_eight_modifier_one" minlength="3"
+                        <select id="exercise_eight_modifier_one" name="exercise_eight_modifier_one" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_eight_modifier_one">Modifier 1</label>
+                            <option disabled selected value> -- Modifier 1 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_eight_modifier_two" name="exercise_eight_modifier_two" minlength="3"
+                        <select id="exercise_eight_modifier_two" name="exercise_eight_modifier_two" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_eight_modifier_two">Modifier 2</label>
+                            <option disabled selected value> -- Modifier 2 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
-                        <input id="exercise_eight_modifier_three" name="exercise_eight_modifier_three" minlength="3"
+                        <select id="exercise_eight_modifier_three" name="exercise_eight_modifier_three" minlength="3"
                             maxlength="25" type="text" class="validate">
-                        <label for="exercise_eight_modifier_three">Modifier 3</label>
+                            <option disabled selected value> -- Modifier 3 -- </option>
+                            {% for modifier in modifiers %}
+                            <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="input-field col-2">
                         <div class="row">
@@ -527,29 +687,49 @@
                 </div>
                 <div class="row collapse" id="exercise-nine-container">
                 <div class="input-field col-2">
-                    <input id="exercise_nine_name" name="exercise_nine_name" minlength="3" maxlength="50" type="text"
+                    <select id="exercise_nine_name" name="exercise_nine_name" minlength="3" maxlength="50" type="text"
                         class="validate">
-                    <label for="exercise_nine_name">Exercise</label>
+                        <option disabled selected value> -- Select Exercise -- </option>
+                        {% for exercise in exercises %}
+                            <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_nine_category" name="exercise_nine_category" minlength="3" maxlength="25"
+                    <select id="exercise_nine_category" name="exercise_nine_category" minlength="3" maxlength="25"
                         type="text" class="validate">
-                    <label for="exercise_nine_category">Category</label>
+                        <option disabled selected value> -- Select Category -- </option>
+                            {% for category in categories %}
+                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                            {% endfor %}
+                        </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_nine_modifier_one" name="exercise_nine_modifier_one" minlength="3"
+                    <select id="exercise_nine_modifier_one" name="exercise_nine_modifier_one" minlength="3"
                         maxlength="25" type="text" class="validate">
-                    <label for="exercise_nine_modifier_one">Modifier 1</label>
+                        <option disabled selected value> -- Modifier 1 -- </option>
+                        {% for modifier in modifiers %}
+                        <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_nine_modifier_two" name="exercise_nine_modifier_two" minlength="3"
+                    <select id="exercise_nine_modifier_two" name="exercise_nine_modifier_two" minlength="3"
                         maxlength="25" type="text" class="validate">
-                    <label for="exercise_nine_modifier_two">Modifier 2</label>
+                        <option disabled selected value> -- Modifier 2 -- </option>
+                        {% for modifier in modifiers %}
+                        <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_nine_modifier_three" name="exercise_nine_modifier_three" minlength="3"
+                    <select id="exercise_nine_modifier_three" name="exercise_nine_modifier_three" minlength="3"
                         maxlength="25" type="text" class="validate">
-                    <label for="exercise_nine_modifier_three">Modifier 3</label>
+                        <option disabled selected value> -- Modifier 3 -- </option>
+                        {% for modifier in modifiers %}
+                        <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
                     <div class="row">
@@ -586,29 +766,49 @@
                 </div>
                 <div class="row collapse" id="exercise-ten-container">
                 <div class="input-field col-2">
-                    <input id="exercise_ten_name" name="exercise_ten_name" minlength="3" maxlength="50" type="text"
+                    <select id="exercise_ten_name" name="exercise_ten_name" minlength="3" maxlength="50" type="text"
                         class="validate">
-                    <label for="exercise_ten_name">Exercise</label>
+                        <option disabled selected value> -- Select Exercise -- </option>
+                        {% for exercise in exercises %}
+                            <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_ten_category" name="exercise_ten_category" minlength="3" maxlength="25"
+                    <select id="exercise_ten_category" name="exercise_ten_category" minlength="3" maxlength="25"
                         type="text" class="validate">
-                    <label for="exercise_ten_category">Category</label>
+                        <option disabled selected value> -- Select Category -- </option>
+                        {% for category in categories %}
+                            <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_ten_modifier_one" name="exercise_ten_modifier_one" minlength="3" maxlength="25"
+                    <select id="exercise_ten_modifier_one" name="exercise_ten_modifier_one" minlength="3" maxlength="25"
                         type="text" class="validate">
-                    <label for="exercise_ten_modifier_one">Modifier 1</label>
+                        <option disabled selected value> -- Modifier 1 -- </option>
+                        {% for modifier in modifiers %}
+                        <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_ten_modifier_two" name="exercise_ten_modifier_two" minlength="3" maxlength="25"
+                    <select id="exercise_ten_modifier_two" name="exercise_ten_modifier_two" minlength="3" maxlength="25"
                         type="text" class="validate">
-                    <label for="exercise_ten_modifier_two">Modifier 2</label>
+                        <option disabled selected value> -- Modifier 2 -- </option>
+                        {% for modifier in modifiers %}
+                        <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
-                    <input id="exercise_ten_modifier_three" name="exercise_ten_modifier_three" minlength="3"
+                    <select id="exercise_ten_modifier_three" name="exercise_ten_modifier_three" minlength="3"
                         maxlength="25" type="text" class="validate">
-                    <label for="exercise_ten_modifier_three">Modifier 3</label>
+                        <option disabled selected value> -- Modifier 3 -- </option>
+                        {% for modifier in modifiers %}
+                        <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="input-field col-2">
                     <div class="row">
