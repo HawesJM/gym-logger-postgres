@@ -16,6 +16,13 @@
         <h3>{{workout.workout_date_time}}</h3>
     </div>
 
+        <!--View Workout Locarion-->
+
+        <div id="view-workout-location" class="">
+            <h3>{{workout.workout_location}}</h3>
+        </div>
+    
+
     <!--Workout Information-->
 
     <!--View Workout Exercises Line 1-->
@@ -30,7 +37,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_one_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <h5>Specfic Exercise</h5>
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_one_name}}" disabled>
@@ -59,7 +66,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_two_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_two_name}}" disabled>
             </div>
@@ -86,7 +93,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_three_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_three_name}}" disabled>
             </div>
@@ -113,7 +120,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_four_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_four_name}}" disabled>
             </div>
@@ -141,7 +148,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_five_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_five_name}}" disabled>
             </div>
@@ -169,7 +176,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_six_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_six_name}}" disabled>
             </div>
@@ -196,7 +203,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_seven_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_seven_name}}" disabled>
             </div>
@@ -224,7 +231,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_eight_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_eight_name}}" disabled>
             </div>
@@ -251,7 +258,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_nine_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_nine_name}}" disabled>
             </div>
@@ -270,7 +277,7 @@
         </div>
         {% endif %}
 
-        <!--View Workout Exercises Line 9-->
+        <!--View Workout Exercises Line 10-->
 
         {% if workout.exercise_ten_name %}
         <div class="col-12">
@@ -278,7 +285,7 @@
                 <input type="text" class="form-control" id="category" name="category"
                     value="{{workout.exercise_ten_category}}" disabled>
             </div>
-            <div class="btn col-md-2 gx-0">
+            <div class="btn col-md-3 gx-0">
                 <input type="text" class="form-control" id="exercise" name="exercise"
                     value="{{workout.exercise_ten_name}}" disabled>
             </div>
@@ -308,5 +315,8 @@
             </input>
         </div>
         {% endif %}
+    </div>
+    <div>
+        <a href="{{ url_for('edit_workout', workout_id=workout.id) }}" class="btn btn-info">Edit Workout</a>
     </div>
     {% endblock %}

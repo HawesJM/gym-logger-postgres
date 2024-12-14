@@ -117,3 +117,44 @@ h5 {
 .tab-button:hover {
   background-color: #ED6B47;
 }
+
+h6 {
+  font-size: 14px;
+}
+
+.blank-button {
+  background-color: #fff;
+  border: none;
+}
+
+/* Media Queries */
+@media (max-width: 500px) {
+    #gym-logger-logo {
+        width: 25%;
+        height: 25%;
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .navbar {
+      font-size: 12px;
+    }
+    .nav-link {
+      padding: 0;
+    }
+
+    h2{
+      font-size: 14px;
+    }
+
+    .workout-full {
+      display: none;
+    }
+  }
+
+@media (min-width: 499px) {
+  #mobile-record-button {
+    display: none;
+  }
+}

@@ -184,6 +184,7 @@ def record_workout():
         return redirect(url_for("workouts"))
     return render_template("record_workout.html", categories=categories, exercises=exercises, modifiers=modifiers)
 
+
 @app.route("/workout_details/<workout_id>")
 def workout_details(workout_id):
     categories = list(Category.query.order_by(Category.category_name).all())
@@ -196,12 +197,128 @@ def workout_details(workout_id):
 @app.route("/edit_workout/<int:workout_id>", methods=["GET", "POST"])
 def edit_workout(workout_id):
     workout = Workout.query.get_or_404(workout_id)
+    modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
+    exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
+    categories = list(Category.query.order_by(Category.category_name).all())
     if request.method == "POST":
-        workout.workout_title = request.form.get("workout_title")
-        workout.workout_date_time= request.form.get("workout_date_time")
+        workout.workout_title = request.form.get("workout_title"),
+        workout.workout_date_time= request.form.get("workout_date_time"),
+        workout_location = request.form.get("workout_location"),
+        workout.exercise_one_name = request.form.get("edit_exercise_one_name"),
+        workout.exercise_one_category = request.form.get("edit_exercise_one_category"),
+        workout.exercise_one_modifier_one = request.form.get("exercise_one_modifier_one"),
+        workout.exercise_one_modifier_two = request.form.get("exercise_one_modifier_two"),
+        workout.exercise_one_modifier_three = request.form.get("exercise_one_modifier_three"),
+        workout.exercise_one_total_one = int(request.form.get("exercise_one_total_one")),
+        workout.exercise_one_total_two = int(request.form.get("exercise_one_total_two")),
+        workout.exercise_one_total_three = int(request.form.get("exercise_one_total_three")),
+        workout.exercise_two_name = request.form.get("exercise_two_name"),
+        workout.exercise_two_category = request.form.get("exercise_two_category"),
+        workout.exercise_two_modifier_one = request.form.get("exercise_two_modifier_one"),
+        workout.exercise_two_modifier_two = request.form.get("exercise_two_modifier_two"),
+        workout.exercise_two_modifier_three = request.form.get("exercise_two_modifier_three"),
+        workout.exercise_two_total_one = int(request.form.get("exercise_two_total_one")),
+        workout.exercise_two_total_two = int(request.form.get("exercise_two_total_two")),
+        workout.exercise_two_total_three = int(request.form.get("exercise_two_total_three")),
+        workout.exercise_three_name = request.form.get("exercise_three_name"),
+        workout.exercise_three_category = request.form.get("exercise_three_category"),
+        workout.exercise_three_modifier_one = request.form.get("exercise_three_modifier_one"),
+        workout.exercise_three_modifier_two = request.form.get("exercise_three_modifier_two"),
+        workout.exercise_three_modifier_three = request.form.get("exercise_three_modifier_three"),
+        workout.exercise_three_total_one = int(request.form.get("exercise_three_total_one")),
+        workout.exercise_three_total_two = int(request.form.get("exercise_three_total_two")),
+        workout.exercise_three_total_three = int(request.form.get("exercise_three_total_three")),
+        workout.exercise_four_name = request.form.get("exercise_four_name"),
+        workout.exercise_four_category = request.form.get("exercise_four_category"),
+        workout.exercise_four_modifier_one = request.form.get("exercise_four_modifier_one"),
+        workout.exercise_four_modifier_two = request.form.get("exercise_four_modifier_two"),
+        workout.exercise_four_modifier_three = request.form.get("exercise_four_modifier_three"),
+        workout.exercise_four_total_one = int(request.form.get("exercise_four_total_one")),
+        workout.exercise_four_total_two = int(request.form.get("exercise_four_total_two")),
+        workout.exercise_four_total_three = int(request.form.get("exercise_four_total_three")),
+        workout.exercise_five_name = request.form.get("exercise_five_name"),
+        workout.exercise_five_category = request.form.get("exercise_five_category"),
+        workout.exercise_five_modifier_one = request.form.get("exercise_five_modifier_one"),
+        workout.exercise_five_modifier_two = request.form.get("exercise_five_modifier_two"),
+        workout.exercise_five_modifier_three = request.form.get("exercise_five_modifier_three"),
+        workout.exercise_five_total_one = int(request.form.get("exercise_five_total_one")),
+        workout.exercise_five_total_two = int(request.form.get("exercise_five_total_two")),
+        workout.exercise_five_total_three = int(request.form.get("exercise_five_total_three")),
+        workout.exercise_six_name = request.form.get("exercise_six_name"),
+        workout.exercise_six_category = request.form.get("exercise_six_category"),
+        workout.exercise_six_modifier_one = request.form.get("exercise_six_modifier_one"),
+        workout.exercise_six_modifier_two = request.form.get("exercise_six_modifier_two"),
+        workout.exercise_six_modifier_three = request.form.get("exercise_six_modifier_three"),
+        workout.exercise_six_total_one = int(request.form.get("exercise_six_total_one")),
+        workout.exercise_six_total_two = int(request.form.get("exercise_six_total_two")),
+        workout.exercise_six_total_three = int(request.form.get("exercise_six_total_three")),
+        workout.exercise_seven_name = request.form.get("exercise_seven_name"),
+        workout.exercise_seven_category = request.form.get("exercise_seven_category"),
+        workout.exercise_seven_modifier_one = request.form.get("exercise_seven_modifier_one"),
+        workout.exercise_seven_modifier_two = request.form.get("exercise_seven_modifier_two"),
+        workout.exercise_seven_modifier_three = request.form.get("exercise_seven_modifier_three"),
+        workout.exercise_seven_total_one = int(request.form.get("exercise_seven_total_one")),
+        workout.exercise_seven_total_two = int(request.form.get("exercise_seven_total_two")),
+        workout.exercise_seven_total_three = int(request.form.get("exercise_seven_total_three")),
+        workout.exercise_eight_name = request.form.get("exercise_eight_name"),
+        workout.exercise_eight_category = request.form.get("exercise_eight_category"),
+        workout.exercise_eight_modifier_one = request.form.get("exercise_eight_modifier_one"),
+        workout.exercise_eight_modifier_two = request.form.get("exercise_eight_modifier_two"),
+        workout.exercise_eight_modifier_three = request.form.get("exercise_eight_modifier_three"),
+        workout.exercise_eight_total_one = int(request.form.get("exercise_eight_total_one")),
+        workout.exercise_eight_total_two = int(request.form.get("exercise_eight_total_two")),
+        workout.exercise_eight_total_three = int(request.form.get("exercise_eight_total_three")),
+        workout.exercise_nine_name = request.form.get("exercise_nine_name"),
+        workout.exercise_nine_category = request.form.get("exercise_nine_category"),
+        workout.exercise_nine_modifier_one = request.form.get("exercise_nine_modifier_one"),
+        workout.exercise_nine_modifier_two = request.form.get("exercise_nine_modifier_two"),
+        workout.exercise_nine_modifier_three = request.form.get("exercise_nine_modifier_three"),
+        workout.exercise_nine_total_one = int(request.form.get("exercise_nine_total_one")),
+        workout.exercise_nine_total_two = int(request.form.get("exercise_nine_total_two")),
+        workout.exercise_nine_total_three = int(request.form.get("exercise_nine_total_three")),
+        workout.exercise_ten_name = request.form.get("exercise_ten_name"),
+        workout.exercise_ten_category = request.form.get("exercise_ten_category"),
+        workout.exercise_ten_modifier_one = request.form.get("exercise_ten_modifier_one"),
+        workout.exercise_ten_modifier_two = request.form.get("exercise_ten_modifier_two"),
+        workout.exercise_ten_modifier_three = request.form.get("exercise_ten_modifier_three"),
+        workout.exercise_ten_total_one = int(request.form.get("exercise_ten_total_one")),
+        workout.exercise_ten_total_two = int(request.form.get("exercise_ten_total_two")),
+        workout.exercise_ten_total_three = int(request.form.get("exercise_ten_total_three")),
+        workout.additional_information = request.form.get("additional_information"),
         db.session.commit()
+        # print(exercise_one_category)
         return redirect(url_for("workouts"))
-    return render_template("edit_workout.html", workout=workout)
+    return render_template("edit_workout.html", workout=workout, modifiers=modifiers, categories=categories, exercises=exercises)
+
+@app.route("/quick_add", methods=["GET", "POST"])
+def quick_add_start():
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
+    modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
+    if request.method == "POST":
+        workout = Workout(
+            workout_title = request.form.get("workout_title"),
+            workout_date_time = request.form.get("workout_date_time"),
+            workout_location = request.form.get("workout_location"),
+            exercise_one_name = request.form.get("exercise_one_name"),
+            exercise_one_category = request.form.get("exercise_one_category"),
+            exercise_one_modifier_one = request.form.get("exercise_one_modifier_one"),
+            exercise_one_modifier_two = request.form.get("exercise_one_modifier_two"),
+            exercise_one_modifier_three = request.form.get("exercise_one_modifier_three"),
+            exercise_one_total_one = int(request.form.get("exercise_one_total_one")),
+            exercise_one_total_two = int(request.form.get("exercise_one_total_two")),
+            exercise_one_total_three = int(request.form.get("exercise_one_total_three")),
+        )
+        db.session.add(workout)
+        db.session.commit()
+    workouts = list(Workout.query.order_by(Workout.workout_date_time).all())
+    return render_template("quick_view.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts)
+
+@app.route("/quick_view", methods=["GET", "POST"])
+def quick_view():
+    workouts = list(Workout.query.order_by(Workout.workout_date_time).all())
+    return render_template("quick_view.html", workouts=workouts)
+    
 
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
