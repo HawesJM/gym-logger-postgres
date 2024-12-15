@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<form id="workout-form" class="col-12" method="POST" action="{{ url_for('quick_add_start')}}">
+    <div class="tab" id="workout-basic">
+        <div class="input-field row mx-auto text-center">
+            <i class="fa-solid fa-dumbbell"></i>
+            <label for="workout_title"><h2>Workout Title</h2></label>
+            <br>
+            <input id="workout_title" name="workout_title" minlength="3" maxlength="25" type="text" class="validate col-sm-12"
+                required>
+
+        </div>
+            <div class="input-field row mx-auto text-center">
+                <i class="fa-solid fa-location-crosshairs"></i>
+                <label for="workout_location"><h2>Workout Location</h2></label>
+                <input id="workout_location" name="workout_location" minlength="3" maxlength="50" type="text"
+                    class="validate col-sm-12" required>
+            </div>
+                <div class="input-field row mx-auto text-center">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <label for="workout_date_time"><h2>Workout Date</h2></label>
+                    <input id="workout_date_time" name="workout_date_time" type="datetime-local" class="validate col-sm-12"
+                        required>
+                </div>
+    </div>
+
+    <div class="" id="exercise-page-one">
+        <!-- exercise one -->
+        <div class="row mx-auto">
+            <div class="row mx-auto text-center">
+                <h2>First Exercise</h2>
+            </div>
+        </div>
+            <div class="input-field col-sm-12 mx-auto text-center">
+                <select id="exercise_one_name" name="exercise_one_name" minlength="3" maxlength="50" type="text"
+                    class="validate col-sm-5" required>
+                    <option disabled selected value> -- Select Exercise -- </option>
+                    {% for exercise in exercises %}
+                        <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                    {% endfor %}
+                </select>
+                <select id="exercise_one_category" name="exercise_one_category" minlength="3" maxlength="25"
+                    type="text" class="validate col-sm-5" required>
+                <option disabled selected value> --Exercise Category -- </option>
+                {% for category in categories %}
+                        <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="input-field col-sm-12 mx-auto text-center">
+                <select id="exercise_one_modifier_one" name="exercise_one_modifier_one" minlength="3" maxlength="25"
+                type="text" class="validate col-sm-5" required>
+            <option disabled selected value> --Modifier 1 -- </option>
+            {% for modifier in modifiers %}
+                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                {% endfor %}
+            </select>
+            <input id="exercise_one_total_one" name="exercise_one_total_one" maxlength="3" type="number"
+                class="validate col-sm-5" required value="0">
+            </div>
+            <div class="input-field col-sm-12 mx-auto text-center">
+                <select id="exercise_one_modifier_two" name="exercise_one_modifier_two" minlength="3" maxlength="25"
+                type="text" class="validate col-sm-5" required>
+            <option disabled selected value> --Modifier 2 -- </option>
+            {% for modifier in modifiers %}
+                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                {% endfor %}
+            </select>
+            <input id="exercise_one_total_two" name="exercise_one_total_two" maxlength="3" type="number"
+                class="validate col-sm-5" required value="0">
+            </div>
+            <div class="input-field col-sm-12 mx-auto text-center">
+                <select id="exercise_one_modifier_three" name="exercise_one_modifier_three" minlength="3" maxlength="25"
+                type="text" class="validate col-sm-5" required>
+            <option disabled selected value> --Modifier 3 -- </option>
+            {% for modifier in modifiers %}
+                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                {% endfor %}
+            </select>
+            <input id="exercise_one_total_three" name="exercise_one_total_three" maxlength="3" type="number"
+                class="validate col-sm-5" required value="0">
+            </div>
+            
+
+            <div class="row">
+                <button type="submit" class="btn btn-large btn-info col-sm-12" data-mdb-ripple-init>
+                    Start Logging <i class="fas fa-plus-square right"></i>
+                </button>
+            </div>
+
+        
+</form>
+{% endblock %}

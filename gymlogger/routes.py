@@ -296,7 +296,7 @@ def delete_workout(workout_id):
     db.session.commit()
     return redirect(url_for("workouts"))
 
-@app.route("/quick_add", methods=["GET", "POST"])
+@app.route("/quick_start", methods=["GET", "POST"])
 def quick_add_start():
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
@@ -317,14 +317,14 @@ def quick_add_start():
         )
         db.session.add(workout)
         db.session.commit()
+        return redirect(url_for("quick_add"))
     workouts = list(Workout.query.order_by(Workout.workout_date_time).all())
-    return render_template("quick_view.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts)
+    return render_template("quick_start.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts)
 
-@app.route("/quick_view", methods=["GET", "POST"])
-def quick_view():
+@app.route("/quick_add", methods=["GET", "POST"])
+def quick_add():
     workouts = list(Workout.query.order_by(Workout.workout_date_time).all())
-    return render_template("quick_view.html", workouts=workouts)
-    
+    return render_template("quick_add.html", workouts=workouts)
 
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
