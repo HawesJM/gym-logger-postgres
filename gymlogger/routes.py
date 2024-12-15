@@ -286,9 +286,15 @@ def edit_workout(workout_id):
         workout.exercise_ten_total_three = int(request.form.get("exercise_ten_total_three")),
         workout.additional_information = request.form.get("additional_information"),
         db.session.commit()
-        # print(exercise_one_category)
         return redirect(url_for("workouts"))
     return render_template("edit_workout.html", workout=workout, modifiers=modifiers, categories=categories, exercises=exercises)
+
+@app.route("/delete_workout/<int:workout_id>")
+def delete_workout(workout_id):
+    workout = Workout.query.get_or_404(workout_id)
+    db.session.delete(workout)
+    db.session.commit()
+    return redirect(url_for("workouts"))
 
 @app.route("/quick_add", methods=["GET", "POST"])
 def quick_add_start():
