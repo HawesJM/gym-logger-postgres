@@ -3,11 +3,11 @@
 
 <!-- View Workout Details Container-->
 
-<div id="view-record-container" class="card text-center">
-    <div mx-auto>
+<div id="view-record-container" class="card text-center col-sm-12">
+    <div sm-12>
         <div class="">
-            <h3 id="workout-detail-header" class="center-align">{{ workout.workout_title
-        }}</h3>
+            <h3 id="workout-detail-header" class="center-align">"{{ workout.workout_title
+        }}": {{workout.workout_location}}</h3>
         </div>
     </div>
     <!--View Workout Date-->
@@ -19,7 +19,7 @@
         <!--View Workout Locarion-->
 
         <div id="view-workout-location" class="">
-            <h3>{{workout.workout_location}}</h3>
+           
         </div>
     
 
@@ -31,10 +31,10 @@
         <span>
             <h4>Exercises Completed</h4>
         </span>
-        <div class="col-12">
-            <div class="btn col-md-2 gx-0">
-                <h5>Category</h5>
-                <input type="text" class="form-control" id="category" name="category"
+        <div class="row">
+            <div class="btn col-sm-12 col-md-2 gx-0">
+                <h5 class="col-sm-3 col-md-12 mx-auto">Category</h5>
+                <input type="text" class="form-control col-sm-3 col-md-12 mx-auto" id="category" name="category"
                     value="{{workout.exercise_one_category}}" disabled>
             </div>
             <div class="btn col-md-3 gx-0">

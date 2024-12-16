@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card mx-auto text-center">
+    <form id="" class="col-12" method="POST" action="{{ url_for('quick_edit', workout_id=workout.id) }}">
+                    <label for="edit-exercise-two">
+                        <h4>Completed Exercise Two</h4>
+                    </label>
+                    <div class="" id="exercise-page-two">
+                        <!-- exercise two -->
+
+                            <div class="input-field col-sm-12 mx-auto text-center">
+                                <select id="exercise_two_name" name="exercise_two_name" minlength="3" maxlength="50" type="text"
+                                    class="validate col-sm-5" required>
+                                    <option disabled selected value> -- Select Exercise -- </option>
+                                    {% for exercise in exercises %}
+                                        <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                                    {% endfor %}
+                                </select>
+                                <select id="exercise_two_category" name="exercise_two_category" minlength="3" maxlength="25"
+                                    type="text" class="validate col-sm-5" required>
+                                <option disabled selected value> --Exercise Category -- </option>
+                                {% for category in categories %}
+                                        <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="input-field col-sm-12 mx-auto text-center">
+                                <select id="exercise_two_modifier_one" name="exercise_two_modifier_one" minlength="3" maxlength="25"
+                                type="text" class="validate col-sm-5" required>
+                            <option disabled selected value> --Modifier 1 -- </option>
+                            {% for modifier in modifiers %}
+                                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                                {% endfor %}
+                            </select>
+                            <input id="exercise_two_total_one" name="exercise_two_total_one" maxlength="3" type="number"
+                                class="validate col-sm-5" required value="0">
+                            </div>
+                            <div class="input-field col-sm-12 mx-auto text-center">
+                                <select id="exercise_two_modifier_two" name="exercise_two_modifier_two" minlength="3" maxlength="25"
+                                type="text" class="validate col-sm-5" required>
+                            <option disabled selected value> --Modifier 2 -- </option>
+                            {% for modifier in modifiers %}
+                                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                                {% endfor %}
+                            </select>
+                            <input id="exercise_two_total_two" name="exercise_two_total_two" maxlength="3" type="number"
+                                class="validate col-sm-5" required value="0">
+                            </div>
+                            <div class="input-field col-sm-12 mx-auto text-center">
+                                <select id="exercise_two_modifier_three" name="exercise_two_modifier_three" minlength="3" maxlength="25"
+                                type="text" class="validate col-sm-5" required>
+                            <option disabled selected value> --Modifier 3 -- </option>
+                            {% for modifier in modifiers %}
+                                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                                {% endfor %}
+                            </select>
+                            <input id="exercise_two_total_three" name="exercise_two_total_three" maxlength="3" type="number"
+                                class="validate col-sm-5" required value="0">
+                            </div>
+                            
+                    <div class="row">
+                    <div class="col s12 center-align">
+                        <button type="submit" class="btn-large light-blue darken-1">
+                            Add Exercise <i class="fas fa-edit right"></i>
+                        </button>
+                    </div>
+                </div>
+                </form>
+    </div>
+
+{% endblock %}

@@ -1,91 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="row mx-auto text-center">
-    <h4 class="text-center">
-        Add To <br>
-        "{{workouts[-1].workout_title}}"
-    </h4>
+
+<div class="card mx-auto text-center">
+  {% for workout in workouts|sort(attribute="workout_date_time")  %}
+  {% if loop.index == loop.length %}
+    <div class="card text-center">
+      <h5 class="card-title">"{{ workout.workout_title }}"</h5>
+      <h5 class="card-title">{{ workout.workout_location }}</h5>
+      <h5 class="card-title">{{ workout.workout_date_time }}</h5>
+      <h6>Completed Exercise One: {{ workout.exercise_one_name }}</h6>
+      <h6></h6>
+    <a href="{{ url_for('quick_edit', workout_id=workout.id) }}" class="btn btn-success col-6 mx-auto">Continue Logging This Workout</a>
+  {% endif %}
+  {% endfor %}
 </div>
-
-
-<div class="card">
-    <div class="row mx-auto text-center">
-        <!-- workout name -->
-        <div class="row text-center">
-            <span>Workout Location: {{workouts[-1].workout_location}} </span>
-        </div>
-        <!-- workout date -->
-        <div class="row text-center">
-            <span>Workout Date: {{workouts[-1].workout_date_time}} </span>
-        </div>
-        <div class="row text-center">
-            <span>Completed Exercise One: {{workouts[-1].exercise_one_name}} </span>
-        </div>
-    </div>
-    <br>
-    <!-- exercise two -->
-    <div class="row mx-auto">
-        <div class="row mx-auto text-center">
-            <h5>Exercise Two</h5>
-        </div>
-    </div>
-    <form class="" method="POST" action="{{ url_for('quick_add')}}">
-        <div class="input-field col-sm-12 mx-auto text-center">
-            <select id="exercise_one_name" name="exercise_one_name" minlength="3" maxlength="50" type="text"
-                class="validate col-sm-5" required>
-                <option disabled selected value> -- Select Exercise -- </option>
-                {% for exercise in exercises %}
-                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                {% endfor %}
-            </select>
-            <select id="exercise_one_category" name="exercise_one_category" minlength="3" maxlength="25" type="text"
-                class="validate col-sm-5" required>
-                <option disabled selected value> --Exercise Category -- </option>
-                {% for category in categories %}
-                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                {% endfor %}
-            </select>
-        </div>
-        <div class="input-field col-sm-12 mx-auto text-center">
-            <select id="exercise_one_modifier_one" name="exercise_one_modifier_one" minlength="3" maxlength="25"
-                type="text" class="validate col-sm-5" required>
-                <option disabled selected value> --Modifier 1 -- </option>
-                {% for modifier in modifiers %}
-                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                {% endfor %}
-            </select>
-            <input id="exercise_one_total_one" name="exercise_one_total_one" maxlength="3" type="number"
-                class="validate col-sm-5" required value="0">
-        </div>
-        <div class="input-field col-sm-12 mx-auto text-center">
-            <select id="exercise_one_modifier_two" name="exercise_one_modifier_two" minlength="3" maxlength="25"
-                type="text" class="validate col-sm-5" required>
-                <option disabled selected value> --Modifier 2 -- </option>
-                {% for modifier in modifiers %}
-                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                {% endfor %}
-            </select>
-            <input id="exercise_one_total_two" name="exercise_one_total_two" maxlength="3" type="number"
-                class="validate col-sm-5" required value="0">
-        </div>
-        <div class="input-field col-sm-12 mx-auto text-center">
-            <select id="exercise_one_modifier_three" name="exercise_one_modifier_three" minlength="3" maxlength="25"
-                type="text" class="validate col-sm-5" required>
-                <option disabled selected value> --Modifier 3 -- </option>
-                {% for modifier in modifiers %}
-                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                {% endfor %}
-            </select>
-            <input id="exercise_one_total_three" name="exercise_one_total_three" maxlength="3" type="number"
-                class="validate col-sm-5" required value="0">
-        </div>
-        <div class="row">
-            <button type="submit" class="btn btn-large btn-info col-sm-12" data-mdb-ripple-init>
-                Continue Logging <i class="fas fa-plus-square right"></i>
-            </button>
-        </div>
-    </form>
-</div>
-
 
 {% endblock %}
