@@ -345,10 +345,26 @@ def quick_edit(workout_id):
         workout.exercise_two_total_two = int(request.form.get("exercise_two_total_two")),
         workout.exercise_two_total_three = int(request.form.get("exercise_two_total_three")),
         db.session.commit()
+        return render_template("quick_edit_2.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
     return render_template("quick_edit.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
 
-    return render_template(
-        "quick_edit.html", workout=workout, workouts=workouts, categories=categories, exercises=exercises)
+@app.route("/quick_edit_2/<workout_id>", methods=["GET", "POST"])
+def quick_edit_two(workout_id):
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
+    modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
+    workout = Workout.query.get_or_404(workout_id)
+    if request.method == "POST":
+        workout.exercise_three_name = request.form.get("exercise_three_name"),
+        workout.exercise_three_category = request.form.get("exercise_three_category"),
+        workout.exercise_three_modifier_one = request.form.get("exercise_three_modifier_one"),
+        workout.exercise_three_modifier_two = request.form.get("exercise_three_modifier_two"),
+        workout.exercise_three_modifier_three = request.form.get("exercise_three_modifier_three"),
+        workout.exercise_three_total_one = int(request.form.get("exercise_three_total_one")),
+        workout.exercise_three_total_two = int(request.form.get("exercise_three_total_two")),
+        workout.exercise_three_total_three = int(request.form.get("exercise_three_total_three")),
+        db.session.commit()
+    return render_template("quick_edit_2.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
 
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
