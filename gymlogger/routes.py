@@ -403,7 +403,45 @@ def quick_edit_four(workout_id):
         workout.exercise_five_total_three = int(request.form.get("exercise_five_total_three")),
         db.session.commit()
         return render_template("quick_edit_5.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
-    return render_template("quick_edit_3.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+    return render_template("quick_edit_4.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+
+@app.route("/quick_edit_5/<workout_id>", methods=["GET", "POST"])
+def quick_edit_five(workout_id):
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
+    modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
+    workout = Workout.query.get_or_404(workout_id)
+    if request.method == "POST":
+        workout.exercise_six_name = request.form.get("exercise_six_name"),
+        workout.exercise_six_category = request.form.get("exercise_six_category"),
+        workout.exercise_six_modifier_one = request.form.get("exercise_six_modifier_one"),
+        workout.exercise_six_modifier_two = request.form.get("exercise_six_modifier_two"),
+        workout.exercise_six_modifier_three = request.form.get("exercise_six_modifier_three"),
+        workout.exercise_six_total_one = int(request.form.get("exercise_six_total_one")),
+        workout.exercise_six_total_two = int(request.form.get("exercise_six_total_two")),
+        workout.exercise_six_total_three = int(request.form.get("exercise_six_total_three")),
+        db.session.commit()
+        return render_template("quick_edit_6.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+    return render_template("quick_edit_5.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+
+@app.route("/quick_edit_6/<workout_id>", methods=["GET", "POST"])
+def quick_edit_six(workout_id):
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
+    modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
+    workout = Workout.query.get_or_404(workout_id)
+    if request.method == "POST":
+        workout.exercise_seven_name = request.form.get("exercise_seven_name"),
+        workout.exercise_seven_category = request.form.get("exercise_seven_category"),
+        workout.exercise_seven_modifier_one = request.form.get("exercise_seven_modifier_one"),
+        workout.exercise_seven_modifier_two = request.form.get("exercise_seven_modifier_two"),
+        workout.exercise_seven_modifier_three = request.form.get("exercise_seven_modifier_three"),
+        workout.exercise_seven_total_one = int(request.form.get("exercise_seven_total_one")),
+        workout.exercise_seven_total_two = int(request.form.get("exercise_seven_total_two")),
+        workout.exercise_seven_total_three = int(request.form.get("exercise_seven_total_three")),
+        db.session.commit()
+        return render_template("quick_edit_6.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+    return render_template("quick_edit_5.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
 
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
