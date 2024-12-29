@@ -24,6 +24,25 @@ def register():
 
     return render_template("register.html")
 
+@app.route("/signin", methods=["GET", "POST"] )
+def signin():
+    if request.method == "POST":
+        username = request.form.get("username")
+        password = request.form.get("password")
+
+        user = User.query.filter_by(username=username).first()
+        if user: 
+            if check_password_hash(user.password, password):
+                flash("logged in successfully")
+        return redirect(url_for("profile"))
+        print(password)
+
+    return render_template("signin.html", boolean=True)
+
+@app.route("/profile")
+def profile():
+    return render_template("profile.html", categories=categories)
+    
 @app.route("/categories")
 def categories():
     categories = list(Category.query.order_by(Category.category_name).all())
