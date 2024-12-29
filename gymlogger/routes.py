@@ -1,11 +1,28 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, flash, session
 from gymlogger import app, db
-from gymlogger.models import Exercise, Workout, Category, Modifier
+from werkzeug.security import generate_password_hash, check_password_hash
+from gymlogger.models import Exercise, Workout, Category, Modifier, User
 
 @app.route("/")
 def home():
     return render_template("base.html")
 
+@app.route("/register",  methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+
+        user = User(
+            username = request.form.get("username"),
+            password = generate_password_hash(request.form.get("password")),
+        )
+        
+        db.session.add(user)
+        db.session.commit()
+        # put the new user into 'session' cookie
+        session["user"] = request.form.get("username")
+        flash("Registration Successful!")
+
+    return render_template("register.html")
 
 @app.route("/categories")
 def categories():

@@ -131,6 +131,10 @@ h6 {
   display: none;
 }
 
+.flashes h4 {
+  line-height: 2;
+}
+
 /* Media Queries */
 @media (max-width: 500px) {
     #gym-logger-logo {
