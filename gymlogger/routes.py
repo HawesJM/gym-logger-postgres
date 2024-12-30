@@ -34,14 +34,19 @@ def signin():
         if user: 
             if check_password_hash(user.password, password):
                 flash("logged in successfully")
-        return redirect(url_for("profile"))
-        print(password)
+                return redirect(url_for("profile", username=username))
+        else:
+            flash("register a free account to proceed")
+            return redirect(url_for("register"))
+            
 
     return render_template("signin.html", boolean=True)
 
-@app.route("/profile")
-def profile():
-    return render_template("profile.html", categories=categories)
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    workouts = list(Workout.query.order_by(Workout.workout_title).all())
+    categories = list(Category.query.order_by(Category.category_name).all())
+    return render_template("profile.html", categories=categories, username=username, workouts=workouts)
     
 @app.route("/categories")
 def categories():
@@ -131,6 +136,7 @@ def record_workout():
     if request.method == "POST":
         workout = Workout(
             workout_title = request.form.get("workout_title"),
+            created_by = session["user"],
             workout_date_time = request.form.get("workout_date_time"),
             workout_location = request.form.get("workout_location"),
             exercise_one_name = request.form.get("exercise_one_name"),

@@ -1,5 +1,6 @@
 from gymlogger import db
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(50), unique=True, nullable=False)
@@ -34,6 +35,7 @@ class Modifier(db.Model):
 
 class Workout(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    created_by = db.Column(db.String(100), nullable=False)
     workout_title = db.Column(db.String(100), nullable=False)
     workout_date_time = db.Column(db.DateTime, nullable=False)
     workout_location = db.Column(db.String(100), nullable=False)
