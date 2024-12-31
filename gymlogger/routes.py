@@ -29,12 +29,19 @@ def signin():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
+        session["user"] = request.form.get("username")
 
         user = User.query.filter_by(username=username).first()
         if user: 
             if check_password_hash(user.password, password):
-                flash("logged in successfully")
+                flash("Logged in successfully. Welcome, {}".format(
+                    request.form.get(("username"))))
                 return redirect(url_for("profile", username=username))
+
+            else:
+                # invalid password match
+                flash("Incorrect Username and/or Password")
+                return redirect(url_for("signin"))
         else:
             flash("register a free account to proceed")
             return redirect(url_for("register"))
@@ -46,7 +53,19 @@ def signin():
 def profile(username):
     workouts = list(Workout.query.order_by(Workout.workout_title).all())
     categories = list(Category.query.order_by(Category.category_name).all())
-    return render_template("profile.html", categories=categories, username=username, workouts=workouts)
+    username = session["user"]
+    if session["user"]:
+        return render_template("profile.html", categories=categories, username=username, workouts=workouts)
+
+
+    return redirect(url_for("signin"))
+
+@app.route("/signout")
+def signout():
+    # remove user from session cookie
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("signin"))
     
 @app.route("/categories")
 def categories():

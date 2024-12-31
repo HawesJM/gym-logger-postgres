@@ -40,9 +40,9 @@
               <a class="nav-link active" aria-current="page" href="{{ url_for('record_workout')}}">Log A Workout</a>
               <a class="nav-link active" aria-current="page" href="{{ url_for('categories')}}">Types of Exercise</a>
               <a class="nav-link active" aria-current="page" href="{{ url_for('exercises')}}">Specific Exercise Examples</a>
-              <a class="nav-link disabled"
-                >Disabled</a
-              >
+              <a class="nav-link active" aria-current="page" href="{{ url_for('signin')}}">Sign In</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('signout')}}">Sign Out</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('profile', username=session['user'])}}">Profile</a>
             </div>
           </div>
         </div>
