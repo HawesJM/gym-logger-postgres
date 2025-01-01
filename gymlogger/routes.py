@@ -2,6 +2,10 @@ from flask import render_template, request, redirect, url_for, flash, session
 from gymlogger import app, db
 from werkzeug.security import generate_password_hash, check_password_hash
 from gymlogger.models import Exercise, Workout, Category, Modifier, User
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+
+mongo = PyMongo(app)
 
 @app.route("/")
 def home():
@@ -242,6 +246,21 @@ def record_workout():
         )
         db.session.add(workout)
         db.session.commit()
+        mongo_workout = {
+            "workout_title": request.form.get("workout_title"),
+            "created_by": session["user"],
+            "workout_date_time": request.form.get("workout_date_time"),
+            "workout_location": request.form.get("workout_location"),
+            "exercise_one_name": request.form.get("exercise_one_name"),
+            "exercise_one_category": request.form.get("exercise_one_category"),
+            "exercise_one_modifier_one": request.form.get("exercise_one_modifier_one"),
+            "exercise_one_modifier_two":  request.form.get("exercise_one_modifier_two"),
+            "exercise_one_modifier_three": request.form.get("exercise_one_modifier_three"),
+            "exercise_one_total_one": int(request.form.get("exercise_one_total_one")),
+            "exercise_one_total_two": int(request.form.get("exercise_one_total_two")),
+            "exercise_one_total_three": int(request.form.get("exercise_one_total_three"))
+        }
+        mongo.db.workouts.insert_one(mongo_workout)
         return redirect(url_for("workouts"))
     return render_template("record_workout.html", categories=categories, exercises=exercises, modifiers=modifiers)
 
@@ -251,7 +270,7 @@ def workout_details(workout_id):
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
     workout = Workout.query.get_or_404(workout_id)
-
+    
     return render_template(
         "workout_details.html", workout=workout, workouts=workouts, categories=categories, exercises=exercises)
 

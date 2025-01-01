@@ -37,19 +37,27 @@
           <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-link active" aria-current="page" href="{{ url_for('home')}}">Home</a>
-              <a class="nav-link active" aria-current="page" href="{{ url_for('record_workout')}}">Log A Workout</a>
               <a class="nav-link active" aria-current="page" href="{{ url_for('categories')}}">Types of Exercise</a>
               <a class="nav-link active" aria-current="page" href="{{ url_for('exercises')}}">Specific Exercise Examples</a>
-              <a class="nav-link active" aria-current="page" href="{{ url_for('signin')}}">Sign In</a>
-              <a class="nav-link active" aria-current="page" href="{{ url_for('signout')}}">Sign Out</a>
+              {% if session.user %}
+              <a class="nav-link active" aria-current="page" href="{{ url_for('record_workout')}}">Log A Workout</a>
               <a class="nav-link active" aria-current="page" href="{{ url_for('profile', username=session['user'])}}">Profile</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('signout')}}">Sign Out</a>
+              {% else %}
+              <a class="nav-link active" aria-current="page" href="{{ url_for('register')}}">Register</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('signin')}}">Sign In</a>
+              {% endif %}
             </div>
           </div>
         </div>
       </nav>
     </header>
+    <!--search section-->
     <section>
-      <!--flash messages-->
+      
+    </section>
+    <!--flash messages-->
+    <section>
       {% with messages = get_flashed_messages() %}
         {% if messages %}
           {% for message in messages %}
