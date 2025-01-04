@@ -135,6 +135,10 @@ h6 {
   line-height: 2;
 }
 
+.form-switch {
+  padding-left: 0;
+}
+
 /* Media Queries */
 @media (max-width: 500px) {
     #gym-logger-logo {
@@ -162,7 +166,7 @@ h6 {
   }
 
 @media (min-width: 499px) {
-  #mobile-record-button {
+  #mobile-record-button, #mobile-notice {
     display: none;
   }
 }
