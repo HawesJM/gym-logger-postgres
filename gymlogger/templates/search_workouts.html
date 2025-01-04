@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div id ="workout-list-container" class= "row col-12 col-md-6 shadow-lg p-3 mb-5 bg-white rounded mx-auto">
+    <form id="workout-search" action="{{url_for('search')}}" method="post" class="row">
+            <div class="col-8">
+                <input class="form-control me-2" type="text" name="query" id="query" placeholder="Enter your search e.g. by exercise type" aria-label="Search" required>
+            </div>
+            <div id ="workout-search-button-container" class="col-4">
+                <button id="search-button" class="btn" type="submit"><label for="query"><i class="fas fa-search prefix light-blue-text text-darken-4"></i>Search</label></button>
+                <a href="{{ url_for('workouts') }}" id = "reset-search" class="btn btn-primary">Reset</a>
+            </div>
+    </form>
+    <hr>
+    {% if workouts|length > 0 %}
+        {% for workout in workouts %}
+            {% if workout.is_public == "on" %}
+              <button id="workout-collapse-button" class="btn" type="button" data-bs-toggle="collapse" data-bs-target="#{{workout.workout_container_description}}" aria-expanded="false" aria-controls="{{workout.workout_container_description}}">
+                <div id = "description-span">
+                <span><i class="fa-regular fa-square-caret-down"></i> {{ workout.workout_title }} logged by : <em> {{ workout.created_by }}</em></span>
+                <br>
+                <span> {{ workout.workout_location}} {{ workout.workout_date_time }}</span>
+                </div>
+                <div id = "action-span"> 
+              </div>
+              </button>
+            </p>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+</div>
+{% endblock %}

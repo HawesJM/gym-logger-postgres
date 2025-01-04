@@ -153,6 +153,12 @@ def workouts():
     workouts = list(Workout.query.order_by(Workout.workout_title).all())
     return render_template("workouts.html", workouts=workouts)
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    workouts = list(mongo.db.workouts.find({"$text": {"$search": query}}))
+    return render_template("search_workouts.html", workouts=workouts)
+
 @app.route("/record_workout", methods=["GET", "POST"])
 def record_workout():
     categories = list(Category.query.order_by(Category.category_name).all())

@@ -5,7 +5,17 @@
     Workouts
   </h4>
 </div>
-
+<div id ="workout-list-container" class= "row col-12 col-md-6 shadow-lg p-3 mb-5 bg-white rounded mx-auto">
+  <form id="workout-search" action="{{url_for('search')}}" method="post" class="row">
+          <div class="col-8">
+              <input class="form-control me-2" type="text" name="query" id="query" placeholder="Enter your search e.g. by exercise type" aria-label="Search" required>
+          </div>
+          <div id ="workout-search-button-container" class="col-4">
+              <button id="search-button" class="btn" type="submit"><label for="query"><i class="fas fa-search prefix light-blue-text text-darken-4"></i>Search</label></button>
+              <a href="{{ url_for('workouts') }}" id = "reset-search" class="btn btn-primary">Reset</a>
+          </div>
+  </form>
+</div>
 <div class="row">
   {% for workout in workouts|sort(attribute="workout_date_time") %}
   {% if workout.is_public == True %}
