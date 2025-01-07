@@ -10,6 +10,7 @@ class Category(db.Model):
     # schema for the Category model
     id = db.Column(db.Integer, primary_key=True)
     category_name = db.Column(db.String(25), unique=True, nullable=False)
+    exercises = db.relationship("Exercise", backref="category", cascade="all, delete", lazy=True)
 
     def __repr__(self):
         # __repr__ to represent itself in the form of a string
@@ -18,8 +19,7 @@ class Category(db.Model):
 class Exercise(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     exercise_title = db.Column(db.String(50), unique=True, nullable=False)
-    exercise_category = db.Column(db.String(50), nullable=False)
-    is_assisted = db.Column(db.Boolean, default=True)
+    exercise_category = db.Column(db.Integer, db.ForeignKey("category.id", ondelete="CASCADE"), nullable=False)
     
 
     def __repr__(self):
@@ -121,6 +121,7 @@ class Workout(db.Model):
     exercise_ten_total_three = db.Column(db.Float)
     additional_information = db.Column(db.String(100))
     is_public = db.Column(db.Boolean, default=True)
+    is_mobile = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return self

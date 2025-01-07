@@ -12,7 +12,12 @@
         <!-- exercise category -->
             <div class="input-field col-6">
                 <i class="fas fa-folder-open prefix light-blue-text text-darken-4"></i>
-                <input id="exercise_category" name="exercise_category" minlength="3" maxlength="25" type="text" class="validate" required>
+                <select id="exercise_category" name="exercise_category" class="validate" required>
+                    <option value="" disabled selected>Choose Category</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.category_name }}</option>
+                    {% endfor %}
+                </select>
                 <label for="exercise_category">Exercise Category</label>
             </div>
         </div>

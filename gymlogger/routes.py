@@ -16,6 +16,21 @@ def home():
 @app.route("/register",  methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+                # check if username already exists in users collection in db
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("register"))
+
+    # acts as the else statement if no existing user is found to create user
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": request.form.get("password"),
+            "password_hash": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
 
         user = User(
             username = request.form.get("username"),
@@ -28,6 +43,7 @@ def register():
         session["user"] = request.form.get("username")
         flash("Registration Successful!")
 
+        return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html")
 
 @app.route("/signin", methods=["GET", "POST"] )
@@ -106,11 +122,13 @@ def delete_category(category_id):
 
 @app.route("/exercises")
 def exercises():
+    categories = list(Category.query.order_by(Category.category_name).all())
     exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
-    return render_template("exercises.html", exercises=exercises)
+    return render_template("exercises.html", exercises=exercises, categories=categories)
 
 @app.route("/add_exercise", methods=["GET", "POST"])
 def add_exercise():
+    categories = list(Category.query.order_by(Category.category_name).all())
     if request.method == "POST":
         exercise = Exercise(
             exercise_title = request.form.get("exercise_title"),
@@ -119,7 +137,8 @@ def add_exercise():
         db.session.add(exercise)
         db.session.commit()
         return redirect(url_for("exercises"))
-    return render_template("add_exercise.html")
+    return render_template("add_exercise.html", categories=categories)
+
 
 @app.route("/edit_exercise/<int:exercise_id>", methods=["GET", "POST"])
 def edit_exercise(exercise_id):
@@ -130,6 +149,13 @@ def edit_exercise(exercise_id):
         db.session.commit()
         return redirect(url_for("exercises"))
     return render_template("edit_exercise.html", exercise=exercise)
+
+@app.route("/delete_exercise/<int:exercise_id>")
+def delete_exercise(exercise_id):
+    exercise = Exercise.query.get_or_404(exercise_id)
+    db.session.delete(exercise)
+    db.session.commit()
+    return redirect(url_for("exercises"))
 
 @app.route("/modifiers")
 def modifiers():
@@ -357,7 +383,6 @@ def workout_details(workout_id):
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
     workout = Workout.query.get_or_404(workout_id)
-    
     return render_template(
         "workout_details.html", workout=workout, workouts=workouts, categories=categories, exercises=exercises)
 
@@ -454,14 +479,17 @@ def edit_workout(workout_id):
         workout.exercise_ten_total_two = float(request.form.get("exercise_ten_total_two"))
         workout.exercise_ten_total_three = float(request.form.get("exercise_ten_total_three"))
         workout.additional_information = request.form.get("additional_information")
+        is_public=bool(True if request.form.get("is-visible") else False)
         db.session.commit()
-        submit = {
+        is_public = "on" if request.form.get("is-visible") else "off"
+        edited_mongo_workout = {
             "workout_title": request.form.get("workout_title"),
             "created_by": session["user"],
+            #"workout_id": latest_recorded_id,
             "workout_date_time": request.form.get("workout_date_time"),
             "workout_location": request.form.get("workout_location"),
-            "exercise_one_name": request.form.get("exercise_one_name"),
-            "exercise_one_category": request.form.get("exercise_one_category"),
+            "exercise_one_name": request.form.get("edit_exercise_one_name"),
+            "exercise_one_category": request.form.get("edit_exercise_one_category"),
             "exercise_one_modifier_one": request.form.get("exercise_one_modifier_one"),
             "exercise_one_modifier_two":  request.form.get("exercise_one_modifier_two"),
             "exercise_one_modifier_three": request.form.get("exercise_one_modifier_three"),
@@ -531,19 +559,21 @@ def edit_workout(workout_id):
             "exercise_nine_modifier_three": request.form.get("exercise_nine_modifier_three"),
             "exercise_nine_total_one": float(request.form.get("exercise_nine_total_one")),
             "exercise_nine_total_two": float(request.form.get("exercise_nine_total_two")),
-           "exercise_nine_total_three": float(request.form.get("exercise_nine_total_three")),
+            "exercise_nine_total_three": float(request.form.get("exercise_nine_total_three")),
             "exercise_ten_name": request.form.get("exercise_ten_name"),
             "exercise_ten_category": request.form.get("exercise_ten_category"),
-           "exercise_ten_modifier_one":  request.form.get("exercise_ten_modifier_one"),
+            "exercise_ten_modifier_one":  request.form.get("exercise_ten_modifier_one"),
             "exercise_ten_modifier_two": request.form.get("exercise_ten_modifier_two"),
             "exercise_ten_modifier_three": request.form.get("exercise_ten_modifier_three"),
             "exercise_ten_total_one": float(request.form.get("exercise_ten_total_one")),
             "exercise_ten_total_two": float(request.form.get("exercise_ten_total_two")),
             "exercise_ten_total_three": float(request.form.get("exercise_ten_total_three")),
             "additional_information": request.form.get("additional_information"),
+            "is_public": is_public,
+            "is_edited": True,
+            
         }
-        mongo.db.workouts.update_one(
-            {"_id": ObjectId()}, {"$set": submit})
+        mongo.db.workouts.insert_one(edited_mongo_workout)
         return redirect(url_for("workouts"))        
     return render_template("edit_workout.html", workout=workout, modifiers=modifiers, categories=categories, exercises=exercises)
 
@@ -562,6 +592,7 @@ def quick_start():
     modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
     if request.method == "POST":
         workout = Workout(
+            created_by = session["user"],
             workout_title = request.form.get("workout_title"),
             workout_date_time = request.form.get("workout_date_time"),
             workout_location = request.form.get("workout_location"),
@@ -573,13 +604,12 @@ def quick_start():
             exercise_one_total_one = float(request.form.get("exercise_one_total_one")),
             exercise_one_total_two = float(request.form.get("exercise_one_total_two")),
             exercise_one_total_three = float(request.form.get("exercise_one_total_three")),
+            is_mobile=bool(True),
         )
         db.session.add(workout)
         db.session.commit()
         return redirect(url_for("quick_add"))
-    workouts = list(Workout.query.order_by(Workout.workout_date_time).all())
-    workout = Workout.query.order_by(Workout.workout_date_time).first_or_404()
-    return render_template("quick_start.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+    return render_template("quick_start.html", categories=categories, exercises=exercises, modifiers=modifiers)
 
 @app.route("/quick_add")
 def quick_add():

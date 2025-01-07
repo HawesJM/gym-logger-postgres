@@ -3,7 +3,7 @@
 <div class="card mx-auto text-center">
     <form id="" class="col-12" method="POST" action="{{ url_for('quick_edit', workout_id=workout.id) }}">
                     <label for="edit-exercise-two">
-                        <h4>Completed Exercise Two</h4>
+                        <h4 id="mobile-edit-title-two">Completed Exercise Two For: <i>"{{ workout.workout_title }}"</i></h4>
                     </label>
                     <div class="" id="exercise-page-two">
                         <!-- exercise two -->
