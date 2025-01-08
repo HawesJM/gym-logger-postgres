@@ -160,7 +160,7 @@ h6 {
       font-size: 14px;
     }
 
-    .workout-full {
+    .workout-full, #copyright {
       display: none;
     }
   }

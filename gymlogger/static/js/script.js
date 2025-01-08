@@ -1,9 +1,10 @@
 var currentTab = 0; // Current tab is set to be the first tab (0)
-showTab(currentTab); // Display the current tab
+
 
 if (document.getElementById("workout-form-card")) {
   document.getElementById("record-button").style.display="none";
   document.getElementById('nextBtn').addEventListener("click",showSubmit);
+  showTab(currentTab); // Display the current tab
 }
 
 function showTab(n) {
@@ -72,3 +73,8 @@ function fixStepIndicator(n) {
 function showSubmit() {
   document.getElementById("record-button").style.display = "inline";
 }
+
+  // to limit selectable exercises by category
+
+// mobile dropdown functions  //
+
