@@ -101,6 +101,10 @@ def add_category():
         category = Category(category_name=request.form.get("category_name"))
         db.session.add(category)
         db.session.commit()
+        mongo_category = {
+                "mongo_category": request.form.get("category_name"),
+            }
+        mongo.db.categories.insert_one(mongo_category)
         return redirect(url_for("categories"))
     return render_template("add_category.html")
 
@@ -134,8 +138,13 @@ def add_exercise():
             exercise_title = request.form.get("exercise_title"),
             exercise_category = request.form.get("exercise_category")
         )
+        mongo_exercise = {
+            "mongo_exercise": request.form.get("exercise_title"),
+            "mongo_exercise_category": request.form.get("exercise_category")
+        }
         db.session.add(exercise)
         db.session.commit()
+        mongo.db.exercises.insert_one(mongo_exercise)
         return redirect(url_for("exercises"))
     return render_template("add_exercise.html", categories=categories)
 
@@ -485,7 +494,6 @@ def edit_workout(workout_id):
         edited_mongo_workout = {
             "workout_title": request.form.get("workout_title"),
             "created_by": session["user"],
-            #"workout_id": latest_recorded_id,
             "workout_date_time": request.form.get("workout_date_time"),
             "workout_location": request.form.get("workout_location"),
             "exercise_one_name": request.form.get("edit_exercise_one_name"),
@@ -587,6 +595,8 @@ def delete_workout(workout_id):
 
 @app.route("/quick_start", methods=["GET", "POST"])
 def quick_start():
+    mongo_categories = list(mongo.db.categories.find())
+    mongo_exercises = list(mongo.db.exercises.find())
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
     modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
@@ -609,7 +619,7 @@ def quick_start():
         db.session.add(workout)
         db.session.commit()
         return redirect(url_for("quick_add"))
-    return render_template("quick_start.html", categories=categories, exercises=exercises, modifiers=modifiers)
+    return render_template("quick_start.html", categories=categories, exercises=exercises, modifiers=modifiers, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
 @app.route("/quick_add")
 def quick_add():

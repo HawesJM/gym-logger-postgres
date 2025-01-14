@@ -1,3 +1,7 @@
+.hidden {
+  display: none;
+}
+
 .navbar {
   border:2px solid #ED6B47;
 }

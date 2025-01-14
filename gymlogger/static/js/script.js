@@ -7,6 +7,12 @@ if (document.getElementById("workout-form-card")) {
   showTab(currentTab); // Display the current tab
 }
 
+
+//mobile workout form event listeners //
+if (document.getElementById("mobile_exercise_one_category")) {
+  document.getElementById("mobile_exercise_one_category").addEventListener("change", selectMobileCategoryOne);
+}
+
 function showTab(n) {
   if (document.getElementById("workout-form")) {
       // This function will display the specified tab of the form ...
@@ -78,3 +84,47 @@ function showSubmit() {
 
 // mobile dropdown functions  //
 
+function selectMobileCategoryOne() {
+  let mobileCategoryOne = document.getElementById("mobile_exercise_one_category").value;
+  console.log(mobileCategoryOne)
+  if (mobileCategoryOne == "Free Weights"){
+    $(".free-weight-option").removeClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+  }
+  if (mobileCategoryOne == "Cardio") {
+    $(".cardio-option").removeClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    console.log(mobileCategoryOne)
+  }
+  if (mobileCategoryOne == "Calisthenics") {
+    $(".calisthenics-option").removeClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    console.log(mobileCategoryOne)
+  }
+  if (mobileCategoryOne == "Weight Machine") {
+    $(".weight-machine-option").removeClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    console.log(mobileCategoryOne)
+  }
+  if (mobileCategoryOne == "Stretching") {
+    $(".stretching-option").removeClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    console.log(mobileCategoryOne)
+  }
+
+}

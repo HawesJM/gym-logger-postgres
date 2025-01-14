@@ -15,7 +15,7 @@
                 <select id="exercise_category" name="exercise_category" class="validate" required>
                     <option value="" disabled selected>Choose Category</option>
                     {% for category in categories %}
-                        <option value="{{ category.id }}">{{ category.category_name }}</option>
+                        <option id="exercise_category"  value="{{ category.id }}">{{ category.category_name }}</option>
                     {% endfor %}
                 </select>
                 <label for="exercise_category">Exercise Category</label>
