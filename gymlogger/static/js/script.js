@@ -18,6 +18,16 @@ if (document.getElementById("mobile_exercise_two_category")) {
 if (document.getElementById("mobile_exercise_three_category")) {
   document.getElementById("mobile_exercise_three_category").addEventListener("change", selectMobileCategoryThree);
 }
+if (document.getElementById("mobile_exercise_four_category")) {
+  document.getElementById("mobile_exercise_four_category").addEventListener("change", selectMobileCategoryFour);
+}
+if (document.getElementById("mobile_exercise_five_category")) {
+  document.getElementById("mobile_exercise_five_category").addEventListener("change", selectMobileCategoryFive);
+}
+
+if (document.getElementById("mobile_exercise_six_category")) {
+  document.getElementById("mobile_exercise_six_category").addEventListener("change", selectMobileCategorySix);
+}
 
 function showTab(n) {
   if (document.getElementById("workout-form")) {
@@ -221,6 +231,141 @@ function selectMobileCategoryThree() {
     $(".cardio-option").addClass("hidden")
     $(".weight-machine-option").addClass("hidden")
     console.log(mobileCategoryThree)
+  }
+
+}
+
+function selectMobileCategoryFour() {
+  let mobileCategoryFour = document.getElementById("mobile_exercise_four_category").value;
+  console.log(mobileCategoryFour)
+  if (mobileCategoryFour == "Free Weights"){
+    $(".free-weight-option").removeClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+  }
+  if (mobileCategoryFour == "Cardio") {
+    $(".cardio-option").removeClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    console.log(mobileCategoryFour)
+  }
+  if (mobileCategoryFour == "Calisthenics") {
+    $(".calisthenics-option").removeClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    console.log(mobileCategoryFour)
+  }
+  if (mobileCategoryFour == "Weight Machine") {
+    $(".weight-machine-option").removeClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    console.log(mobileCategoryFour)
+  }
+  if (mobileCategoryFour == "Stretching") {
+    $(".stretching-option").removeClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    console.log(mobileCategoryFour)
+  }
+
+}
+
+function selectMobileCategoryFive() {
+  let mobileCategoryFive = document.getElementById("mobile_exercise_five_category").value;
+  console.log(mobileCategoryFive)
+  if (mobileCategoryFive == "Free Weights"){
+    $(".free-weight-option").removeClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+  }
+  if (mobileCategoryFive == "Cardio") {
+    $(".cardio-option").removeClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    console.log(mobileCategoryFive)
+  }
+  if (mobileCategoryFive == "Calisthenics") {
+    $(".calisthenics-option").removeClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    console.log(mobileCategoryFive)
+  }
+  if (mobileCategoryFive == "Weight Machine") {
+    $(".weight-machine-option").removeClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    console.log(mobileCategoryFive)
+  }
+  if (mobileCategoryFive == "Stretching") {
+    $(".stretching-option").removeClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    console.log(mobileCategoryFive)
+  }
+
+}
+
+function selectMobileCategorySix() {
+  let mobileCategorySix = document.getElementById("mobile_exercise_six_category").value;
+  console.log(mobileCategorySix)
+  if (mobileCategorySix == "Free Weights"){
+    $(".free-weight-option").removeClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+  }
+  if (mobileCategorySix == "Cardio") {
+    $(".cardio-option").removeClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    console.log(mobileCategorySix)
+  }
+  if (mobileCategorySix == "Calisthenics") {
+    $(".calisthenics-option").removeClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    console.log()
+  }
+  if (mobileCategorySix == "Weight Machine") {
+    $(".weight-machine-option").removeClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".stretching-option").addClass("hidden")
+    console.log(mobileCategorySix)
+  }
+  if (mobileCategorySix == "Stretching") {
+    $(".stretching-option").removeClass("hidden")
+    $(".calisthenics-option").addClass("hidden")
+    $(".free-weight-option").addClass("hidden")
+    $(".cardio-option").addClass("hidden")
+    $(".weight-machine-option").addClass("hidden")
+    console.log(mobileCategorySix)
   }
 
 }
