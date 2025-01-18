@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
+<div class="card mx-auto text-center">
+    <form id="" class="col-12" method="POST" action="{{ url_for('quick_edit_ten', workout_id=workout.id) }}">
     <div class="col-10 mx-auto">
         <h2>Additional Information</h2>
         <div class="row">
             <input id="exercise_additional_information" name="additional_information" minlength="3"
                 maxlength="100" type="text" class="validate">
             <br>
-            <label for="exercise_additional_information">Additional Information</label>
         </div>
     </div>
     <div id="visible-switch" class="form-check form-switch mx-auto text-center">
@@ -19,7 +19,14 @@
             </div> 
         Would you like this workout to be publicly visible?</label>
     </div>
-
+    <div class="row">
+        <div class="col s12 center-align">
+            <button type="submit" class="btn-large light-blue darken-1">
+                Complete Record <i class="fas fa-edit right"></i>
+            </button>
+        </div>
+    </div>
+    </form> 
 </div>
 
 {% endblock %}
