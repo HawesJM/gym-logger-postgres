@@ -1,7 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 <div>
-    Sausage
+    <div class="col-10 mx-auto">
+        <h2>Additional Information</h2>
+        <div class="row">
+            <input id="exercise_additional_information" name="additional_information" minlength="3"
+                maxlength="100" type="text" class="validate">
+            <br>
+            <label for="exercise_additional_information">Additional Information</label>
+        </div>
+    </div>
+    <div id="visible-switch" class="form-check form-switch mx-auto text-center">
+        <br>
+        <div>
+        <label class="form-check-label">
+            <input class="form-check-input col-6 mx-auto" type="checkbox" role="switch"
+                id="is-visible" name="is-visible" checked>
+            </div> 
+        Would you like this workout to be publicly visible?</label>
+    </div>
+
 </div>
 
 {% endblock %}

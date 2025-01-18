@@ -2,70 +2,89 @@
 {% block content %}
 <div class="card mx-auto text-center">
     <form id="" class="col-12" method="POST" action="{{ url_for('quick_edit_seven', workout_id=workout.id) }}">
-                    <label for="mobile-edit-exercise-eight">
-                        <h4>Completed Exercise Eight</h4>
-                    </label>
-                    <div class="" id="mobile-exercise-page-eight">
-                        <!-- exercise eight -->
+        <label for="edit-exercise-eight">
+            <h4>Completed Exercise Eight</h4>
+        </label>
+        <div class="" id="mobile-exercise-page-eight">
+            <!-- exercise eight -->
 
-                            <div class="input-field col-sm-12 mx-auto text-center">
-                                <select id="exercise_eight_name" name="exercise_eight_name" minlength="3" maxlength="50" type="text"
-                                    class="validate col-sm-5" required>
-                                    <option disabled selected value> -- Select Exercise -- </option>
-                                    {% for exercise in exercises %}
-                                        <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                    {% endfor %}
-                                </select>
-                                <select id="exercise_eight_category" name="exercise_eight_category" minlength="3" maxlength="25"
-                                    type="text" class="validate col-sm-5" required>
-                                <option disabled selected value> --Exercise Category -- </option>
-                                {% for category in categories %}
-                                        <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="input-field col-sm-12 mx-auto text-center">
-                                <select id="exercise_eight_modifier_one" name="exercise_eight_modifier_one" minlength="3" maxlength="25"
-                                type="text" class="validate col-sm-5" required>
-                            <option disabled selected value> --Modifier 1 -- </option>
-                            {% for modifier in modifiers %}
-                                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input id="exercise_eight_total_one" name="exercise_eight_total_one" maxlength="3" type="number"
-                                class="validate col-sm-5" required value="0">
-                            </div>
-                            <div class="input-field col-sm-12 mx-auto text-center">
-                                <select id="exercise_eight_modifier_two" name="exercise_eight_modifier_two" minlength="3" maxlength="25"
-                                type="text" class="validate col-sm-5" required>
-                            <option disabled selected value> --Modifier 2 -- </option>
-                            {% for modifier in modifiers %}
-                                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input id="exercise_eight_total_two" name="exercise_eight_total_two" maxlength="3" type="number"
-                                class="validate col-sm-5" required value="0">
-                            </div>
-                            <div class="input-field col-sm-12 mx-auto text-center">
-                                <select id="exercise_eight_modifier_three" name="exercise_eight_modifier_three" minlength="3" maxlength="25"
-                                type="text" class="validate col-sm-5" required>
-                            <option disabled selected value> --Modifier 3 -- </option>
-                            {% for modifier in modifiers %}
-                                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input id="exercise_eight_total_three" name="exercise_eight_total_three" maxlength="3" type="number"
-                                class="validate col-sm-5" required value="0">
-                            </div>
-                            
-                    <div class="row">
-                    <div class="col s12 center-align">
-                        <button type="submit" class="btn-large light-blue darken-1">
-                            Add Exercise <i class="fas fa-edit right"></i>
-                        </button>
-                    </div>
-                </div>
-                </form>
-    </div>
+            <div class="input-field col-sm-12 mx-auto text-center">
+                <select id="mobile_exercise_eight_category" name="mobile_exercise_eight_category" minlength="3"
+                    maxlength="25" type="text" class="validate col-sm-5" required>
+                    <option disabled selected value> --Exercise Category -- </option>
+                    {% for mongo_category in mongo_categories %}
+                    <option value="{{ mongo_category.mongo_category }}"> {{ mongo_category.mongo_category}} </option>
+                    {% endfor %}
+                </select>
+                <select id="mobile_exercise_eight_name" name="mobile_exercise_eight_name" minlength="3" maxlength="50"
+                    type="text" class="validate col-sm-5" required>
+                    <option disabled selected value> -- Select Exercise -- </option>
+                    {% for mongo_exercise in mongo_exercises %}
+                    {% if mongo_exercise.mongo_exercise_category == "1" %}
+                    <option class="free-weight-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
+                        {{ mongo_exercise.mongo_exercise}} </option>
+                    {% endif %}
+                    {% if mongo_exercise.mongo_exercise_category == "2" %}
+                    <option class="cardio-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
+                        {{ mongo_exercise.mongo_exercise}} </option>
+                    {% endif %}
+                    {% if mongo_exercise.mongo_exercise_category == "3" %}
+                    <option class="weight-machine-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
+                        {{ mongo_exercise.mongo_exercise}} </option>
+                    {% endif %}
+                    {% if mongo_exercise.mongo_exercise_category == "4" %}
+                    <option class="stretching-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
+                        {{ mongo_exercise.mongo_exercise}} </option>
+                    {% endif %}
+                    {% if mongo_exercise.mongo_exercise_category == "5" %}
+                    <option class="calisthenics-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
+                        {{ mongo_exercise.mongo_exercise}} </option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="input-field col-sm-12 mx-auto text-center">
+                <select id="exercise_eight_modifier_one" name="exercise_eight_modifier_one" minlength="3" maxlength="25"
+                    type="text" class="validate col-sm-5" required>
+                    <option disabled selected value> --Modifier 1 -- </option>
+                    {% for modifier in modifiers %}
+                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                    {% endfor %}
+                </select>
+                <input id="exercise_eight_total_one" name="exercise_eight_total_one" maxlength="3" type="number"
+                    class="validate col-sm-5" required value="0">
+            </div>
+            <div class="input-field col-sm-12 mx-auto text-center">
+                <select id="exercise_eight_modifier_two" name="exercise_eight_modifier_two" minlength="3" maxlength="25"
+                    type="text" class="validate col-sm-5" required>
+                    <option disabled selected value> --Modifier 2 -- </option>
+                    {% for modifier in modifiers %}
+                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                    {% endfor %}
+                </select>
+                <input id="exercise_eight_total_two" name="exercise_eight_total_two" maxlength="3" type="number"
+                    class="validate col-sm-5" required value="0">
+            </div>
+            <div class="input-field col-sm-12 mx-auto text-center">
+                <select id="exercise_eight_modifier_three" name="exercise_eight_modifier_three" minlength="3"
+                    maxlength="25" type="text" class="validate col-sm-5" required>
+                    <option disabled selected value> --Modifier 3 -- </option>
+                    {% for modifier in modifiers %}
+                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                    {% endfor %}
+                </select>
+                <input id="exercise_eight_total_three" name="exercise_eight_total_three" maxlength="3" type="number"
+                    class="validate col-sm-5" required value="0">
+            </div>
+
+        <div class="row">
+            <div class="col s12 center-align">
+                <button type="submit" class="btn-large light-blue darken-1">
+                    Add Exercise <i class="fas fa-edit right"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}

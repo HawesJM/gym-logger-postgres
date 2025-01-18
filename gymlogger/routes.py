@@ -735,13 +735,15 @@ def quick_edit_five(workout_id):
 
 @app.route("/quick_edit_6/<workout_id>", methods=["GET", "POST"])
 def quick_edit_six(workout_id):
+    mongo_categories = list(mongo.db.categories.find())
+    mongo_exercises = list(mongo.db.exercises.find())
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
     modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
     workout = Workout.query.get_or_404(workout_id)
     if request.method == "POST":
-        workout.exercise_seven_name = request.form.get("exercise_seven_name"),
-        workout.exercise_seven_category = request.form.get("exercise_seven_category"),
+        workout.exercise_seven_name = request.form.get("mobile_exercise_seven_name"),
+        workout.exercise_seven_category = request.form.get("mobile_exercise_seven_category"),
         workout.exercise_seven_modifier_one = request.form.get("exercise_seven_modifier_one"),
         workout.exercise_seven_modifier_two = request.form.get("exercise_seven_modifier_two"),
         workout.exercise_seven_modifier_three = request.form.get("exercise_seven_modifier_three"),
@@ -749,18 +751,20 @@ def quick_edit_six(workout_id):
         workout.exercise_seven_total_two = float(request.form.get("exercise_seven_total_two")),
         workout.exercise_seven_total_three = float(request.form.get("exercise_seven_total_three")),
         db.session.commit()
-        return render_template("quick_edit_7.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
-    return render_template("quick_edit_6.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+        return render_template("quick_edit_7.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+    return render_template("quick_edit_6.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
 @app.route("/quick_edit_7/<workout_id>", methods=["GET", "POST"])
 def quick_edit_seven(workout_id):
+    mongo_categories = list(mongo.db.categories.find())
+    mongo_exercises = list(mongo.db.exercises.find())
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
     modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
     workout = Workout.query.get_or_404(workout_id)
     if request.method == "POST":
-        workout.exercise_eight_name = request.form.get("exercise_eight_name"),
-        workout.exercise_eight_category = request.form.get("exercise_eight_category"),
+        workout.exercise_eight_name = request.form.get("mobile_exercise_eight_name"),
+        workout.exercise_eight_category = request.form.get("mobile_exercise_eight_category"),
         workout.exercise_eight_modifier_one = request.form.get("exercise_eight_modifier_one"),
         workout.exercise_eight_modifier_two = request.form.get("exercise_eight_modifier_two"),
         workout.exercise_eight_modifier_three = request.form.get("exercise_eight_modifier_three"),
@@ -768,18 +772,20 @@ def quick_edit_seven(workout_id):
         workout.exercise_eight_total_two = float(request.form.get("exercise_eight_total_two")),
         workout.exercise_eight_total_three = float(request.form.get("exercise_eight_total_three")),
         db.session.commit()
-        return render_template("quick_edit_8.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
-    return render_template("quick_edit_7.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+        return render_template("quick_edit_8.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+    return render_template("quick_edit_7.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
 @app.route("/quick_edit_8/<workout_id>", methods=["GET", "POST"])
 def quick_edit_eight(workout_id):
+    mongo_categories = list(mongo.db.categories.find())
+    mongo_exercises = list(mongo.db.exercises.find())
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
     modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
     workout = Workout.query.get_or_404(workout_id)
     if request.method == "POST":
-        workout.exercise_nine_name = request.form.get("exercise_nine_name"),
-        workout.exercise_nine_category = request.form.get("exercise_nine_category"),
+        workout.exercise_nine_name = request.form.get("mobile_exercise_nine_name"),
+        workout.exercise_nine_category = request.form.get("mobile_exercise_nine_category"),
         workout.exercise_nine_modifier_one = request.form.get("exercise_nine_modifier_one"),
         workout.exercise_nine_modifier_two = request.form.get("exercise_nine_modifier_two"),
         workout.exercise_nine_modifier_three = request.form.get("exercise_nine_modifier_three"),
@@ -787,18 +793,24 @@ def quick_edit_eight(workout_id):
         workout.exercise_nine_total_two = float(request.form.get("exercise_nine_total_two")),
         workout.exercise_nine_total_three = float(request.form.get("exercise_nine_total_three")),
         db.session.commit()
-        return render_template("quick_edit_9.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
-    return render_template("quick_edit_8.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+        return render_template("quick_edit_9.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+    return render_template("quick_edit_8.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
 @app.route("/quick_edit_9/<workout_id>", methods=["GET", "POST"])
 def quick_edit_nine(workout_id):
+    mongo_categories = list(mongo.db.categories.find())
+    mongo_exercises = list(mongo.db.exercises.find())
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
     modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
     workout = Workout.query.get_or_404(workout_id)
     if request.method == "POST":
-        workout.exercise_ten_name = request.form.get("exercise_ten_name"),
-        workout.exercise_ten_category = request.form.get("exercise_ten_category"),
+        workout.exercise_ten_name = request.form.get("mobile_exercise_ten_name"),
+        workout.exercise_ten_category = request.form.get("mobile_exercise_ten_category"),
         workout.exercise_ten_modifier_one = request.form.get("exercise_ten_modifier_one"),
         workout.exercise_ten_modifier_two = request.form.get("exercise_ten_modifier_two"),
         workout.exercise_ten_modifier_three = request.form.get("exercise_ten_modifier_three"),
@@ -806,8 +818,28 @@ def quick_edit_nine(workout_id):
         workout.exercise_ten_total_two = float(request.form.get("exercise_ten_total_two")),
         workout.exercise_ten_total_three = float(request.form.get("exercise_ten_total_three")),
         db.session.commit()
-        return render_template("quick_edit_10.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
-    return render_template("quick_edit_9.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout)
+        return render_template("quick_edit_10.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+    return render_template("quick_edit_9.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+
+@app.route("/quick_edit_10/<workout_id>", methods=["GET", "POST"])
+def quick_edit_ten(workout_id):
+    mongo_categories = list(mongo.db.categories.find())
+    mongo_exercises = list(mongo.db.exercises.find())
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
+    categories = list(Category.query.order_by(Category.category_name).all())
+    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
+    modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
+    workout = Workout.query.get_or_404(workout_id)
+    if request.method == "POST":
+        additional_information = request.form.get("additional_information"),
+        is_public=bool(True if request.form.get("is-visible") else False),
+        db.session.commit()
+        return render_template("quick_edit_10.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+    return render_template("workouts.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+
 
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
