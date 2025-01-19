@@ -627,7 +627,6 @@ def quick_add():
     return render_template("quick_add.html", workouts=workouts)
 
 
-
 @app.route("/quick_edit/<workout_id>", methods=["GET", "POST"])
 def quick_edit(workout_id):
     mongo_categories = list(mongo.db.categories.find())

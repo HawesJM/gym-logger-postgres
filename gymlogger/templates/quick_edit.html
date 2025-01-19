@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="card mx-auto text-center">
-    <form id="" class="col-12" method="POST" action="{{ url_for('quick_edit', workout_id=workout.id) }}">
-        <label for="edit-exercise-two">
-            <h4 id="mobile-edit-title-two">Completed Exercise Two For: <i>"{{ workout.workout_title }}"</i></h4>
+    <form id="mobile-edit-exercise-two" class="col-12" method="POST" action="{{ url_for('quick_edit', workout_id=workout.id) }}">
+        <label for="mobile-edit-exercise-two">
+            <h4 id="edit-title-two">Completed Exercise Two For: <i>"{{ workout.workout_title }}"</i></h4>
         </label>
         <div class="" id="exercise-page-two">
             <!-- exercise two -->
@@ -76,11 +76,35 @@
                 <input id="exercise_two_total_three" name="exercise_two_total_three" maxlength="3" type="number"
                     class="validate col-sm-5" required value="0">
             </div>
-
+            
             <div class="row">
+                <button id="continue-logging" type="submit" class="btn btn-success col-5 mx-auto">
+                    Continue Logging <i class="fas fa-edit right"></i>
+                </button>
+                    <div id="skip-button" class="btn btn-success col-5 mx-auto">Skip To Complete Record</div>
+              </div>
+              <br>
+              <div id="mobile-additional-information" class="col-10 mx-auto hidden">
+                <h2>Additional Information</h2>
+                <div class="row">
+                    <input id="exercise_additional_information" name="additional_information" minlength="3"
+                        maxlength="100" type="text" class="validate">
+                    <br>
+                </div>
+            </div>
+            <div id="mobile-visible-switch" class="form-check form-switch mx-auto text-center hidden">
+                <br>
+                <div>
+                <label class="form-check-label">
+                    <input class="form-check-input col-6 mx-auto" type="checkbox" role="switch"
+                        id="is-visible" name="is-visible" checked>
+                    </div> 
+                Would you like this workout to be publicly visible?</label>
+            </div>
+            <div id="mobile-exercise-submit" class="row hidden">
                 <div class="col s12 center-align">
-                    <button type="submit" class="btn-large light-blue darken-1">
-                        Add Exercise <i class="fas fa-edit right"></i>
+                    <button  id="mobile-final-submit" type="submit" class="btn-large light-blue darken-1" href="workouts.html">
+                        Complete Record <i class="fas fa-edit right"></i>
                     </button>
                 </div>
             </div>

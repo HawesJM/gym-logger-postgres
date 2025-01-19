@@ -43,6 +43,10 @@ if (document.getElementById("mobile_exercise_ten_category")) {
   document.getElementById("mobile_exercise_ten_category").addEventListener("change", selectMobileCategoryTen);
 }
 
+if (document.getElementById("skip-button")) {
+  document.getElementById("skip-button").addEventListener("click", skipToComplete);
+}
+
 function showTab(n) {
   if (document.getElementById("workout-form")) {
       // This function will display the specified tab of the form ...
@@ -562,4 +566,12 @@ function selectMobileCategoryTen() {
     console.log(mobileCategoryTen)
   }
 
+}
+
+function skipToComplete() {
+  $("#mobile-additional-information").removeClass("hidden");
+  $("#mobile-visible-switch").removeClass("hidden");
+  $("#mobile-exercise-submit").removeClass("hidden");
+  $("#skip-button").addClass("hidden");
+  $("#continue-logging").addClass("hidden");
 }
