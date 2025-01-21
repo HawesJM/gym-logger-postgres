@@ -820,25 +820,6 @@ def quick_edit_nine(workout_id):
         return render_template("quick_edit_10.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_9.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
-@app.route("/quick_edit_10/<workout_id>", methods=["GET", "POST"])
-def quick_edit_ten(workout_id):
-    mongo_categories = list(mongo.db.categories.find())
-    mongo_exercises = list(mongo.db.exercises.find())
-    categories = list(Category.query.order_by(Category.category_name).all())
-    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
-    categories = list(Category.query.order_by(Category.category_name).all())
-    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
-    categories = list(Category.query.order_by(Category.category_name).all())
-    exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
-    modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
-    workout = Workout.query.get_or_404(workout_id)
-    if request.method == "POST":
-        additional_information = request.form.get("additional_information"),
-        is_public=bool(True if request.form.get("is-visible") else False),
-        db.session.commit()
-        return render_template("quick_edit_10.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
-    return render_template("workouts.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
-
 
 @app.route("/add_location", methods=["GET", "POST"])
 def add_location():
