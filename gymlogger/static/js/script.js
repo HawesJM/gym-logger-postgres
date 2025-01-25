@@ -122,12 +122,21 @@ function selectMobileCategoryOne() {
   let mobileCategoryOne = document.getElementById("mobile_exercise_one_category").value;
   console.log(mobileCategoryOne)
   if (mobileCategoryOne == "Free Weights"){
-    $("#mobile_exercise_one_name").append("<option value= Dumbbell Curls> Dumbbell Curls </option>")
-    $("#mobile_exercise_one_name").append("<option value= Hammer Curls> Hammer Curls </option>")
-    $("#mobile_exercise_one_name").append("<option value= Barbell Curls> Barbell Curls </option>")
-    $("#mobile_exercise_one_name").append("<option value= Dumbell Fly> Dumbbell Fly </option>")
-    $("#mobile_exercise_one_category_selected").attr('disabled','disabled')
+    if (!document.getElementById('bench-press')) {
+      $("#mobile_exercise_one_name").append("<option id='bench-press' value= 'Bench Press'> Bench Press </option>")
+      $("#mobile_exercise_one_name").append("<option value= 'Dumbbell Curls'> Dumbbell Curls </option>")
+      $("#mobile_exercise_one_name").append("<option value= 'Hammer Curls'> Hammer Curls </option>")
+      $("#mobile_exercise_one_name").append("<option value= 'Barbell Curls'> Barbell Curls </option>")
+      $("#mobile_exercise_one_name").append("<option value= 'Dumbell Fly'> Dumbbell Fly </option>")
+    }
+    $("#mobile_exercise_one_name").remove("<option value= 'Bench Press'> Bench Press </option>")
+    $("#mobile_exercise_one_name").remove("<option value= 'Dumbbell Curls'> Dumbbell Curls </option>")
+    $("#mobile_exercise_one_name").append("<option value= 'Hammer Curls'> Hammer Curls </option>")
+    $("#mobile_exercise_one_name").append("<option value= 'Barbell Curls'> Barbell Curls </option>")
+    $("#mobile_exercise_one_name").append("<option value= 'Dumbell Fly'> Dumbbell Fly </option>")
   }
+
+
   if (mobileCategoryOne == "Cardio") {
     $(".cardio-option").removeClass("hidden")
     $(".free-weight-option").addClass("hidden")
