@@ -13,20 +13,22 @@
 
         </div>
         <div class="input-field row mx-auto text-center">
+            <div class="col-6">
             <i class="fa-solid fa-location-crosshairs"></i>
             <label for="workout_location">
                 <h2>Workout Location</h2>
             </label>
             <input id="workout_location" name="workout_location" minlength="3" maxlength="50" type="text"
-                class="validate col-sm-12" required>
-        </div>
-        <div class="input-field row mx-auto text-center">
-            <i class="fa-solid fa-calendar-days"></i>
-            <label for="workout_date_time">
-                <h2>Workout Date</h2>
-            </label>
-            <input id="workout_date_time" name="workout_date_time" type="datetime-local" class="validate col-sm-12"
-                required>
+                class="validate" required>
+            </div>
+            <div class="col-6">
+                <i class="fa-solid fa-calendar-days"></i>
+                <label for="workout_date_time">
+                    <h2>Workout Date</h2>
+                </label>
+                <input id="workout_date_time" name="workout_date_time" type="datetime-local" class="validate"
+                    required>
+            </div>
         </div>
     </div>
 
@@ -43,29 +45,13 @@
                 class="validate col-sm-5" required>
                 <option disabled selected value> --Exercise Category -- </option>
                 {% for mongo_category in mongo_categories %}
-                <option value="{{ mongo_category.mongo_category }}"> {{ mongo_category.mongo_category}} </option>
+                <option id="mobile_exercise_one_category_selected" value="{{ mongo_category.mongo_category }}"> {{ mongo_category.mongo_category}} </option>
                 {% endfor %}
             </select>
             <select id="mobile_exercise_one_name" name="mobile_exercise_one_name" minlength="3" maxlength="50" type="text"
                 class="validate col-sm-5" required>
                 <option disabled selected value> -- Select Exercise -- </option>
-                {% for mongo_exercise in mongo_exercises %}
-                    {% if mongo_exercise.mongo_exercise_category == "1" %}
-                    <option class="free-weight-option hidden" value="{{ mongo_exercise.mongo_exercise }}"> {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "2" %}
-                    <option class="cardio-option hidden" value="{{ mongo_exercise.mongo_exercise }}"> {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "3" %}
-                    <option class="weight-machine-option hidden" value="{{ mongo_exercise.mongo_exercise }}"> {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "4" %}
-                    <option class="stretching-option hidden" value="{{ mongo_exercise.mongo_exercise }}"> {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "5" %}
-                    <option class="calisthenics-option hidden" value="{{ mongo_exercise.mongo_exercise }}"> {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                {% endfor %}
+                   
             </select>
         </div>
         <div class="input-field col-sm-12 mx-auto text-center">
@@ -76,7 +62,7 @@
                 <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
                 {% endfor %}
             </select>
-            <input id="exercise_one_total_one" name="exercise_one_total_one" maxlength="3" type="number"
+            <input id="exercise_one_total_one" name="exercise_one_total_one" maxlength="3" type="text"
                 class="validate col-sm-5" required value="0">
         </div>
         <div class="input-field col-sm-12 mx-auto text-center">
@@ -87,7 +73,7 @@
                 <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
                 {% endfor %}
             </select>
-            <input id="exercise_one_total_two" name="exercise_one_total_two" maxlength="3" type="number"
+            <input id="exercise_one_total_two" name="exercise_one_total_two" maxlength="3" type="text" 
                 class="validate col-sm-5" required value="0">
         </div>
         <div class="input-field col-sm-12 mx-auto text-center">
@@ -98,7 +84,7 @@
                 <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
                 {% endfor %}
             </select>
-            <input id="exercise_one_total_three" name="exercise_one_total_three" maxlength="3" type="number"
+            <input id="exercise_one_total_three" name="exercise_one_total_three" maxlength="3" type="text" 
                 class="validate col-sm-5" required value="0">
         </div>
         <br>

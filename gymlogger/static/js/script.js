@@ -122,11 +122,11 @@ function selectMobileCategoryOne() {
   let mobileCategoryOne = document.getElementById("mobile_exercise_one_category").value;
   console.log(mobileCategoryOne)
   if (mobileCategoryOne == "Free Weights"){
-    $(".free-weight-option").removeClass("hidden")
-    $(".cardio-option").addClass("hidden")
-    $(".calisthenics-option").addClass("hidden")
-    $(".stretching-option").addClass("hidden")
-    $(".weight-machine-option").addClass("hidden")
+    $("#mobile_exercise_one_name").append("<option value= Dumbbell Curls> Dumbbell Curls </option>")
+    $("#mobile_exercise_one_name").append("<option value= Hammer Curls> Hammer Curls </option>")
+    $("#mobile_exercise_one_name").append("<option value= Barbell Curls> Barbell Curls </option>")
+    $("#mobile_exercise_one_name").append("<option value= Dumbell Fly> Dumbbell Fly </option>")
+    $("#mobile_exercise_one_category_selected").attr('disabled','disabled')
   }
   if (mobileCategoryOne == "Cardio") {
     $(".cardio-option").removeClass("hidden")
