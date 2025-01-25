@@ -8,7 +8,7 @@
                 <h2>Workout Title</h2>
             </label>
             <br>
-            <input id="workout_title" name="workout_title" minlength="3" maxlength="25" type="text"
+            <input id="workout_title" name="workout_title" minlength="3" maxlength="200" type="text"
                 class="validate col-sm-12" required>
 
         </div>
@@ -30,6 +30,7 @@
         </div>
     </div>
 
+    <br>
     <div class="" id="exercise-page-one">
         <!-- exercise one -->
         <div class="row mx-auto">
@@ -100,8 +101,13 @@
             <input id="exercise_one_total_three" name="exercise_one_total_three" maxlength="3" type="number"
                 class="validate col-sm-5" required value="0">
         </div>
-
-
+        <br>
+            <div class="row">
+                <input id="mobile_additional_information" name="mobile_additional_information" minlength="3"
+                    maxlength="200" type="text" class="validate" class="col-12" placeholder = "Additional Information">
+                <br>
+            </div>
+            <br>
         <div class="row">
             <button type="submit" class="btn btn-large btn-info col-sm-12" data-mdb-ripple-init>
                 Start Logging <i class="fas fa-plus-square right"></i>
