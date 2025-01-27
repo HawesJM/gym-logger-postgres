@@ -118,59 +118,147 @@ function showSubmit() {
 
 // mobile dropdown functions  //
 
+// mobile dropdown functions exercise one  //
+
 function selectMobileCategoryOne() {
   let mobileCategoryOne = document.getElementById("mobile_exercise_one_category").value;
   console.log(mobileCategoryOne)
   if (mobileCategoryOne == "Free Weights"){
-    if (!document.getElementById('bench-press')) {
-      $("#mobile_exercise_one_name").append("<option id='bench-press' value= 'Bench Press'> Bench Press </option>")
-      $("#mobile_exercise_one_name").append("<option value= 'Dumbbell Curls'> Dumbbell Curls </option>")
-      $("#mobile_exercise_one_name").append("<option value= 'Hammer Curls'> Hammer Curls </option>")
-      $("#mobile_exercise_one_name").append("<option value= 'Barbell Curls'> Barbell Curls </option>")
-      $("#mobile_exercise_one_name").append("<option value= 'Dumbell Fly'> Dumbbell Fly </option>")
+    if (!document.getElementById('bench-press-option')) {
+      $("#mobile_exercise_one_name").append("<option class='free-weight-option' id='bench-press-option' value= 'Bench Press'> Bench Press </option>")
+      $("#mobile_exercise_one_name").append("<option class='free-weight-option' id='dumbbell-curls-option' value= 'Dumbbell Curls'> Dumbbell Curls </option>")
+      $("#mobile_exercise_one_name").append("<option class='free-weight-option' id='hammer-curls-option'value= 'Hammer Curls'> Hammer Curls </option>")
+      $("#mobile_exercise_one_name").append("<option class='free-weight-option' id='barbell-curls-option'value= 'Barbell Curls'> Barbell Curls </option>")
+      $("#mobile_exercise_one_name").append("<option class='free-weight-option' id='dumbbell-fly-option' value= 'Dumbbell Fly'> Dumbbell Fly </option>")
     }
-    $("#mobile_exercise_one_name").remove("<option value= 'Bench Press'> Bench Press </option>")
-    $("#mobile_exercise_one_name").remove("<option value= 'Dumbbell Curls'> Dumbbell Curls </option>")
-    $("#mobile_exercise_one_name").append("<option value= 'Hammer Curls'> Hammer Curls </option>")
-    $("#mobile_exercise_one_name").append("<option value= 'Barbell Curls'> Barbell Curls </option>")
-    $("#mobile_exercise_one_name").append("<option value= 'Dumbell Fly'> Dumbbell Fly </option>")
+    $("#running-machine-option").remove()
+    $("#rowing-machine-option").remove()
+    $("#dips-option").remove()
+    $("#assisted-bench-press-option").remove()
+    $("#abdominal-crunch-option").remove()
+    $("#low-row-option").remove()
+    $("#lat-pulldown-option").remove()
+    $("#pectoral-fly-option").remove()
+    $("#chest-press-option").remove()
+    $("#diverging-seated-row-option").remove()
+    $("#diverging-lat-pulldown-option").remove()
+    $("#lateral-raise-option").remove()
+    $("#tricep-press-option").remove()
+    $("#incline-press-option").remove()
+    $("#shoulder-stretch-option").remove()
   }
 
 
   if (mobileCategoryOne == "Cardio") {
-    $(".cardio-option").removeClass("hidden")
-    $(".free-weight-option").addClass("hidden")
-    $(".calisthenics-option").addClass("hidden")
-    $(".stretching-option").addClass("hidden")
-    $(".weight-machine-option").addClass("hidden")
+    if (!document.getElementById('rowing-machine-option')) {
+      $("#mobile_exercise_one_name").append("<option id='rowing-machine-option' value= 'Rowing Machine'> Rowing Machine </option>")
+      $("#mobile_exercise_one_name").append("<option id='running-machine-option' value= 'Running Machine'> Running Machine </option>")
+      
+    }
     console.log(mobileCategoryOne)
+    $("#bench-press-option").remove()
+    $("#dumbbell-curls-option").remove()
+    $("#hammer-curls-option").remove()
+    $("#barbell-curls-option").remove()
+    $("#dumbbell-fly-option").remove()
+    $("#dips-option").remove()
+    $("#assisted-bench-press-option").remove()
+    $("#abdominal-crunch-option").remove()
+    $("#lat-pulldown-option").remove()
+    $("#low-row-option").remove()
+    $("#pectoral-fly-option").remove()
+    $("#chest-press-option").remove()
+    $("#diverging-seated-row-option").remove()
+    $("#diverging-lat-pulldown-option").remove()
+    $("#lateral-raise-option").remove()
+    $("#tricep-press-option").remove()
+    $("#incline-press-option").remove()
+    $("#shoulder-stretch-option").remove()
   }
+
+
   if (mobileCategoryOne == "Calisthenics") {
-    $(".calisthenics-option").removeClass("hidden")
-    $(".weight-machine-option").addClass("hidden")
-    $(".free-weight-option").addClass("hidden")
-    $(".cardio-option").addClass("hidden")
-    $(".stretching-option").addClass("hidden")
+    if (!document.getElementById('dips-option')) {
+      $("#mobile_exercise_one_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+    }
+    $("#bench-press-option").remove()
+    $("#dumbbell-curls-option").remove()
+    $("#hammer-curls-option").remove()
+    $("#barbell-curls-option").remove()
+    $("#dumbbell-fly-option").remove()
+    $("#running-machine-option").remove()
+    $("#rowing-machine-option").remove()
+    $("#assisted-bench-press-option").remove()
+    $("#low-row-option").remove()
+    $("#lat-pulldown-option").remove()
+    $("#pectoral-fly-option").remove()
+    $("#chest-press-option").remove()
+    $("#diverging-seated-row-option").remove()
+    $("#diverging-lat-pulldown-option").remove()
+    $("#abdominal-crunch-option").remove()
+    $("#lateral-raise-option").remove()
+    $("#tricep-press-option").remove()
+    $("#incline-press-option").remove()
+    $("#shoulder-stretch-option").remove()
     console.log(mobileCategoryOne)
+  
   }
+
+
   if (mobileCategoryOne == "Weight Machine") {
-    $(".weight-machine-option").removeClass("hidden")
-    $(".calisthenics-option").addClass("hidden")
-    $(".free-weight-option").addClass("hidden")
-    $(".cardio-option").addClass("hidden")
-    $(".stretching-option").addClass("hidden")
-    console.log(mobileCategoryOne)
-  }
-  if (mobileCategoryOne == "Stretching") {
-    $(".stretching-option").removeClass("hidden")
-    $(".calisthenics-option").addClass("hidden")
-    $(".free-weight-option").addClass("hidden")
-    $(".cardio-option").addClass("hidden")
-    $(".weight-machine-option").addClass("hidden")
+    if (!document.getElementById('assisted-bench-press-option')) {
+      $("#mobile_exercise_one_name").append("<option id='assisted-bench-press-option' value= 'Assisted Bench Press'> Assisted Bench Press </option>")
+      $("#mobile_exercise_one_name").append("<option id='abdominal-crunch-option' value= 'Abdominal Crunch'> Abdominal Crunch </option>")
+      $("#mobile_exercise_one_name").append("<option id='low-row-option' value= 'Low Row'> Low Row </option>")
+      $("#mobile_exercise_one_name").append("<option id='lat-pulldown-option' value= 'Lat Pulldown'> Lat Pulldown </option>")
+      $("#mobile_exercise_one_name").append("<option id='pectoral-fly-option' value= 'Pectoral Fly'> Pectoral Fly </option>")
+      $("#mobile_exercise_one_name").append("<option id='chest-press-option' value= 'Chest Press'> Chest Press </option>")
+      $("#mobile_exercise_one_name").append("<option id='diverging-seated-row-option' value= 'Diverging Seated Row'> Diverging Seated Row </option>")
+      $("#mobile_exercise_one_name").append("<option id='diverging-lat-pulldown-option' value= 'Diverging Lat Pulldown'> Diverging Lat Pulldown </option>")
+      $("#mobile_exercise_one_name").append("<option id='lateral-raise-option' value= 'Lateral Raise'> Lateral Raise </option>")
+      $("#mobile_exercise_one_name").append("<option id='tricep-press-option' value= 'Tricep Press/Seated Dip'> Tricep Press/Seated Dip </option>")
+      $("#mobile_exercise_one_name").append("<option id='incline-press-option' value= 'Incline Press'> Incline Press/Seated Dip </option>")
+    }
+    $("#bench-press-option").remove()
+    $("#dumbbell-curls-option").remove()
+    $("#hammer-curls-option").remove()
+    $("#barbell-curls-option").remove()
+    $("#dumbbell-fly-option").remove()
+    $("#running-machine-option").remove()
+    $("#rowing-machine-option").remove()
+    $("#shoulder-stretch-option").remove()
     console.log(mobileCategoryOne)
   }
 
+
+  if (mobileCategoryOne == "Stretching") {
+    if (!document.getElementById('shoulder-stretch-option')) {
+      $("#mobile_exercise_one_name").append("<option id='shoulder-stretch-option' value= 'Shoulder Stretch'> Shoulder Stretch </option>")
+    }
+    $("#bench-press-option").remove()
+    $("#dumbbell-curls-option").remove()
+    $("#hammer-curls-option").remove()
+    $("#barbell-curls-option").remove()
+    $("#dumbbell-fly-option").remove()
+    $("#running-machine-option").remove()
+    $("#rowing-machine-option").remove()
+    $("#assisted-bench-press-option").remove()
+    $("#abdominal-crunch-option").remove()
+    $("#lat-pulldown-option").remove()
+    $("#low-row-option").remove()
+    $("#pectoral-fly-option").remove()
+    $("#chest-press-option").remove()
+    $("#diverging-seated-row-option").remove()
+    $("#diverging-lat-pulldown-option").remove()
+    $("#lateral-raise-option").remove()
+    $("#tricep-press-option").remove()
+    $("#incline-press-option").remove()
+    console.log(mobileCategoryOne)
+
 }
+}
+
+// mobile dropdown functions exercise two  //
 
 function selectMobileCategoryTwo() {
   let mobileCategoryTwo = document.getElementById("mobile_exercise_two_category").value;
@@ -584,3 +672,4 @@ function skipToComplete() {
   $("#skip-button").addClass("hidden");
   $("#continue-logging").addClass("hidden");
 }
+

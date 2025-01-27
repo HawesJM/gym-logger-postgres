@@ -17,30 +17,76 @@
   </form>
 </div>
 <div class="row">
-  {% for workout in workouts|sort(attribute="workout_date_time") %}
-  {% if workout.is_public == True %}
+
+  {% for paginated_workout in items|sort(attribute="workout_date_time", reverse = True) %}
+  {% if paginated_workout.is_public == True %}
   <div class="col-4 btn">
     <div class="card text-center">
-      <h5 class="card-title">{{ workout.workout_title }}</h5>
+      <h5 class="card-title">{{ paginated_workout.workout_title }}</h5>
       <button class="btn" type="button" data-mdb-collapse-init data-mdb-ripple-init
-        data-mdb-target="#collapse_{{workout.id}}" aria-expanded="false" aria-controls="collapse_{{workout.id}}">
+        data-mdb-target="#collapse_{{paginated_workout.id}}" aria-expanded="false" aria-controls="collapse_{{paginated_workout.id}}">
         <i class="fa-solid fa-3x fa-caret-down"></i>
-        <div class="card-body collapse" id="collapse_{{workout.id}}">
-          <h6 class="card-date">{{ workout.workout_date_time }}</h6>
-          <h6 class="card-date">{{ workout.workout_location }}</h6>
+        <div class="card-body collapse" id="collapse_{{paginated_workout.id}}">
+          <h6 class="card-date">{{ paginated_workout.workout_date_time }}</h6>
+          <h6 class="card-date">{{ paginated_workout.workout_location }}</h6>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
         </div>
     </div>
     </button>
-    <a href="{{ url_for('workout_details', workout_id=workout.id) }}" class="btn btn-success">View Full Details</a>
+    <a href="{{ url_for('workout_details', workout_id=paginated_workout.id) }}" class="btn btn-success">View Full Details</a>
   </div>
   {% endif %}
   {% endfor %}
+
 </div>
-<div class="mx-auto text-center">
-  <a href="{{ url_for('record_workout') }}" class="btn btn-info">
-    Add Workout <i class="fas fa-plus-square right"></i>
-  </a>
+<!-- Navigation section for pagination controls -->
+<nav aria-label="Page navigation example">
+  <ul class="pagination">
+      <!-- Check if there is a previous page -->
+      {% if pagination.has_prev %}
+      <li class="page-item">
+          <!-- If there is, create a link to the previous page -->
+          <a class="page-link" href="/workouts?page={{ pagination.prev_num }}">Previous</a>
+      </li>
+      {% else %}
+      <!-- If not, show a disabled 'Previous' button -->
+      <li class="page-item disabled"><span class="page-link">Previous</span></li>
+      {% endif %}
+
+      <!-- Loop through each page number provided by pagination.iter_pages() -->
+      {% for page_num in pagination.iter_pages() %}
+      <!-- Check if the page number exists (not None) -->
+      {% if page_num %}
+      <!-- Check if the current page is not the active page -->
+      {% if page_num != pagination.page %}
+      <!-- Create a clickable link for the page number -->
+      <li class="page-item"><a class="page-link" href="/workouts?page={{ page_num }}">{{ page_num }}</a></li>
+      {% else %}
+      <!-- Highlight the current page as active and not clickable -->
+      <li class="page-item active" aria-current="page">
+          <span class="page-link">{{ page_num }}</span>
+      </li>
+      {% endif %}
+      {% else %}
+      <!-- For gaps in the pagination links, show ellipsis -->
+      <li class="page-item disabled"><span class="page-link">...</span></li>
+      {% endif %}
+      {% endfor %}
+
+      <!-- Check if there is a next page -->
+      {% if pagination.has_next %}
+      <li class="page-item">
+          <!-- If there is, create a link to the next page -->
+          <a class="page-link" href="/workouts?page={{ pagination.next_num }}">Next</a>
+      </li>
+      {% else %}
+      <!-- If not, show a disabled 'Next' button -->
+      <li class="page-item disabled"><span class="page-link">Next</span></li>
+      {% endif %}
+  </ul>
+</nav>
+
 </div>
+
 
 {% endblock %}

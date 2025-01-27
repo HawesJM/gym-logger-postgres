@@ -126,9 +126,11 @@ def delete_category(category_id):
 
 @app.route("/exercises")
 def exercises():
+    page = request.args.get('page', 1, type=int)  # Default to page 1 if not specified
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
-    return render_template("exercises.html", exercises=exercises, categories=categories)
+    paginated_exercises = Exercise.query.paginate(page=page, per_page=6, error_out=False)
+    return render_template("exercises.html", exercises=exercises, categories=categories, items=paginated_exercises.items, pagination=paginated_exercises)
 
 @app.route("/add_exercise", methods=["GET", "POST"])
 def add_exercise():
@@ -185,8 +187,10 @@ def add_modifier():
 
 @app.route("/workouts")
 def workouts():
-    workouts = list(Workout.query.order_by(Workout.workout_title).all())
-    return render_template("workouts.html", workouts=workouts)
+    page = request.args.get('page', 1, type=int)  # Default to page 1 if not specified
+    workouts = list(Workout.query.order_by(Workout.workout_date_time).all())
+    paginated_workouts = Workout.query.paginate(page=page, per_page=6, error_out=False)
+    return render_template("workouts.html", workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts)
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
