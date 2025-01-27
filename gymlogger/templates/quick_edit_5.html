@@ -3,45 +3,35 @@
 <div class="card mx-auto text-center">
     <form id="" class="col-12" method="POST" action="{{ url_for('quick_edit_five', workout_id=workout.id) }}">
         <label for="edit-exercise-six">
-            <h4>Completed Exercise Six</h4>
+            <h4>Completed Exercise Six For: <i>"{{ workout.workout_title }}"</i></h4>
         </label>
         <div class="" id="mobile-exercise-page-six">
             <!-- exercise six -->
 
             <div class="input-field col-sm-12 mx-auto text-center">
-                <select id="mobile_exercise_six_category" name="mobile_exercise_six_category" minlength="3"
-                    maxlength="25" type="text" class="validate col-sm-5" required>
+                <select id="mobile_exercise_six_category" name="mobile_exercise_six_category" minlength="3" maxlength="25" type="text"
+                    class="validate col-sm-5" required>
                     <option disabled selected value> --Exercise Category -- </option>
                     {% for mongo_category in mongo_categories %}
-                    <option value="{{ mongo_category.mongo_category }}"> {{ mongo_category.mongo_category}} </option>
+                    <option id="mobile_exercise_six_category_selected" value="{{ mongo_category.mongo_category }}"> {{ mongo_category.mongo_category}} </option>
                     {% endfor %}
                 </select>
-                <select id="mobile_exercise_six_name" name="mobile_exercise_six_name" minlength="3" maxlength="50"
-                    type="text" class="validate col-sm-5" required>
+                <select id="mobile_exercise_six_name" name="mobile_exercise_six_name" minlength="3" maxlength="50" type="text"
+                    class="validate col-sm-5" required>
                     <option disabled selected value> -- Select Exercise -- </option>
-                    {% for mongo_exercise in mongo_exercises %}
-                    {% if mongo_exercise.mongo_exercise_category == "1" %}
-                    <option class="free-weight-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "2" %}
-                    <option class="cardio-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "3" %}
-                    <option class="weight-machine-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "4" %}
-                    <option class="stretching-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "5" %}
-                    <option class="calisthenics-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
+                       
+                </select>
+            </div>
+            <div class="input-field col-sm-12 mx-auto text-center">
+                <select id="exercise_six_modifier_one" name="exercise_six_modifier_one" minlength="3" maxlength="25"
+                    type="text" class="validate col-sm-5" required>
+                    <option disabled selected value> --Modifier 1 -- </option>
+                    {% for modifier in modifiers %}
+                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
                     {% endfor %}
                 </select>
+                <input id="exercise_six_total_one" name="exercise_six_total_one" maxlength="3" type="number"
+                    class="validate col-sm-5" required value="0">
             </div>
             <div class="input-field col-sm-12 mx-auto text-center">
                 <select id="exercise_six_modifier_one" name="exercise_six_modifier_one" minlength="3" maxlength="25"

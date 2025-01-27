@@ -3,44 +3,23 @@
 <div class="card mx-auto text-center">
     <form id="" class="col-12" method="POST" action="{{ url_for('quick_edit_two', workout_id=workout.id) }}">
         <label for="edit-exercise-three">
-            <h4>Completed Exercise Three</h4>
+            <h4>Completed Exercise Three For: <i>"{{ workout.workout_title }}"</i></h4>
         </label>
         <div class="" id="exercise-page-three">
             <!-- exercise three -->
 
             <div class="input-field col-sm-12 mx-auto text-center">
-                <select id="mobile_exercise_three_category" name="mobile_exercise_three_category" minlength="3" maxlength="25"
-                    type="text" class="validate col-sm-5" required>
+                <select id="mobile_exercise_three_category" name="mobile_exercise_three_category" minlength="3" maxlength="25" type="text"
+                    class="validate col-sm-5" required>
                     <option disabled selected value> --Exercise Category -- </option>
                     {% for mongo_category in mongo_categories %}
-                    <option value="{{ mongo_category.mongo_category }}"> {{ mongo_category.mongo_category}} </option>
+                    <option id="mobile_exercise_three_category_selected" value="{{ mongo_category.mongo_category }}"> {{ mongo_category.mongo_category}} </option>
                     {% endfor %}
                 </select>
                 <select id="mobile_exercise_three_name" name="mobile_exercise_three_name" minlength="3" maxlength="50" type="text"
                     class="validate col-sm-5" required>
                     <option disabled selected value> -- Select Exercise -- </option>
-                    {% for mongo_exercise in mongo_exercises %}
-                    {% if mongo_exercise.mongo_exercise_category == "1" %}
-                    <option class="free-weight-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "2" %}
-                    <option class="cardio-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "3" %}
-                    <option class="weight-machine-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "4" %}
-                    <option class="stretching-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% if mongo_exercise.mongo_exercise_category == "5" %}
-                    <option class="calisthenics-option hidden" value="{{ mongo_exercise.mongo_exercise }}">
-                        {{ mongo_exercise.mongo_exercise}} </option>
-                    {% endif %}
-                    {% endfor %}
+                       
                 </select>
             </div>
             <div class="input-field col-sm-12 mx-auto text-center">
