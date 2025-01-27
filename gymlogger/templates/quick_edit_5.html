@@ -34,17 +34,6 @@
                     class="validate col-sm-5" required value="0">
             </div>
             <div class="input-field col-sm-12 mx-auto text-center">
-                <select id="exercise_six_modifier_one" name="exercise_six_modifier_one" minlength="3" maxlength="25"
-                    type="text" class="validate col-sm-5" required>
-                    <option disabled selected value> --Modifier 1 -- </option>
-                    {% for modifier in modifiers %}
-                    <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                    {% endfor %}
-                </select>
-                <input id="exercise_six_total_one" name="exercise_six_total_one" maxlength="3" type="number"
-                    class="validate col-sm-5" required value="0">
-            </div>
-            <div class="input-field col-sm-12 mx-auto text-center">
                 <select id="exercise_six_modifier_two" name="exercise_six_modifier_two" minlength="3" maxlength="25"
                     type="text" class="validate col-sm-5" required>
                     <option disabled selected value> --Modifier 2 -- </option>
@@ -93,7 +82,7 @@
             </div>
             <div id="mobile-exercise-submit" class="row hidden">
                 <div class="col s12 center-align">
-                    <button  id="mobile-final-submit" type="submit" class="btn-large light-blue darken-1" href="workouts.html">
+                    <button  id="mobile-final-submit" type="submit" class="btn-large light-blue darken-1" href="{{ url_for('profile')}}">
                         Complete Record <i class="fas fa-edit right"></i>
                     </button>
                 </div>
