@@ -1,29 +1,81 @@
 {% extends "base.html" %}
 {% block content %}
+<br>
 <div class="row">
-    <div id="profile-header" class="col-sm-12 col-sm-6 col-md-6">
-        <h3 id="profile-name" class="light-blue-text text-darken-4">
+    <div id="profile-header" class="col-sm-12 col-sm-6 col-md-6 mx-auto">
+        <h3 id="profile-name" class="light-blue-text text-darken-4 text-center">
             {{ username }}'s Profile
         </h3>
     </div>
 </div>
-<div id="recorded-workouts" class="row workout-row col-sm-12 col-md-6">
+<br>
+<div id="recorded-workouts" class=" col-sm-12 col-md-10 mx-auto card">
     <div class="row shadow-lg bg-white rounded">
-        <h4 id="current-month-record">
-            Recorded workouts for {{ username }}
+        <h4 id="current-month-record" class="text-center">
+            Recorded workouts for {{ username }}:
         </h4>
-        {% for workout in workouts|sort(attribute="workout_date_time") %}
-        {% if workout.created_by == session.user %}
-        <div class="col-12 col-md-4 logged-collapse-container">
-            <button id="logged-workout-collapse-button" class="col-12 logged-collapse-button">
+        {% for paginated_workout in items|sort(attribute="workout_date_time", reverse = True) %}
+        {% if paginated_workout.created_by == session.user %}
+        <div class="col-12 col-md-4 logged-collapse-container btn-info">
+            <button id="logged-workout-collapse-button" class="col-12 logged-collapse-button data-mdb-ripple-init">
                 <div id="profile-description-span">
-                    <a target="_blank" href="{{ url_for('workout_details', workout_id=workout._id) }}"><span>{{workout.workout_title}}</span></a>
-                    <br>{{workout.date}}<br>
+                    <a target="" href="{{ url_for('workout_details', workout_id=paginated_workout.id) }}"><span>{{paginated_workout.workout_title}}</span></a>
+                    <br>
+                    {{paginated_workout.workout_date_time}}
+                    <br>
+                    {{paginated_workout.workout_location}}
                 </div>
             </button>
         </div>
         {% endif %}
         {% endfor %}
     </div>
+<!-- Navigation section for pagination controls -->
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <!-- Check if there is a previous page -->
+        {% if pagination.has_prev %}
+        <li class="page-item">
+            <!-- If there is, create a link to the previous page -->
+            <a class="page-link" href="/profile/{{ username }}?page={{ pagination.prev_num }}">Previous</a>
+        </li>
+        {% else %}
+        <!-- If not, show a disabled 'Previous' button -->
+        <li class="page-item disabled"><span class="page-link">Previous</span></li>
+        {% endif %}
+  
+        <!-- Loop through each page number provided by pagination.iter_pages() -->
+        {% for page_num in pagination.iter_pages() %}
+        <!-- Check if the page number exists (not None) -->
+        {% if page_num %}
+        <!-- Check if the current page is not the active page -->
+        {% if page_num != pagination.page %}
+        <!-- Create a clickable link for the page number -->
+        <li class="page-item"><a class="page-link" href="/profile/{{ username }}?page={{ page_num }}">{{ page_num }}</a></li>
+        {% else %}
+        <!-- Highlight the current page as active and not clickable -->
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">{{ page_num }}</span>
+        </li>
+        {% endif %}
+        {% else %}
+        <!-- For gaps in the pagination links, show ellipsis -->
+        <li class="page-item disabled"><span class="page-link">...</span></li>
+        {% endif %}
+        {% endfor %}
+  
+        <!-- Check if there is a next page -->
+        {% if pagination.has_next %}
+        <li class="page-item">
+            <!-- If there is, create a link to the next page -->
+            <a class="page-link" href="/profile/{{ username }}?page={{ pagination.next_num }}">Next</a>
+        </li>
+        {% else %}
+        <!-- If not, show a disabled 'Next' button -->
+        <li class="page-item disabled"><span class="page-link">Next</span></li>
+        {% endif %}
+    </ul>
+  </nav>
+  
 </div>
 {% endblock %}

@@ -73,11 +73,13 @@ def signin():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    page = request.args.get('page', 1, type=int)  # Default to page 1 if not specified
     workouts = list(Workout.query.order_by(Workout.workout_title).all())
     categories = list(Category.query.order_by(Category.category_name).all())
+    paginated_workouts = Workout.query.paginate(page=page, per_page=6, error_out=False)
     username = session["user"]
     if session["user"]:
-        return render_template("profile.html", categories=categories, username=username, workouts=workouts)
+        return render_template("profile.html", categories=categories, username=username, workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts)
 
 
     return redirect(url_for("signin"))

@@ -5,6 +5,7 @@
 
 <div id="view-record-container" class="card text-center col-sm-12">
     <div sm-12>
+        <br>
         <div class="">
             <h3 id="workout-detail-header" class="center-align">"{{ workout.workout_title
         }}": {{workout.workout_location}}</h3>
@@ -31,7 +32,7 @@
         <span>
             <h4>Exercises Completed</h4>
         </span>
-        <div class="row">
+        <div class="col-12">
             <div class="btn col-sm-12 col-md-2 gx-0">
                 <h5 class="col-sm-3 col-md-12 mx-auto">Category</h5>
                 <input type="text" class="form-control col-sm-3 col-md-12 mx-auto" id="category" name="category"
@@ -316,13 +317,16 @@
         </div>
 
     </div>
-    <div class="row mx-auto">
-        <div class="col-5">
-        <a href="{{ url_for('edit_workout', workout_id=workout.id) }}" class="btn btn-info">Edit Workout</a>
-        </div>
-        <div class="col-5">
-            <a href="{{ url_for('delete_workout', workout_id=workout.id) }}" class="btn btn-danger">Delete Workout</a>
-        </div>
+    <div class="row">
+       <div class="col-3">
+        <a href="{{ url_for('edit_workout', workout_id=workout.id) }}" class="btn btn-info col-12">Edit</a>
+       </div>
+       <div class="col-6">
+
+       </div>
+       <div class="col-3">
+        <a href="{{ url_for('delete_workout', workout_id=workout.id) }}" class="btn btn-danger col-12">Delete</a>
+       </div>
     </div>
         
     {% endblock %}
