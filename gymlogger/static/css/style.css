@@ -76,6 +76,10 @@ h5 {
   padding-top: 10px;
 }
 
+.mobile-step-buttons {
+  margin-top: 20px;
+}
+
 /* Hide all steps by default: */
 .tab {
     display: none;
