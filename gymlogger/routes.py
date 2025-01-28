@@ -604,6 +604,7 @@ def quick_start():
     categories = list(Category.query.order_by(Category.category_name).all())
     exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
     modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
+    username = session["user"]
     if request.method == "POST":
         workout = Workout(
             created_by = session["user"],
@@ -624,7 +625,7 @@ def quick_start():
         db.session.add(workout)
         db.session.commit()
         return redirect(url_for("quick_add"))
-    return render_template("quick_start.html", categories=categories, exercises=exercises, modifiers=modifiers, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+    return render_template("quick_start.html", categories=categories, exercises=exercises, modifiers=modifiers, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises, username=username)
 
 @app.route("/quick_add")
 def quick_add():
@@ -640,6 +641,7 @@ def quick_edit(workout_id):
     exercises =  list(Exercise.query.order_by(Exercise.exercise_title).all())
     modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
     workout = Workout.query.get_or_404(workout_id)
+    username = session["user"]
     if request.method == "POST":
         workout.exercise_two_name = request.form.get("mobile_exercise_two_name"),
         workout.exercise_two_category = request.form.get("mobile_exercise_two_category"),
@@ -651,8 +653,8 @@ def quick_edit(workout_id):
         workout.exercise_two_total_three = float(request.form.get("exercise_two_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
-        return render_template("quick_edit_2.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
-    return render_template("quick_edit.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+        return render_template("quick_edit_2.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises, username=username)
+    return render_template("quick_edit.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises, username=username)
 
 @app.route("/quick_edit_2/<workout_id>", methods=["GET", "POST"])
 def quick_edit_two(workout_id):

@@ -16,7 +16,7 @@
                     <option id="mobile_exercise_two_category_selected" value="{{ mongo_category.mongo_category }}"> {{ mongo_category.mongo_category}} </option>
                     {% endfor %}
                 </select>
-                <select id="mobile_exercise_two_name" name="mobile_exercise_two_name" minlength="3" maxlength="50" type="text"
+                <select id="mobile_exercise_two_name" name="mobile_exercise_two_name" minlength="3" maxlength="50" type="text" step="0.01"
                     class="validate col-sm-5" required>
                     <option disabled selected value> -- Select Exercise -- </option>
                        
@@ -30,7 +30,7 @@
                     <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
                     {% endfor %}
                 </select>
-                <input id="exercise_two_total_one" name="exercise_two_total_one" maxlength="3" type="text" 
+                <input id="exercise_two_total_one" name="exercise_two_total_one" maxlength="3" type="text" step="0.01" 
                     class="validate col-sm-5" required value="0">
             </div>
             <div class="input-field col-sm-12 mx-auto text-center">
@@ -41,7 +41,7 @@
                     <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
                     {% endfor %}
                 </select>
-                <input id="exercise_two_total_two" name="exercise_two_total_two" maxlength="3" type="text" 
+                <input id="exercise_two_total_two" name="exercise_two_total_two" maxlength="3" type="text" step="0.01" 
                     class="validate col-sm-5" required value="0">
             </div>
             <div class="input-field col-sm-12 mx-auto text-center">
@@ -83,7 +83,7 @@
             </div>
             <div id="mobile-exercise-submit" class="row hidden">
                 <div class="col s12 center-align">
-                    <button  id="mobile-final-submit" type="submit" class="btn-large light-blue darken-1" href="{{ url_for('profile')}}">
+                    <button  id="mobile-final-submit" type="submit" class="btn-large light-blue darken-1">
                         Complete Record <i class="fas fa-edit right"></i>
                     </button>
                 </div>
