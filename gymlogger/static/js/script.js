@@ -47,6 +47,12 @@ if (document.getElementById("skip-button")) {
   document.getElementById("skip-button").addEventListener("click", skipToComplete);
 }
 
+//mobile profile page event listeners //
+
+if (document.getElementById("workout-details-toggle")) {
+  document.getElementById("workout-details-toggle").addEventListener("click", mobileProfileHide);
+}
+
 function showTab(n) {
   if (document.getElementById("workout-form")) {
       // This function will display the specified tab of the form ...
@@ -1669,3 +1675,6 @@ function skipToComplete() {
   $("#continue-logging").addClass("hidden");
 }
 
+function mobileProfileHide() {
+  $("#profile-name").addClass("mobile-profile-details");
+}

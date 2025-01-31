@@ -194,7 +194,8 @@ h6 {
   }
 
 @media (min-width: 499px) {
-  #mobile-record-button, #mobile-notice, {
+  #mobile-record-button, #mobile-notice{
     display: none;
   }
+
 }

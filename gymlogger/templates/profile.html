@@ -11,12 +11,12 @@
 <br>
 <div id="recorded-workouts" class=" col-sm-12 col-md-10 mx-auto card">
     <div class="row shadow-lg bg-white rounded">
-        <h4 id="current-month-record" class="text-center">
+        <h4 id="profile-total-records" class="text-center">
             Recorded Workouts for <i>{{ username }}:</i>
         </h4>
-        <button class="blank-button mobile-profile-spacer" data-mdb-collapse-init data-mdb-ripple-init
+        <button id="workout-details-toggle" class="blank-button mobile-profile-spacer" data-mdb-collapse-init data-mdb-ripple-init
         data-mdb-target="#profile-workouts-container" aria-expanded="false">
-            <i class="fa-solid fa-2x fa-caret-down"></i>
+            <i class="fa-solid fa-2x fa-caret-down mobile-profile-spacer"></i>
         </button>
         {% for paginated_workout in items|sort(attribute="workout_date_time", reverse = True) %}
         {% if paginated_workout.created_by == session.user %}
