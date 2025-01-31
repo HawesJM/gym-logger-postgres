@@ -184,16 +184,17 @@ h6 {
       font-size: 14px;
     }
 
-    .workout-full, #copyright {
+    .workout-full, #copyright, .mobile-profile-details {
       display: none;
     }
-    .profile-full {
-      display: none;
+
+    #profile-description-span {
+      font-size: 12px;
     }
   }
 
 @media (min-width: 499px) {
-  #mobile-record-button, #mobile-notice {
+  #mobile-record-button, #mobile-notice, {
     display: none;
   }
 }

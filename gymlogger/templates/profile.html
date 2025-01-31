@@ -12,18 +12,22 @@
 <div id="recorded-workouts" class=" col-sm-12 col-md-10 mx-auto card">
     <div class="row shadow-lg bg-white rounded">
         <h4 id="current-month-record" class="text-center">
-            Recorded workouts for <i>{{ username }}:</i>
+            Recorded Workouts for <i>{{ username }}:</i>
         </h4>
+        <button class="blank-button mobile-profile-spacer" data-mdb-collapse-init data-mdb-ripple-init
+        data-mdb-target="#profile-workouts-container" aria-expanded="false">
+            <i class="fa-solid fa-2x fa-caret-down"></i>
+        </button>
         {% for paginated_workout in items|sort(attribute="workout_date_time", reverse = True) %}
         {% if paginated_workout.created_by == session.user %}
-        <div class="col-12 col-md-4 logged-collapse-container btn-info profile-full">
+        <div id="profile-workouts-container" class="col-12 col-md-4 collapse btn-info profile-full">
             <button id="" class="col-12 logged-collapse-button data-mdb-ripple-init">
                 <div id="profile-description-span">
                     <a target="" href="{{ url_for('workout_details', workout_id=paginated_workout.id) }}"><span>{{paginated_workout.workout_title}}</span></a>
                     <br>
-                    {{paginated_workout.workout_date_time}}
+                    <span class="mobile-profile-details">{{paginated_workout.workout_date_time}}</span>
                     <br>
-                    {{paginated_workout.workout_location}}
+                    <span class="mobile-profile-details" >{{paginated_workout.workout_location}}</span>
                 </div>
             </button>
         </div>
