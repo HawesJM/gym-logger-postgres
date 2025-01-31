@@ -23,6 +23,10 @@ else:
 
 mongo = PyMongo(app)
 
-db = SQLAlchemy(app)
+db = SQLAlchemy(
+    engine_options={ 'connect_args': { 'connect_timeout': 1000 }}
+)
+
+db.init_app(app)
 
 from gymlogger import routes # noqa
