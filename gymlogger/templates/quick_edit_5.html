@@ -88,6 +88,15 @@
                 </div>
             </div>
     </form>
+    <br>
+    <div class="row">
+    <div class="col-6">
+        <u><a href="{{ url_for('workouts')}}" class="link-primary" id="mobile-all-workouts">View all recorded workouts</a></u>
+    </div>
+    <div class="col-6">
+        <u><a href="{{ url_for('profile', username=session['user'])}}" class="link-primary" id="mobile-all-workouts">View your profile</a></u>
+    </div>
+</div>
 </div>
 
 {% endblock %}

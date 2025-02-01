@@ -1682,7 +1682,7 @@ function mobileProfileHide() {
 // controlling flash messages timing  //
 
 $(function(){
-  var flashDurationInSeconds = 5;
+  var flashDurationInSeconds = 10;
 
   function removeFlashMessages() {
     $('.flashes').remove();
@@ -1690,3 +1690,11 @@ $(function(){
 
   setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
 })
+
+// unhide view all workouts link on add exercise pages for mobile  //
+
+//document.getElementById("skip-button").addEventListener("click", unHideWorkoutListMobile);
+
+//function unHideWorkoutListMobile() {
+  $("#mobile-all-workouts").removeClass("hidden")
+//}

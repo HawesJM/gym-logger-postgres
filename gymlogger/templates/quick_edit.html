@@ -66,7 +66,6 @@
               </div>
               <br>
               <div id="mobile-additional-information" class="col-10 mx-auto hidden">
-                <h2>Additional Information</h2>
                 <div class="row">
                     <input id="mobile_additional_information" name="mobile_additional_information" minlength="3"
                         maxlength="200" type="text" class="validate" placeholder = "Additional Information">
@@ -90,6 +89,15 @@
                 </div>
             </div>
     </form>
+    <br>
+    <div class="row">
+    <div class="col-6">
+        <u><a href="{{ url_for('workouts')}}" class="link-primary" id="mobile-all-workouts">View all recorded workouts</a></u>
+    </div>
+    <div class="col-6">
+        <u><a href="{{ url_for('profile', username=session['user'])}}" class="link-primary" id="mobile-all-workouts">View your profile</a></u>
+    </div>
+</div>
 </div>
 
 {% endblock %}
