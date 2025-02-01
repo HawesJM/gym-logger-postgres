@@ -1678,3 +1678,15 @@ function skipToComplete() {
 function mobileProfileHide() {
   $("#profile-name").addClass("mobile-profile-details");
 }
+
+// controlling flash messages timing  //
+
+$(function(){
+  var flashDurationInSeconds = 5;
+
+  function removeFlashMessages() {
+    $('.flashes').remove();
+  }
+
+  setTimeout(removeFlashMessages, flashDurationInSeconds * 1000);
+})
