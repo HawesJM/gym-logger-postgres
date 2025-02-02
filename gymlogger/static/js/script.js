@@ -141,6 +141,7 @@ function selectMobileCategoryOne() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#dips-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#low-row-option").remove()
@@ -174,6 +175,8 @@ function selectMobileCategoryOne() {
     $("#dumbbell-fly-option").remove()
     $("#dumbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -195,6 +198,8 @@ function selectMobileCategoryOne() {
   if (mobileCategoryOne == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_one_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -250,6 +255,9 @@ function selectMobileCategoryOne() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -268,6 +276,9 @@ function selectMobileCategoryOne() {
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
     $("#low-row-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#pectoral-fly-option").remove()
     $("#chest-press-option").remove()
     $("#diverging-seated-row-option").remove()
@@ -299,6 +310,8 @@ function selectMobileCategoryTwo() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#low-row-option").remove()
@@ -329,6 +342,8 @@ function selectMobileCategoryTwo() {
     $("#dumbbell-fly-option").remove()
     $("#dumbbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -350,6 +365,8 @@ function selectMobileCategoryTwo() {
   if (mobileCategoryTwo == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_two_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -404,6 +421,9 @@ function selectMobileCategoryTwo() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -432,6 +452,9 @@ function selectMobileCategoryTwo() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#converging-shoulder-press-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
 
 }
 }
@@ -467,6 +490,9 @@ function selectMobileCategoryThree() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -483,6 +509,8 @@ function selectMobileCategoryThree() {
     $("#dumbbell-fly-option").remove()
     $("#dumbbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -504,6 +532,8 @@ function selectMobileCategoryThree() {
   if (mobileCategoryThree == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_three_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -558,6 +588,9 @@ function selectMobileCategoryThree() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -586,6 +619,9 @@ function selectMobileCategoryThree() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#converging-shoulder-press-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
 
 }
 }
@@ -607,6 +643,8 @@ function selectMobileCategoryFour() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#low-row-option").remove()
@@ -637,6 +675,8 @@ function selectMobileCategoryFour() {
     $("#dumbbell-fly-option").remove()
     $("#dumbbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -658,6 +698,8 @@ function selectMobileCategoryFour() {
   if (mobileCategoryFour == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_four_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -712,6 +754,9 @@ function selectMobileCategoryFour() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -740,6 +785,9 @@ function selectMobileCategoryFour() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#converging-shoulder-press-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
 
 }
 }
@@ -761,6 +809,8 @@ function selectMobileCategoryFive() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#low-row-option").remove()
@@ -791,6 +841,8 @@ function selectMobileCategoryFive() {
     $("#dumbbell-fly-option").remove()
     $("#dumbbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -812,6 +864,8 @@ function selectMobileCategoryFive() {
   if (mobileCategoryFive == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_five_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -866,6 +920,9 @@ function selectMobileCategoryFive() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -894,6 +951,9 @@ function selectMobileCategoryFive() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#converging-shoulder-press-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
 
 }
 }
@@ -915,6 +975,8 @@ function selectMobileCategorySix() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#low-row-option").remove()
@@ -945,6 +1007,8 @@ function selectMobileCategorySix() {
     $("#dumbbell-fly-option").remove()
     $("#dumbbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -966,6 +1030,8 @@ function selectMobileCategorySix() {
   if (mobileCategorySix == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_six_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1020,6 +1086,9 @@ function selectMobileCategorySix() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -1048,6 +1117,9 @@ function selectMobileCategorySix() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#converging-shoulder-press-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
 
 }
 }
@@ -1069,6 +1141,8 @@ function selectMobileCategorySeven() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#low-row-option").remove()
@@ -1099,6 +1173,8 @@ function selectMobileCategorySeven() {
     $("#dumbbell-fly-option").remove()
     $("#dumbbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -1120,6 +1196,8 @@ function selectMobileCategorySeven() {
   if (mobileCategorySeven == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_seven_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1174,6 +1252,9 @@ function selectMobileCategorySeven() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -1202,6 +1283,9 @@ function selectMobileCategorySeven() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#converging-shoulder-press-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
 
 }
 }
@@ -1223,6 +1307,8 @@ function selectMobileCategoryEight() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#low-row-option").remove()
@@ -1253,6 +1339,8 @@ function selectMobileCategoryEight() {
     $("#dumbbell-fly-option").remove()
     $("#dumbbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -1274,6 +1362,8 @@ function selectMobileCategoryEight() {
   if (mobileCategoryEight == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_eight_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1328,6 +1418,9 @@ function selectMobileCategoryEight() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -1356,6 +1449,9 @@ function selectMobileCategoryEight() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#converging-shoulder-press-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
 
 }
 }
@@ -1377,6 +1473,8 @@ function selectMobileCategoryNine() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#low-row-option").remove()
@@ -1407,6 +1505,8 @@ function selectMobileCategoryNine() {
     $("#dumbbell-fly-option").remove()
     $("#dumbbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -1428,6 +1528,8 @@ function selectMobileCategoryNine() {
   if (mobileCategoryNine == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_nine_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1482,6 +1584,9 @@ function selectMobileCategoryNine() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -1510,6 +1615,9 @@ function selectMobileCategoryNine() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#converging-shoulder-press-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
 
 }
 }
@@ -1530,6 +1638,8 @@ function selectMobileCategoryTen() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#low-row-option").remove()
@@ -1560,6 +1670,8 @@ function selectMobileCategoryTen() {
     $("#dumbbell-fly-option").remove()
     $("#dumbbell-raise-option").remove()
     $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
     $("#assisted-bench-press-option").remove()
     $("#abdominal-crunch-option").remove()
     $("#lat-pulldown-option").remove()
@@ -1581,6 +1693,8 @@ function selectMobileCategoryTen() {
   if (mobileCategoryTen == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_ten_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
+      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1635,6 +1749,9 @@ function selectMobileCategoryTen() {
     $("#running-machine-option").remove()
     $("#rowing-machine-option").remove()
     $("#shoulder-stretch-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
   }
 
 
@@ -1663,6 +1780,9 @@ function selectMobileCategoryTen() {
     $("#chin-assist-option").remove()
     $("#dip-assist-option").remove()
     $("#converging-shoulder-press-option").remove()
+    $("#dips-option").remove()
+    $("#sit-ups-option").remove()
+    $("#suspended-leg-raises-option").remove()
 
 }
 }
