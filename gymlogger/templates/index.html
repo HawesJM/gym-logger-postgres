@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Introduction and about section -->
+
+
+<div class="row mx-auto shadow-lg p-3 mb-5 bg-white rounded">
+    <div class="">
+        <div class="card-body col-6 mx-auto text-center">
+            <img id="about-image" src="static/media/gym-logger-banner.jpg" alt="gym-logger-hero-image" />
+        </div>
+    </div>
+    <div>
+        <div class="">
+            <div id="about-card" class=" col-md-10 mx-auto text-center">
+                <p id="intro" class="about-text text-center">
+                    <strong>Record your workouts | Build your plan | Share and support
+                        other users</strong><br />
+                    <em>Gym Logger is a responsive and adaptable library where you
+                        can browse, develop and record individual workout plans to
+                        be tried & tested against modern metrics, current
+                        information and community demographics.</em>
+                </p>
+                <a href="{{ url_for('register') }}" id="about-signup" class="btn btn-primary mx-auto text-center">Sign-up for free
+                    access</a>
+            </div>
+        </div>
+</div>
+
+
+    {% endblock %}

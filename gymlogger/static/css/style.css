@@ -10,6 +10,11 @@
   border-top:2px solid #ED6B47;
 }
 
+#about-image {
+  width: 100%;
+  height: 350px;
+  border-radius: 15px;
+}
 
 .btn-info {
     background-color: #28b0b8 !important;

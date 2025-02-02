@@ -11,7 +11,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def home():
-    return render_template("base.html")
+    return render_template("index.html")
 
 @app.route("/register",  methods=["GET", "POST"])
 def register():
@@ -655,7 +655,7 @@ def quick_edit(workout_id):
         workout.exercise_two_total_three = float(request.form.get("exercise_two_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
-        flash("exercise/workout logged")
+        flash("exercise/workout logged!")
         return render_template("quick_edit_2.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises, username=username)
     return render_template("quick_edit.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises, username=username)
 

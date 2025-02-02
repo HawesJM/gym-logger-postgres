@@ -372,8 +372,8 @@ function selectMobileCategoryTwo() {
   if (mobileCategoryTwo == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_two_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
-      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
-      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
+      $("#mobile_exercise_two_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_two_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -407,7 +407,7 @@ function selectMobileCategoryTwo() {
     if (!document.getElementById('assisted-bench-press-option')) {
       $("#mobile_exercise_two_name").append("<option id='abdominal-crunch-option' value= 'Abdominal Crunch'> Abdominal Crunch </option>")
       $("#mobile_exercise_two_name").append("<option id='assisted-bench-press-option' value= 'Assisted Bench Press'> Assisted Bench Press </option>")
-      $("#mobile_exercise_one_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
+      $("#mobile_exercise_two_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
       $("#mobile_exercise_two_name").append("<option id='chest-press-option' value= 'Chest Press'> Chest Press </option>")
       $("#mobile_exercise_two_name").append("<option id='chin-assist-option' value= 'Chin Assist'> Chin Assist </option>")
       $("#mobile_exercise_two_name").append("<option id='converging-shoulder-press-option' value= 'Converging Shoulder Press'> Converging Shoulder Press </option>")
@@ -544,8 +544,8 @@ function selectMobileCategoryThree() {
   if (mobileCategoryThree == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_three_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
-      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
-      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
+      $("#mobile_exercise_three_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_three_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -579,7 +579,7 @@ function selectMobileCategoryThree() {
     if (!document.getElementById('assisted-bench-press-option')) {
       $("#mobile_exercise_three_name").append("<option id='abdominal-crunch-option' value= 'Abdominal Crunch'> Abdominal Crunch </option>")
       $("#mobile_exercise_three_name").append("<option id='assisted-bench-press-option' value= 'Assisted Bench Press'> Assisted Bench Press </option>")
-      $("#mobile_exercise_one_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
+      $("#mobile_exercise_three_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
       $("#mobile_exercise_three_name").append("<option id='chest-press-option' value= 'Chest Press'> Chest Press </option>")
       $("#mobile_exercise_three_name").append("<option id='chin-assist-option' value= 'Chin Assist'> Chin Assist </option>")
       $("#mobile_exercise_three_name").append("<option id='converging-shoulder-press-option' value= 'Converging Shoulder Press'> Converging Shoulder Press </option>")
@@ -715,8 +715,8 @@ function selectMobileCategoryFour() {
   if (mobileCategoryFour == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_four_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
-      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
-      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
+      $("#mobile_exercise_four_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_four_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -750,7 +750,7 @@ function selectMobileCategoryFour() {
     if (!document.getElementById('assisted-bench-press-option')) {
       $("#mobile_exercise_four_name").append("<option id='abdominal-crunch-option' value= 'Abdominal Crunch'> Abdominal Crunch </option>")
       $("#mobile_exercise_four_name").append("<option id='assisted-bench-press-option' value= 'Assisted Bench Press'> Assisted Bench Press </option>")
-      $("#mobile_exercise_one_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
+      $("#mobile_exercise_four_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
       $("#mobile_exercise_four_name").append("<option id='chest-press-option' value= 'Chest Press'> Chest Press </option>")
       $("#mobile_exercise_four_name").append("<option id='chin-assist-option' value= 'Chin Assist'> Chin Assist </option>")
       $("#mobile_exercise_four_name").append("<option id='converging-shoulder-press-option' value= 'Converging Shoulder Press'> Converging Shoulder Press </option>")
@@ -886,8 +886,8 @@ function selectMobileCategoryFive() {
   if (mobileCategoryFive == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_five_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
-      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
-      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
+      $("#mobile_exercise_five_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_five_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -921,7 +921,7 @@ function selectMobileCategoryFive() {
     if (!document.getElementById('assisted-bench-press-option')) {
       $("#mobile_exercise_five_name").append("<option id='abdominal-crunch-option' value= 'Abdominal Crunch'> Abdominal Crunch </option>")
       $("#mobile_exercise_five_name").append("<option id='assisted-bench-press-option' value= 'Assisted Bench Press'> Assisted Bench Press </option>")
-      $("#mobile_exercise_one_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
+      $("#mobile_exercise_five_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
       $("#mobile_exercise_five_name").append("<option id='chest-press-option' value= 'Chest Press'> Chest Press </option>")
       $("#mobile_exercise_five_name").append("<option id='chin-assist-option' value= 'Chin Assist'> Chin Assist </option>")
       $("#mobile_exercise_five_name").append("<option id='converging-shoulder-press-option' value= 'Converging Shoulder Press'> Converging Shoulder Press </option>")
@@ -1057,8 +1057,8 @@ function selectMobileCategorySix() {
   if (mobileCategorySix == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_six_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
-      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
-      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
+      $("#mobile_exercise_six_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_six_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1092,7 +1092,7 @@ function selectMobileCategorySix() {
     if (!document.getElementById('assisted-bench-press-option')) {
       $("#mobile_exercise_six_name").append("<option id='abdominal-crunch-option' value= 'Abdominal Crunch'> Abdominal Crunch </option>")
       $("#mobile_exercise_six_name").append("<option id='assisted-bench-press-option' value= 'Assisted Bench Press'> Assisted Bench Press </option>")
-      $("#mobile_exercise_one_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
+      $("#mobile_exercise_six_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
       $("#mobile_exercise_six_name").append("<option id='chest-press-option' value= 'Chest Press'> Chest Press </option>")
       $("#mobile_exercise_six_name").append("<option id='chin-assist-option' value= 'Chin Assist'> Chin Assist </option>")
       $("#mobile_exercise_six_name").append("<option id='converging-shoulder-press-option' value= 'Converging Shoulder Press'> Converging Shoulder Press </option>")
@@ -1228,8 +1228,8 @@ function selectMobileCategorySeven() {
   if (mobileCategorySeven == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_seven_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
-      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
-      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
+      $("#mobile_exercise_seven_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_seven_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1263,7 +1263,7 @@ function selectMobileCategorySeven() {
     if (!document.getElementById('assisted-bench-press-option')) {
       $("#mobile_exercise_seven_name").append("<option id='abdominal-crunch-option' value= 'Abdominal Crunch'> Abdominal Crunch </option>")
       $("#mobile_exercise_seven_name").append("<option id='assisted-bench-press-option' value= 'Assisted Bench Press'> Assisted Bench Press </option>")
-      $("#mobile_exercise_one_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
+      $("#mobile_exercise_seven_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
       $("#mobile_exercise_seven_name").append("<option id='chest-press-option' value= 'Chest Press'> Chest Press </option>")
       $("#mobile_exercise_seven_name").append("<option id='chin-assist-option' value= 'Chin Assist'> Chin Assist </option>")
       $("#mobile_exercise_seven_name").append("<option id='converging-shoulder-press-option' value= 'Converging Shoulder Press'> Converging Shoulder Press </option>")
@@ -1399,8 +1399,8 @@ function selectMobileCategoryEight() {
   if (mobileCategoryEight == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_eight_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
-      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
-      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
+      $("#mobile_exercise_eight_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_eight_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1434,7 +1434,7 @@ function selectMobileCategoryEight() {
     if (!document.getElementById('assisted-bench-press-option')) {
       $("#mobile_exercise_eight_name").append("<option id='abdominal-crunch-option' value= 'Abdominal Crunch'> Abdominal Crunch </option>")
       $("#mobile_exercise_eight_name").append("<option id='assisted-bench-press-option' value= 'Assisted Bench Press'> Assisted Bench Press </option>")
-      $("#mobile_exercise_one_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
+      $("#mobile_exercise_eight_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
       $("#mobile_exercise_eight_name").append("<option id='chest-press-option' value= 'Chest Press'> Chest Press </option>")
       $("#mobile_exercise_eight_name").append("<option id='chin-assist-option' value= 'Chin Assist'> Chin Assist </option>")
       $("#mobile_exercise_eight_name").append("<option id='converging-shoulder-press-option' value= 'Converging Shoulder Press'> Converging Shoulder Press </option>")
@@ -1570,8 +1570,8 @@ function selectMobileCategoryNine() {
   if (mobileCategoryNine == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_nine_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
-      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
-      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
+      $("#mobile_exercise_nine_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_nine_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1740,8 +1740,8 @@ function selectMobileCategoryTen() {
   if (mobileCategoryTen == "Calisthenics") {
     if (!document.getElementById('dips-option')) {
       $("#mobile_exercise_ten_name").append("<option id='dips-option' value= 'Dips'> Dips </option>")
-      $("#mobile_exercise_one_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
-      $("#mobile_exercise_one_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
+      $("#mobile_exercise_ten_name").append("<option id='sit-ups-option' value= 'Sit Ups'> Sit Ups </option>")
+      $("#mobile_exercise_ten_name").append("<option id='suspended-leg-raises-option' value= 'Suspended Leg Raises'> Suspended Leg Raises </option>")
     }
     $("#bench-press-option").remove()
     $("#dumbbell-curls-option").remove()
@@ -1775,7 +1775,7 @@ function selectMobileCategoryTen() {
     if (!document.getElementById('assisted-bench-press-option')) {
       $("#mobile_exercise_ten_name").append("<option id='abdominal-crunch-option' value= 'Abdominal Crunch'> Abdominal Crunch </option>")
       $("#mobile_exercise_ten_name").append("<option id='assisted-bench-press-option' value= 'Assisted Bench Press'> Assisted Bench Press </option>")
-      $("#mobile_exercise_one_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
+      $("#mobile_exercise_ten_name").append("<option id='cable-fly-option' value= 'Cable Fly'> Cable Fly </option>")
       $("#mobile_exercise_ten_name").append("<option id='chest-press-option' value= 'Chest Press'> Chest Press </option>")
       $("#mobile_exercise_ten_name").append("<option id='chin-assist-option' value= 'Chin Assist'> Chin Assist </option>")
       $("#mobile_exercise_ten_name").append("<option id='converging-shoulder-press-option' value= 'Converging Shoulder Press'> Converging Shoulder Press </option>")
