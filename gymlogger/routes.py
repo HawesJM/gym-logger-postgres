@@ -678,6 +678,7 @@ def quick_edit_two(workout_id):
         workout.exercise_three_total_three = float(request.form.get("exercise_three_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
+        flash("exercise/workout logged!")
         return render_template("quick_edit_3.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_2.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
@@ -700,6 +701,7 @@ def quick_edit_three(workout_id):
         workout.exercise_four_total_three = float(request.form.get("exercise_four_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
+        flash("exercise/workout logged!")
         return render_template("quick_edit_4.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_3.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
@@ -722,6 +724,7 @@ def quick_edit_four(workout_id):
         workout.exercise_five_total_three = float(request.form.get("exercise_five_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
+        flash("exercise/workout logged!")
         return render_template("quick_edit_5.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_4.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
@@ -744,6 +747,7 @@ def quick_edit_five(workout_id):
         workout.exercise_six_total_three = float(request.form.get("exercise_six_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
+        flash("exercise/workout logged!")
         return render_template("quick_edit_6.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_5.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
@@ -766,6 +770,7 @@ def quick_edit_six(workout_id):
         workout.exercise_seven_total_three = float(request.form.get("exercise_seven_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
+        flash("exercise/workout logged!")
         return render_template("quick_edit_7.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_6.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
@@ -788,6 +793,7 @@ def quick_edit_seven(workout_id):
         workout.exercise_eight_total_three = float(request.form.get("exercise_eight_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
+        flash("exercise/workout logged!")
         return render_template("quick_edit_8.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_7.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
@@ -810,6 +816,7 @@ def quick_edit_eight(workout_id):
         workout.exercise_nine_total_three = float(request.form.get("exercise_nine_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
+        flash("exercise/workout logged!")
         return render_template("quick_edit_9.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_8.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
@@ -836,6 +843,7 @@ def quick_edit_nine(workout_id):
         workout.exercise_ten_total_three = float(request.form.get("exercise_ten_total_three")),
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
+        flash("exercise/workout logged!")
         return render_template("quick_edit_10.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_9.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
