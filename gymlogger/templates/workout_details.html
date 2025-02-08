@@ -2,7 +2,6 @@
 {% block content %}
 
 <!-- View Workout Details Container-->
-
 <div id="view-record-container" class="card text-center col-sm-12">
     <div sm-12>
         <br>
@@ -318,15 +317,20 @@
 
     </div>
     <div class="row">
-       <div class="col-3">
-        <a href="{{ url_for('edit_workout', workout_id=workout.id) }}" class="btn btn-info col-12">Edit</a>
+       <div class="col-4">
+        <a href="{{ url_for('edit_workout', workout_id=workout.id) }}" class="btn btn-info col-10">Edit</a>
        </div>
-       <div class="col-6">
-
+       {% if workout.is_mobile %}
+       <div class="col-4">
+        <a href="{{ url_for('save_workout', workout_id=workout.id) }}" class="submit btn btn-warning col-10">Copy Mobile Workout</a>
        </div>
-       <div class="col-3">
-        <a href="{{ url_for('delete_workout', workout_id=workout.id) }}" class="btn btn-danger col-12">Delete</a>
+       {% else %}
+       <div class="col-4">
+       </div>
+       {% endif %}
+       <div class="col-4">
+        <a href="{{ url_for('delete_workout', workout_id=workout.id) }}" class="btn btn-danger col-10">Delete</a>
        </div>
     </div>
-        
+</form>       
     {% endblock %}

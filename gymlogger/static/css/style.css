@@ -27,6 +27,21 @@
   margin-bottom: 10px;
 }
 
+.btn-danger:hover {
+	transform:scale(1.1,1.1);
+	box-shadow: 0 5px 10px -5px #ED6B47 !important;
+  }
+
+.btn-warning {
+	margin-top: 5px;
+	margin-bottom: 10px;
+  }
+
+.btn-warning:hover {
+	transform:scale(1.1,1.1);
+	box-shadow: 0 5px 10px -5px #ED6B47 !important;
+  }
+
 .btn-info:hover {
     background-color: #28b0b8;
     box-shadow: 0 5px 10px -5px #ED6B47 !important;
