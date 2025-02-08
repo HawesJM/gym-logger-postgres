@@ -78,8 +78,12 @@ def profile(username):
     categories = list(Category.query.order_by(Category.category_name).all())
     paginated_workouts = Workout.query.paginate(page=page, per_page=6, error_out=False)
     username = session["user"]
+    current_user_workouts = list(Workout.query.filter(Workout.created_by==session["user"]))
+    grand_total_workouts = len(workouts)
+    print(grand_total_workouts)
+    user_total_workouts = len(current_user_workouts)
     if session["user"]:
-        return render_template("profile.html", categories=categories, username=username, workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts)
+        return render_template("profile.html", categories=categories, username=username, workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts, current_user_workouts=current_user_workouts, user_total_workouts = user_total_workouts)
 
 
     return redirect(url_for("signin"))
