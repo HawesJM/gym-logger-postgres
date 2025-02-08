@@ -3,827 +3,794 @@
 
 <!-- Edit Workout Details Container-->
 
-<div class="card text-center">
-    <h3>{{ workout.workout_title
-    }} {{ workout.workout_date_time
-    }} {{ workout.workout_location
-    }}</h3>
-    <form class="col s12" method="POST" action="{{ url_for('edit_workout', workout_id=workout.id) }}">
+<form class="col s12" method="POST" action="{{ url_for('edit_workout', workout_id=workout.id) }}">
+<br>
+<div id="view-record-container" class="card text-center col-sm-12">
+    <br>
+    <div class="row">
+        <div class="col-sm-4">
+            <i class="fas fa-edit"></i> Title: <input id="edit_workout_title" name="edit_workout_title" minlength="3" maxlength="200" type="text"
+            class="validate col-10 " value="{{ workout.workout_title
+            }}">
 
-        <!-- Edit Workout Name Container-->
+        </div>
 
-        <div id="view-record-container" class="card text-center">
-            <div class="input-field col-12">
-                <label for="workout_title">
-                    <h4>Edit Workout Title</h4>
-                </label>
-                <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                    data-mdb-target="#edit_workout_title" aria-expanded="false" aria-controls="edit_workout_title">
-                    <i class="fa-solid fa-2x fa-caret-down"></i>
-                </button>
-                <input id="edit_workout_title" name="workout_title" minlength="3" maxlength="25" type="text"
-                    class="validate col-10 collapse" value="{{ workout.workout_title
-                    }}">
+    <!--Edit Workout Date-->
 
-            </div>
+    <div id="view-workout-date" class="col-sm-4">
+        <i class="fas fa-edit"></i> Date: <input id="edit_workout_date_time" name="workout_date_time" type="datetime-local"
+        class="validate col-10 " required value="{{ workout.workout_date_time
+}}">
+    </div>
 
-            <!-- Edit Workout Location Container-->
+        <!--Edit Workout Location-->
 
-            <div class="input-field col-12">
-                <label for="workout_title">
-                    <h4>Edit Workout Location</h4>
-                </label>
-                <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                    data-mdb-target="#edit_workout_location" aria-expanded="false"
-                    aria-controls="edit_workout_location">
-                    <i class="fa-solid fa-2x fa-caret-down"></i>
-                </button>
-                <input id="edit_workout_location" name="workout_location" minlength="3" maxlength="25" type="text"
-                    class="validate col-10 collapse" value="{{ workout.workout_location
-                    }}">
+        <div id="view-workout-location" class="col-sm-4">
+            <i class="fas fa-edit"></i> Loc: <input id="edit_workout_location" name="workout_location" minlength="3" maxlength="25" type="text"
+            class="validate col-10 " value="{{ workout.workout_location
+            }}">
+        </div>
+    </div>
+        <hr>
 
-            </div>
+    <!--Workout Information-->
 
-            <!--Edit Workout Date-->
+   <!--Edit Workout Exercises Line 1-->
+   <div id="edit-workouts-container" class="">
+       <label for="edit-exercise-one">
+           <h4><i class="fas fa-edit"></i> Exercise One</h4>
+       </label>
+       <button id="edit_workout_one_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-one" aria-expanded="false" aria-controls="edit-exercise-one">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-one">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="edit_exercise_one_category" name="edit_exercise_one_category" minlength="3"
+                   maxlength="25" type="text" class="validate col-12 text-center" required>
+                   <option selected value> -- {{workout.exercise_one_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="edit_exercise_one_name" name="edit_exercise_one_name" minlength="3"
+                   maxlength="50" type="text" class="validate col-12 text-center" required>
+                   <option selected value> -- {{workout.exercise_one_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_one_modifier_one}})</h6>
+               <select id="exercise_one_modifier_one" name="exercise_one_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate" required>
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_one_total_one"
+                   name="exercise_one_total_one" value="{{workout.exercise_one_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_one_modifier_two}})</h6>
+               <select id="exercise_one_modifier_two" name="exercise_one_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate" required>
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_one_total_two"
+                   name="exercise_one_total_two" value="{{workout.exercise_one_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_one_modifier_three}})</h6>
+               <select id="exercise_one_modifier_three" name="exercise_one_modifier_three" minlength="3"
+                   maxlength="25" type="text" class="validate" required>
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_one_total_three"
+                   name="exercise_one_total_three" value="{{workout.exercise_one_total_three}}">
+           </div>
+       </div>
 
-            <div class="row">
-                <div class="input-field col-12">
-                    <label for="workout_date_time">
-                        <h4>Edit Workout Date & Time</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit_workout_date_time" aria-expanded="false"
-                        aria-controls="edit_workout_date_time">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <input id="edit_workout_date_time" name="workout_date_time" type="datetime-local"
-                        class="validate col-10 collapse" required value="{{ workout.workout_date_time
-                }}">
-                </div>
+       <!--Edit Workout Exercises Line 2-->
+       <br>
+       <label for="edit-exercise-two">
+           <h4><i class="fas fa-edit"></i> Exercise Two</h4>
+       </label>
+       <button id="edit_workout_two_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-two" aria-expanded="false" aria-controls="edit-exercise-two">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-two">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="exercise_two_category" name="exercise_two_category" minlength="3" maxlength="25"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_two_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="exercise_two_name" name="exercise_two_name" minlength="3" maxlength="50"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_two_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_two_modifier_one}})</h6>
+               <select id="exercise_two_modifier_one" name="exercise_two_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_two_total_one"
+                   name="exercise_two_total_one" value="{{workout.exercise_two_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_two_modifier_two}})</h6>
+               <select id="exercise_two_modifier_two" name="exercise_two_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_two_total_two"
+                   name="exercise_two_total_two" value="{{workout.exercise_two_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_two_modifier_three}})</h6>
+               <select id="exercise_two_modifier_three" name="exercise_two_modifier_three" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_two_total_three"
+                   name="exercise_two_total_three" value="{{workout.exercise_two_total_three}}">
+           </div>
+       </div>
 
-                <!--Workout Information-->
+       <!--Edit Workout Exercises Line 3-->
+       <br>
+       <label for="edit-exercise-three">
+           <h4><i class="fas fa-edit"></i> Exercise Three</h4>
+       </label>
+       <button id="edit_workout_three_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-three" aria-expanded="false"
+           aria-controls="edit-exercise-three">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-three">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="exercise_three_category" name="exercise_three_category" minlength="3"
+                   maxlength="25" type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_three_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="exercise_three_name" name="exercise_three_name" minlength="3" maxlength="50"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_three_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_three_modifier_one}})</h6>
+               <select id="exercise_three_modifier_one" name="exercise_three_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_three_total_one"
+                   name="exercise_three_total_one" value="{{workout.exercise_three_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_three_modifier_two}})</h6>
+               <select id="exercise_three_modifier_two" name="exercise_three_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_three_total_two"
+                   name="exercise_three_total_two" value="{{workout.exercise_three_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_three_modifier_three}})</h6>
+               <select id="exercise_three_modifier_three" name="exercise_three_modifier_three"
+                   minlength="3" maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_three_total_three"
+                   name="exercise_three_total_three" value="{{workout.exercise_three_total_three}}">
+           </div>
+       </div>
 
-                <!--Edit Workout Exercises Line 1-->
-                <hr>
-                <div id="edit-workouts-container" class="">
-                    <label for="edit-exercise-one">
-                        <h4>Edit Exercise One</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-one" aria-expanded="false" aria-controls="edit-exercise-one">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-one">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="edit_exercise_one_category" name="edit_exercise_one_category" minlength="3"
-                                maxlength="25" type="text" class="validate col-12 text-center" required>
-                                <option disabled selected value> -- {{workout.exercise_one_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="edit_exercise_one_name" name="edit_exercise_one_name" minlength="3"
-                                maxlength="50" type="text" class="validate col-12 text-center" required>
-                                <option disabled selected value> -- {{workout.exercise_one_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_one_modifier_one}})</h6>
-                            <select id="exercise_one_modifier_one" name="exercise_one_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate" required>
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_one_total_one"
-                                name="exercise_one_total_one" value="{{workout.exercise_one_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_one_modifier_two}})</h6>
-                            <select id="exercise_one_modifier_one" name="exercise_one_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate" required>
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_one_total_two"
-                                name="exercise_one_total_two" value="{{workout.exercise_one_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_one_modifier_three}})</h6>
-                            <select id="exercise_one_modifier_three" name="exercise_one_modifier_three" minlength="3"
-                                maxlength="25" type="text" class="validate" required>
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_one_total_three"
-                                name="exercise_one_total_three" value="{{workout.exercise_one_total_three}}">
-                        </div>
-                    </div>
+       <!--Edit Workout Exercises Line 4-->
 
-                    <!--Edit Workout Exercises Line 2-->
-                    <br>
-                    <label for="edit-exercise-two">
-                        <h4>Edit Exercise Two</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-two" aria-expanded="false" aria-controls="edit-exercise-two">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-two">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="exercise_two_category" name="exercise_two_category" minlength="3" maxlength="25"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_two_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="exercise_two_name" name="exercise_two_name" minlength="3" maxlength="50"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_two_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_two_modifier_one}})</h6>
-                            <select id="exercise_two_modifier_one" name="exercise_two_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_two_total_one"
-                                name="exercise_two_total_one" value="{{workout.exercise_two_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_two_modifier_two}})</h6>
-                            <select id="exercise_two_modifier_two" name="exercise_two_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_two_total_two"
-                                name="exercise_two_total_two" value="{{workout.exercise_two_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_two_modifier_three}})</h6>
-                            <select id="exercise_two_modifier_three" name="exercise_two_modifier_three" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_two_total_three"
-                                name="exercise_two_total_three" value="{{workout.exercise_two_total_three}}">
-                        </div>
-                    </div>
-
-                    <!--Edit Workout Exercises Line 3-->
-                    <br>
-                    <label for="edit-exercise-three">
-                        <h4>Edit Exercise Three</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-three" aria-expanded="false"
-                        aria-controls="edit-exercise-three">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-three">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="exercise_three_category" name="exercise_three_category" minlength="3"
-                                maxlength="25" type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_three_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="exercise_three_name" name="exercise_three_name" minlength="3" maxlength="50"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_three_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_three_modifier_one}})</h6>
-                            <select id="exercise_three_modifier_one" name="exercise_three_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_three_total_one"
-                                name="exercise_three_total_one" value="{{workout.exercise_three_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_three_modifier_two}})</h6>
-                            <select id="exercise_three_modifier_two" name="exercise_three_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_three_total_two"
-                                name="exercise_three_total_two" value="{{workout.exercise_three_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_three_modifier_three}})</h6>
-                            <select id="exercise_three_modifier_three" name="exercise_three_modifier_three"
-                                minlength="3" maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_three_total_three"
-                                name="exercise_three_total_three" value="{{workout.exercise_three_total_three}}">
-                        </div>
-                    </div>
-
-                    <!--Edit Workout Exercises Line 4-->
-
-                    <br>
-                    <label for="edit-exercise-four">
-                        <h4>Edit Exercise Four</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-four" aria-expanded="false" aria-controls="edit-exercise-four">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-four">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="exercise_four_category" name="exercise_four_category" minlength="3"
-                                maxlength="25" type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_four_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="exercise_four_name" name="exercise_four_name" minlength="3" maxlength="50"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_four_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_four_modifier_one}})</h6>
-                            <select id="exercise_four_modifier_one" name="exercise_four_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_four_total_one"
-                                name="exercise_four_total_one" value="{{workout.exercise_four_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_four_modifier_two}})</h6>
-                            <select id="exercise_four_modifier_two" name="exercise_four_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_four_total_two"
-                                name="exercise_four_total_two" value="{{workout.exercise_four_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_four_modifier_three}})</h6>
-                            <select id="exercise_four_modifier_three" name="exercise_four_modifier_three" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_four_total_three"
-                                name="exercise_four_total_three" value="{{workout.exercise_four_total_three}}">
-                        </div>
-                    </div>
+       <br>
+       <label for="edit-exercise-four">
+           <h4><i class="fas fa-edit"></i> Exercise Four</h4>
+       </label>
+       <button id="edit_workout_four_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-four" aria-expanded="false" aria-controls="edit-exercise-four">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-four">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="exercise_four_category" name="exercise_four_category" minlength="3"
+                   maxlength="25" type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_four_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="exercise_four_name" name="exercise_four_name" minlength="3" maxlength="50"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_four_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_four_modifier_one}})</h6>
+               <select id="exercise_four_modifier_one" name="exercise_four_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_four_total_one"
+                   name="exercise_four_total_one" value="{{workout.exercise_four_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_four_modifier_two}})</h6>
+               <select id="exercise_four_modifier_two" name="exercise_four_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_four_total_two"
+                   name="exercise_four_total_two" value="{{workout.exercise_four_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_four_modifier_three}})</h6>
+               <select id="exercise_four_modifier_three" name="exercise_four_modifier_three" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_four_total_three"
+                   name="exercise_four_total_three" value="{{workout.exercise_four_total_three}}">
+           </div>
+       </div>
 
 
-                    <!--Edit Workout Exercises Line 5-->
+       <!--Edit Workout Exercises Line 5-->
 
-                    <br>
-                    <label for="edit-exercise-five">
-                        <h4>Edit Exercise Five</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-five" aria-expanded="false" aria-controls="edit-exercise-five">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-five">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="exercise_five_category" name="exercise_five_category" minlength="3"
-                                maxlength="25" type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_five_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="exercise_five_name" name="exercise_five_name" minlength="3" maxlength="50"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_five_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_five_modifier_one}})</h6>
-                            <select id="exercise_five_modifier_one" name="exercise_five_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_five_total_one"
-                                name="exercise_five_total_one" value="{{workout.exercise_five_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_five_modifier_two}})</h6>
-                            <select id="exercise_five_modifier_two" name="exercise_five_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_five_total_two"
-                                name="exercise_five_total_two" value="{{workout.exercise_five_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_five_modifier_three}})</h6>
-                            <select id="exercise_five_modifier_three" name="exercise_five_modifier_three" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_five_total_three"
-                                name="exercise_five_total_three" value="{{workout.exercise_five_total_three}}">
-                        </div>
-                    </div>
+       <br>
+       <label for="edit-exercise-five">
+           <h4><i class="fas fa-edit"></i> Exercise Five</h4>
+       </label>
+       <button id="edit_workout_five_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-five" aria-expanded="false" aria-controls="edit-exercise-five">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-five">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="exercise_five_category" name="exercise_five_category" minlength="3"
+                   maxlength="25" type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_five_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="exercise_five_name" name="exercise_five_name" minlength="3" maxlength="50"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_five_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_five_modifier_one}})</h6>
+               <select id="exercise_five_modifier_one" name="exercise_five_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_five_total_one"
+                   name="exercise_five_total_one" value="{{workout.exercise_five_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_five_modifier_two}})</h6>
+               <select id="exercise_five_modifier_two" name="exercise_five_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_five_total_two"
+                   name="exercise_five_total_two" value="{{workout.exercise_five_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_five_modifier_three}})</h6>
+               <select id="exercise_five_modifier_three" name="exercise_five_modifier_three" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_five_total_three"
+                   name="exercise_five_total_three" value="{{workout.exercise_five_total_three}}">
+           </div>
+       </div>
 
 
 
-                    <!--Edit Workout Exercises Line 6-->
+       <!--Edit Workout Exercises Line 6-->
 
-                    <br>
-                    <label for="edit-exercise-six">
-                        <h4>Edit Exercise Six</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-six" aria-expanded="false" aria-controls="edit-exercise-six">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-six">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="exercise_six_category" name="exercise_six_category" minlength="3" maxlength="25"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_six_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="exercise_six_name" name="exercise_six_name" minlength="3" maxlength="50"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_six_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_six_modifier_one}})</h6>
-                            <select id="exercise_six_modifier_one" name="exercise_six_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_six_total_one"
-                                name="exercise_six_total_one" value="{{workout.exercise_six_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_six_modifier_two}})</h6>
-                            <select id="exercise_six_modifier_two" name="exercise_six_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_six_total_two"
-                                name="exercise_six_total_two" value="{{workout.exercise_six_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_six_modifier_three}})</h6>
-                            <select id="exercise_six_modifier_three" name="exercise_six_modifier_three" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_six_total_three"
-                                name="exercise_six_total_three" value="{{workout.exercise_six_total_three}}">
-                        </div>
-                    </div>
-
-
-                    <!--Edit Workout Exercises Line 7-->
-                    <br>
-                    <label for="edit-exercise-seven">
-                        <h4>Edit Exercise Seven</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-seven" aria-expanded="false"
-                        aria-controls="edit-exercise-seven">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-seven">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="exercise_seven_category" name="exercise_seven_category" minlength="3"
-                                maxlength="25" type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_seven_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="exercise_seven_name" name="exercise_seven_name" minlength="3" maxlength="50"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_seven_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_seven_modifier_one}})</h6>
-                            <select id="exercise_seven_modifier_one" name="exercise_seven_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_seven_total_one"
-                                name="exercise_seven_total_one" value="{{workout.exercise_seven_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_seven_modifier_two}})</h6>
-                            <select id="exercise_seven_modifier_two" name="exercise_seven_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_seven_total_two"
-                                name="exercise_seven_total_two" value="{{workout.exercise_seven_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_seven_modifier_three}})</h6>
-                            <select id="exercise_seven_modifier_three" name="exercise_seven_modifier_three"
-                                minlength="3" maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_seven_total_three"
-                                name="exercise_seven_total_three" value="{{workout.exercise_seven_total_three}}">
-                        </div>
-                    </div>
+       <br>
+       <label for="edit-exercise-six">
+           <h4><i class="fas fa-edit"></i> Exercise Six</h4>
+       </label>
+       <button id="edit_workout_six_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-six" aria-expanded="false" aria-controls="edit-exercise-six">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-six">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="exercise_six_category" name="exercise_six_category" minlength="3" maxlength="25"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_six_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="exercise_six_name" name="exercise_six_name" minlength="3" maxlength="50"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_six_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_six_modifier_one}})</h6>
+               <select id="exercise_six_modifier_one" name="exercise_six_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_six_total_one"
+                   name="exercise_six_total_one" value="{{workout.exercise_six_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_six_modifier_two}})</h6>
+               <select id="exercise_six_modifier_two" name="exercise_six_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_six_total_two"
+                   name="exercise_six_total_two" value="{{workout.exercise_six_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_six_modifier_three}})</h6>
+               <select id="exercise_six_modifier_three" name="exercise_six_modifier_three" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_six_total_three"
+                   name="exercise_six_total_three" value="{{workout.exercise_six_total_three}}">
+           </div>
+       </div>
 
 
-                    <!--Edit Workout Exercises Line 8-->
+       <!--Edit Workout Exercises Line 7-->
+       <br>
+       <label for="edit-exercise-seven">
+           <h4><i class="fas fa-edit"></i> Exercise Seven</h4>
+       </label>
+       <button id="edit_workout_seven_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-seven" aria-expanded="false"
+           aria-controls="edit-exercise-seven">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-seven">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="exercise_seven_category" name="exercise_seven_category" minlength="3"
+                   maxlength="25" type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_seven_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="exercise_seven_name" name="exercise_seven_name" minlength="3" maxlength="50"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_seven_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_seven_modifier_one}})</h6>
+               <select id="exercise_seven_modifier_one" name="exercise_seven_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_seven_total_one"
+                   name="exercise_seven_total_one" value="{{workout.exercise_seven_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_seven_modifier_two}})</h6>
+               <select id="exercise_seven_modifier_two" name="exercise_seven_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_seven_total_two"
+                   name="exercise_seven_total_two" value="{{workout.exercise_seven_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_seven_modifier_three}})</h6>
+               <select id="exercise_seven_modifier_three" name="exercise_seven_modifier_three"
+                   minlength="3" maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_seven_total_three"
+                   name="exercise_seven_total_three" value="{{workout.exercise_seven_total_three}}">
+           </div>
+       </div>
 
-                    <br>
-                    <label for="edit-exercise-eight">
-                        <h4>Edit Exercise Eight</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-eight" aria-expanded="false"
-                        aria-controls="edit-exercise-eight">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-eight">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="exercise_eight_category" name="exercise_eight_category" minlength="3"
-                                maxlength="25" type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_eight_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="exercise_eight_name" name="exercise_eight_name" minlength="3" maxlength="50"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_eight_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_eight_modifier_one}})</h6>
-                            <select id="exercise_eight_modifier_one" name="exercise_eight_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_eight_total_one"
-                                name="exercise_eight_total_one" value="{{workout.exercise_eight_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_eight_modifier_two}})</h6>
-                            <select id="exercise_eight_modifier_two" name="exercise_eight_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_eight_total_two"
-                                name="exercise_eight_total_two" value="{{workout.exercise_eight_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_eight_modifier_three}})</h6>
-                            <select id="exercise_eight_modifier_three" name="exercise_eight_modifier_three"
-                                minlength="3" maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_eight_total_three"
-                                name="exercise_eight_total_three" value="{{workout.exercise_eight_total_three}}">
-                        </div>
-                    </div>
 
-                    <!--Edit Workout Exercises Line 9-->
+       <!--Edit Workout Exercises Line 8-->
 
-                    <br>
-                    <label for="edit-exercise-nine">
-                        <h4>Edit Exercise Nine</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-nine" aria-expanded="false" aria-controls="edit-exercise-nine">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-nine">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="exercise_nine_category" name="exercise_nine_category" minlength="3"
-                                maxlength="25" type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_nine_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="exercise_nine_name" name="exercise_nine_name" minlength="3" maxlength="50"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_nine_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_nine_modifier_one}})</h6>
-                            <select id="exercise_nine_modifier_one" name="exercise_nine_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_nine_total_one"
-                                name="exercise_nine_total_one" value="{{workout.exercise_nine_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_nine_modifier_two}})</h6>
-                            <select id="exercise_nine_modifier_two" name="exercise_nine_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_nine_total_two"
-                                name="exercise_nine_total_two" value="{{workout.exercise_nine_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_nine_modifier_three}})</h6>
-                            <select id="exercise_nine_modifier_three" name="exercise_nine_modifier_three" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_nine_total_three"
-                                name="exercise_nine_total_three" value="{{workout.exercise_nine_total_three}}">
-                        </div>
-                    </div>
+       <br>
+       <label for="edit-exercise-eight">
+           <h4><i class="fas fa-edit"></i> Exercise Eight</h4>
+       </label>
+       <button id="edit_workout_eight_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-eight" aria-expanded="false"
+           aria-controls="edit-exercise-eight">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-eight">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="exercise_eight_category" name="exercise_eight_category" minlength="3"
+                   maxlength="25" type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_eight_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="exercise_eight_name" name="exercise_eight_name" minlength="3" maxlength="50"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_eight_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_eight_modifier_one}})</h6>
+               <select id="exercise_eight_modifier_one" name="exercise_eight_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_eight_total_one"
+                   name="exercise_eight_total_one" value="{{workout.exercise_eight_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_eight_modifier_two}})</h6>
+               <select id="exercise_eight_modifier_two" name="exercise_eight_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_eight_total_two"
+                   name="exercise_eight_total_two" value="{{workout.exercise_eight_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_eight_modifier_three}})</h6>
+               <select id="exercise_eight_modifier_three" name="exercise_eight_modifier_three"
+                   minlength="3" maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_eight_total_three"
+                   name="exercise_eight_total_three" value="{{workout.exercise_eight_total_three}}">
+           </div>
+       </div>
 
-                    <!--Edit Workout Exercises Line 10-->
+       <!--Edit Workout Exercises Line 9-->
 
-                    <br>
-                    <label for="edit-exercise-ten">
-                        <h4>Edit Exercise Ten</h4>
-                    </label>
-                    <button class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
-                        data-mdb-target="#edit-exercise-ten" aria-expanded="false" aria-controls="edit-exercise-ten">
-                        <i class="fa-solid fa-2x fa-caret-down"></i>
-                    </button>
-                    <div class="col-12 collapse" id="edit-exercise-ten">
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Category</h5>
-                            <select id="exercise_ten_category" name="exercise_ten_category" minlength="3" maxlength="25"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_ten_category}} -- </option>
-                                {% for category in categories %}
-                                <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-3 gx-0">
-                            <h5>Specfic Exercise</h5>
-                            <select id="exercise_ten_name" name="exercise_ten_name" minlength="3" maxlength="50"
-                                type="text" class="validate col-12 text-center">
-                                <option selected value> -- {{workout.exercise_ten_name}} -- </option>
-                                {% for exercise in exercises %}
-                                <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total One</h5>
-                            <h6>({{workout.exercise_ten_modifier_one}})</h6>
-                            <select id="exercise_ten_modifier_one" name="exercise_ten_modifier_one" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_ten_total_one"
-                                name="exercise_ten_total_one" value="{{workout.exercise_ten_total_one}}">
-                        </div>
-                        <div class="btn col-md-2 gx-0">
-                            <h5>Total Two</h5>
-                            <h6>({{workout.exercise_nine_modifier_two}})</h6>
-                            <select id="exercise_ten_modifier_two" name="exercise_ten_modifier_two" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_ten_total_two"
-                                name="exercise_ten_total_two" value="{{workout.exercise_ten_total_two}}">
-                        </div>
-                        <div class=" btn col-md-2 gx-0">
-                            <h5>Total Three</h5>
-                            <h6>({{workout.exercise_nine_modifier_three}})</h6>
-                            <select id="exercise_ten_modifier_three" name="exercise_ten_modifier_three" minlength="3"
-                                maxlength="25" type="text" class="validate">
-                                <option selected disabled value> -- Confirm Modifier -- </option>
-                                {% for modifier in modifiers %}
-                                <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
-                                {% endfor %}
-                            </select>
-                            <input type="text" class="form-control" id="exercise_ten_total_three"
-                                name="exercise_ten_total_three" value="{{workout.exercise_ten_total_three}}">
-                        </div>
-                    </div>
+       <br>
+       <label for="edit-exercise-nine">
+           <h4><i class="fas fa-edit"></i> Exercise Nine</h4>
+       </label>
+       <button id="edit_workout_nine_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-nine" aria-expanded="false" aria-controls="edit-exercise-nine">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-nine">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="exercise_nine_category" name="exercise_nine_category" minlength="3"
+                   maxlength="25" type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_nine_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="exercise_nine_name" name="exercise_nine_name" minlength="3" maxlength="50"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_nine_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_nine_modifier_one}})</h6>
+               <select id="exercise_nine_modifier_one" name="exercise_nine_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_nine_total_one"
+                   name="exercise_nine_total_one" value="{{workout.exercise_nine_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_nine_modifier_two}})</h6>
+               <select id="exercise_nine_modifier_two" name="exercise_nine_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_nine_total_two"
+                   name="exercise_nine_total_two" value="{{workout.exercise_nine_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_nine_modifier_three}})</h6>
+               <select id="exercise_nine_modifier_three" name="exercise_nine_modifier_three" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_nine_total_three"
+                   name="exercise_nine_total_three" value="{{workout.exercise_nine_total_three}}">
+           </div>
+       </div>
 
-                    <hr>
-                    <!--Edit Workout Additional Information-->
+       <!--Edit Workout Exercises Line 10-->
 
-                    {% if workout.additional_information %}
-                    <div class="col-12">
-                        <span><label for="view-additional-info"></label>
-                            Additional Information</span>
-                        <input type="text" class="form-control" id="view-additional-info" name="additional-information"
-                            minlength="5" maxlength="100" value="{{ workout.additional_information}}">
-                        </input>
-                    </div>
-                    {% endif %}
-                
-                    <!--workout visibility function -->
+       <br>
+       <label for="edit-exercise-ten">
+           <h4><i class="fas fa-edit"></i> Exercise Ten</h4>
+       </label>
+       <button id="edit_workout_ten_expand" class="blank-button" type="button" data-mdb-collapse-init data-mdb-ripple-init
+           data-mdb-target="#edit-exercise-ten" aria-expanded="false" aria-controls="edit-exercise-ten">
+           <i class="fa-solid fa-2x fa-caret-down"></i>
+       </button>
+       <div class="col-12 collapse" id="edit-exercise-ten">
+           <div class="btn col-md-2 gx-0">
+               <h5>Category</h5>
+               <select id="exercise_ten_category" name="exercise_ten_category" minlength="3" maxlength="25"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_ten_category}} -- </option>
+                   {% for category in categories %}
+                   <option value="{{ category.category_name }}"> {{ category.category_name}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-3 gx-0">
+               <h5>Specfic Exercise</h5>
+               <select id="exercise_ten_name" name="exercise_ten_name" minlength="3" maxlength="50"
+                   type="text" class="validate col-12 text-center">
+                   <option selected value> -- {{workout.exercise_ten_name}} -- </option>
+                   {% for exercise in exercises %}
+                   <option value="{{ exercise.exercise_title }}"> {{ exercise.exercise_title}} </option>
+                   {% endfor %}
+               </select>
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total One</h5>
+               <h6>({{workout.exercise_ten_modifier_one}})</h6>
+               <select id="exercise_ten_modifier_one" name="exercise_ten_modifier_one" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_ten_total_one"
+                   name="exercise_ten_total_one" value="{{workout.exercise_ten_total_one}}">
+           </div>
+           <div class="btn col-md-2 gx-0">
+               <h5>Total Two</h5>
+               <h6>({{workout.exercise_nine_modifier_two}})</h6>
+               <select id="exercise_ten_modifier_two" name="exercise_ten_modifier_two" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_ten_total_two"
+                   name="exercise_ten_total_two" value="{{workout.exercise_ten_total_two}}">
+           </div>
+           <div class=" btn col-md-2 gx-0">
+               <h5>Total Three</h5>
+               <h6>({{workout.exercise_nine_modifier_three}})</h6>
+               <select id="exercise_ten_modifier_three" name="exercise_ten_modifier_three" minlength="3"
+                   maxlength="25" type="text" class="validate">
+                   <option selected disabled value> -- Confirm Modifier -- </option>
+                   {% for modifier in modifiers %}
+                   <option value="{{ modifier.modifier_name }}"> {{ modifier.modifier_name}} </option>
+                   {% endfor %}
+               </select>
+               <input type="text" class="form-control" id="exercise_ten_total_three"
+                   name="exercise_ten_total_three" value="{{workout.exercise_ten_total_three}}">
+           </div>
+       </div>
+       
+       <hr>
+       <!--Edit Workout Additional Information-->
 
-            <div id="visible-switch" class="form-check form-switch mx-auto text-center">
-                <br>
-                <div>
-                <label class="form-check-label">
-                    <input class="form-check-input col-6 mx-auto" type="checkbox" role="switch"
-                        id="is-visible" name="is-visible" checked>
-                    </div> 
-                Would you like this workout to be publicly visible?</label>
-            </div>
-                </div>
-                
-                <!-- submit button -->
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <button type="submit" class="btn-large light-blue darken-1">
-                            Edit Workout <i class="fas fa-edit right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-    </form>
+       <div class="col-12">
+           <span><label for="view-additional-info"></label>
+            <i class="fas fa-edit"></i> Additional Information</span>
+           <input type="text" class="form-control" id="view-additional-info" name="additional-information"
+               minlength="5" maxlength="100" value="{{ workout.additional_information}}">
+           </input>
+       </div>
+   
+       <!--workout visibility function -->
+
+<div id="visible-switch" class="form-check form-switch mx-auto text-center">
+   <br>
+   <div>
+   <label class="form-check-label">
+       <input class="form-check-input col-6 mx-auto" type="checkbox" role="switch"
+           id="is-visible" name="is-visible" checked>
+       </div> 
+   Would you like this workout to be publicly visible?</label>
 </div>
-
-{% endblock %}
+   </div>
+   
+   <!-- submit button -->
+   <div class="row">
+       <div class="col s12 center-align">
+           <button type="submit" class="btn-large light-blue darken-1">
+               Edit Workout <i class="fas fa-edit right"></i>
+           </button>
+       </div>
+   </div>
+</form>
+        
+    {% endblock %}

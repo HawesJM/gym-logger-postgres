@@ -410,7 +410,7 @@ def edit_workout(workout_id):
     exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
     categories = list(Category.query.order_by(Category.category_name).all())
     if request.method == "POST":
-        workout.workout_title = request.form.get("workout_title")
+        workout.workout_title = request.form.get("edit_workout_title")
         workout.workout_date_time= request.form.get("workout_date_time")
         workout_location = request.form.get("workout_location")
         workout.exercise_one_name = request.form.get("edit_exercise_one_name")
@@ -498,7 +498,7 @@ def edit_workout(workout_id):
         db.session.commit()
         is_public = "on" if request.form.get("is-visible") else "off"
         edited_mongo_workout = {
-            "workout_title": request.form.get("workout_title"),
+            "workout_title": request.form.get("edit_workout_title"),
             "created_by": session["user"],
             "workout_date_time": request.form.get("workout_date_time"),
             "workout_location": request.form.get("workout_location"),
