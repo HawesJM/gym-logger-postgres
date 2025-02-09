@@ -80,16 +80,14 @@ def profile(username):
     username = session["user"]
     current_user_workouts = list(Workout.query.filter(Workout.created_by==session["user"]))
     grand_total_workouts = len(workouts)
-    print(grand_total_workouts)
     user_total_workouts = len(current_user_workouts)
     user_mobile_workouts = list(Workout.query.filter(Workout.created_by==session["user"], Workout.is_mobile==True))
     total_user_mobile_workouts = len(user_mobile_workouts)
     print(total_user_mobile_workouts)
     mongo_user_workouts = list(mongo.db.workouts.find({"created_by": session["user"]}))
     total_user_mongo_workouts = len(mongo_user_workouts)
-    print(total_user_mongo_workouts)
     if session["user"]:
-        return render_template("profile.html", categories=categories, username=username, workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts, current_user_workouts=current_user_workouts, user_total_workouts = user_total_workouts)
+        return render_template("profile.html", categories=categories, username=username, workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts, current_user_workouts=current_user_workouts, user_total_workouts = user_total_workouts, total_user_mobile_workouts=total_user_mobile_workouts)
 
 
     return redirect(url_for("signin"))
