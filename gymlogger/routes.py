@@ -620,7 +620,7 @@ def archive_workout(workout_id):
     is_public = "on" if request.form.get("is-visible") else "off"
     if request.method == "POST":
         archived_mongo_workout = {
-            "workout_title": request.form.get("workout_title"),
+            "workout_title": request.form.get("archive_workout_title"),
             "created_by": session["user"],
             "workout_date_time": request.form.get("workout_date_time"),
             "workout_location": request.form.get("workout_location"),
