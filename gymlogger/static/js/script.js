@@ -5,6 +5,12 @@ if (document.getElementById("edit_workout_title")){
   $("#copyright").addClass("hidden");
 }
 
+if (document.getElementById("archive-record-container")){
+  $("#social-footer").addClass("hidden");
+  $("#copyright").addClass("hidden");
+}
+
+
 if (document.getElementById("workout-form-card")) {
   document.getElementById("record-button").style.display="none";
   document.getElementById('nextBtn').addEventListener("click",showSubmit);
