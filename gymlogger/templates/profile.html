@@ -9,8 +9,9 @@
             <br>
             <span>mobile recorded workouts: {{total_user_mobile_workouts}}</span>
             {% for workout in mongo_user_workouts %}
-            {% if workout.was_mobile == true %}
+            {% if workout.is_archived !== true %}
             {% else %}
+            {% for workout in total_user_mobile_workouts %}
             <div class="row">{{workout.workout_title}}</div>
             {% endif %}
             {% endfor %}
