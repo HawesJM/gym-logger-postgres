@@ -8,6 +8,12 @@
             <span>total recorded workouts: {{user_total_workouts}}</span>
             <br>
             <span>mobile recorded workouts: {{total_user_mobile_workouts}}</span>
+            {% for workout in user_mobile_workouts %}
+            {% if "(Archived)" in workout.workout_title%}
+            {% else %}
+            <div class="row">{{workout.workout_title}}</div>
+            {% endif %}
+            {% endfor %}
         </h3>
     </div>
 </div>

@@ -87,7 +87,7 @@ def profile(username):
     mongo_user_workouts = list(mongo.db.workouts.find({"created_by": session["user"]}))
     total_user_mongo_workouts = len(mongo_user_workouts)
     if session["user"]:
-        return render_template("profile.html", categories=categories, username=username, workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts, current_user_workouts=current_user_workouts, user_total_workouts = user_total_workouts, total_user_mobile_workouts=total_user_mobile_workouts)
+        return render_template("profile.html", categories=categories, user_mobile_workouts=user_mobile_workouts, username=username, workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts, current_user_workouts=current_user_workouts, user_total_workouts = user_total_workouts, total_user_mobile_workouts=total_user_mobile_workouts)
 
 
     return redirect(url_for("signin"))
@@ -615,9 +615,9 @@ def archive_workout(workout_id):
     modifiers = list(Modifier.query.order_by(Modifier.modifier_name).all())
     exercises = list(Exercise.query.order_by(Exercise.exercise_title).all())
     categories = list(Category.query.order_by(Category.category_name).all())
-    is_public = "on" if request.form.get("is-visible") else "off"
-    is_mobile=bool(False)
+    workout.workout_title = request.form.get("archive_workout_title")
     db.session.commit()
+    is_public = "on" if request.form.get("is-visible") else "off"
     if request.method == "POST":
         archived_mongo_workout = {
             "workout_title": request.form.get("workout_title"),
