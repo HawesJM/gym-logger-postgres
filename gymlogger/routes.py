@@ -87,7 +87,7 @@ def profile(username):
     mongo_user_workouts = list(mongo.db.workouts.find({"created_by": session["user"]}))
     total_user_mongo_workouts = len(mongo_user_workouts)
     if session["user"]:
-        return render_template("profile.html", categories=categories, user_mobile_workouts=user_mobile_workouts, username=username, workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts, current_user_workouts=current_user_workouts, user_total_workouts = user_total_workouts, total_user_mobile_workouts=total_user_mobile_workouts)
+        return render_template("profile.html", categories=categories, user_mobile_workouts=user_mobile_workouts, username=username, workouts=workouts, items=paginated_workouts.items, pagination=paginated_workouts, current_user_workouts=current_user_workouts, user_total_workouts = user_total_workouts, total_user_mobile_workouts=total_user_mobile_workouts, total_user_mongo_workouts=total_user_mongo_workouts)
 
 
     return redirect(url_for("signin"))
@@ -501,7 +501,7 @@ def edit_workout(workout_id):
         workout.exercise_ten_total_two = float(request.form.get("exercise_ten_total_two"))
         workout.exercise_ten_total_three = float(request.form.get("exercise_ten_total_three"))
         workout.additional_information = request.form.get("additional_information")
-        is_public=bool(True if request.form.get("is-visible") else False)
+        workout.is_public=bool(True if request.form.get("is-visible") else False)
         db.session.commit()
         is_public = "on" if request.form.get("is-visible") else "off"
         edited_mongo_workout = {
@@ -619,6 +619,8 @@ def archive_workout(workout_id):
     db.session.commit()
     is_public = "on" if request.form.get("is-visible") else "off"
     if request.method == "POST":
+        workout.is_mobile=bool(False)
+        db.session.commit()
         archived_mongo_workout = {
             "workout_title": request.form.get("archive_workout_title"),
             "created_by": session["user"],
@@ -966,7 +968,7 @@ def quick_edit_nine(workout_id):
         additional_information = request.form.get("mobile_additional_information"),
         db.session.commit()
         flash("exercise/workout logged!")
-        return render_template("quick_edit_10.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
+        return render_template("index.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
     return render_template("quick_edit_9.html", categories=categories, exercises=exercises, modifiers=modifiers, workouts=workouts, workout=workout, mongo_categories=mongo_categories, mongo_exercises=mongo_exercises)
 
 
@@ -987,3 +989,12 @@ def edit_location(location_id):
         db.session.commit()
         return redirect(url_for("locations"))
     return render_template("edit_location.html", location=location)
+
+@app.route("/mobile_workouts")
+def mobile_workouts():
+    mobile_workouts = list(Workout.query.filter(Workout.created_by==session["user"], Workout.is_mobile==True))
+    print (mobile_workouts[0].workout_title)
+    mobile_workouts_list = len(mobile_workouts)
+    print(mobile_workouts_list)
+    return render_template("mobile_workouts.html", workouts=workouts, mobile_workouts=mobile_workouts)
+

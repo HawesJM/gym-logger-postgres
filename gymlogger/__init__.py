@@ -2,7 +2,7 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 if os.path.exists("env.py"):
-    import env # noqa
+    import env as env # noqa
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 

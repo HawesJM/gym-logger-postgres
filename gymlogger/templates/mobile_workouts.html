@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Gym Logger</title>
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='media/favicon.ico')}}" />
+</head>
+
+<body>
+  <header>
+    <div id="logo-container">
+      <a class="navbar-brand" href="#">
+        <img id = "gym-logger-logo" src="/static/media/gym-logger-logo.jpg"/>
+    </a>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-body-white">
+        <div class="container-fluid">
+          <button
+            data-mdb-collapse-init
+            class="navbar-toggler"
+            type="button"
+            data-mdb-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="{{ url_for('home')}}">Home </a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('workouts')}}">View Workouts </a>
+              <a class="nav-link active" aria-current="page" href="">FAQs/Walkthrough </a>
+              <a class="nav-link active" aria-current="page" href="">Contact </a>
+              {% if session.user %}
+              <a class="nav-link active" aria-current="page" href="{{ url_for('record_workout')}}">Log A Workout </a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('profile', username=session['user'])}}">Profile </a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('signout')}}">Sign Out </a>
+              {% else %}
+              <a class="nav-link active" aria-current="page" href="{{ url_for('signin')}}">Sign In </a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('register')}}">Register </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!--search section-->
+    <section>
+    </section>
+    <!--flash messages-->
+    <section>
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+          <div class="row flashes text-center">
+              <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
+          </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </section>
+
+      <main class="container">
+        {% block content %}
+        {% for mobile_workout in mobile_workouts %}
+            {% if "(Archived)" not in mobile_workout.workout_title  %}
+            {{mobile_workout.workout_title}}
+            {% endif %}
+        {% endfor %}
+        {% endblock %}
+      </main>
+    
+    <!-- Footer -->
+<footer id="social-footer" class="text-center text-lg-start bg-body-tertiary text-muted fixed-bottom">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Get connected with us on social networks:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Copyright -->
+  <div id="copyright" class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+    <!-- MDB -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/8.0.0/mdb.umd.min.js">
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
