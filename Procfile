@@ -1,1 +1,1 @@
-web: gunicorn gymlogger.wsgi 
+web: python run.py
