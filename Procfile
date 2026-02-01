@@ -1,1 +1,1 @@
-web: gunicorn gymlogger:app
+web: gunicorn gymlogger.wsgi 
